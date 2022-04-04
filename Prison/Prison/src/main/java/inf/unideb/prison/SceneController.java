@@ -96,7 +96,7 @@ public class SceneController {
                     e.printStackTrace();
                 }
             } else{
-                System.out.println("rossz vagy");
+                System.out.println("Hibás felhasználónév vagy jelszó");
             }
         } catch (Exception e){
             e.printStackTrace();

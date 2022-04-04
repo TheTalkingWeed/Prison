@@ -20,7 +20,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         try{
 
-            Parent root = FXMLLoader.load(getClass().getResource("AfterLoginScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
             Scene scene = new Scene(root);
             stage.setResizable(false);
             stage.setTitle("Hello!");
@@ -34,12 +34,12 @@ public class Main extends Application {
 
     public static void main(String[] args) throws SQLException {
 
-        startDatabase();
+       // startDatabase();
 
         launch();
     }
 
-    private static void startDatabase() throws SQLException {
-        new Server().runTool("-tcp", "-web", "-ifNotExists");
-    }
+//     private static void startDatabase() throws SQLException {
+//         new Server().runTool("-tcp", "-web", "-ifNotExists");
+//     }
 }

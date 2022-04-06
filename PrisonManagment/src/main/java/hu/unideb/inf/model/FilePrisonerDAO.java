@@ -31,26 +31,26 @@ public class FilePrisonerDAO implements PrisonerDAO {
     }
 
     @Override
-    public void saveAnimal(Prisoner a) {
+    public void savePrisoner(Prisoner a) {
         if (!prisoners.contains(a)) prisoners.add(a);
         serialize();
     }
 
     @Override
-    public void deleteAnimal(Prisoner a) {
+    public void deletePrisoner(Prisoner a) {
         prisoners.remove(a);
         serialize();
     }
 
     @Override
-    public void updateAnimal(Prisoner a) {
+    public void updatePrisoner(Prisoner a) {
         prisoners.remove(a); //change the equals method of the Animal to have a proper working
         prisoners.add(a);
         serialize();
     }
 
     @Override
-    public List<Prisoner> getAnimals() {
+    public List<Prisoner> getPrisoners() {
         return prisoners;
     }
 

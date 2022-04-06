@@ -12,29 +12,29 @@ public class JpaPrisonerDAO implements PrisonerDAO {
      EntityManager entityManager = entityManagerFactory.createEntityManager();
 
     @Override
-    public void saveAnimal(Prisoner a) {
+    public void savePrisoner(Prisoner a) {
         entityManager.getTransaction().begin();
         entityManager.persist(a);
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public void deleteAnimal(Prisoner a) {
+    public void deletePrisoner(Prisoner a) {
         entityManager.getTransaction().begin();
         entityManager.remove(a);
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public void updateAnimal(Prisoner a) {
+    public void updatePrisoner(Prisoner a) {
         /*entityManager.getTransaction().begin();
         entityManager.persist(a);
         entityManager.getTransaction().commit();*/
-        saveAnimal(a);
+        savePrisoner(a);
     }
 
     @Override
-    public List<Prisoner> getAnimals() {
+    public List<Prisoner> getPrisoners() {
         TypedQuery<Prisoner> query = entityManager.createQuery(
                 "SELECT a FROM Prisoner a", Prisoner.class);
         List<Prisoner> prisoners = query.getResultList();

@@ -2,6 +2,7 @@ package hu.unideb.inf;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import hu.unideb.inf.model.*;
 import javafx.fxml.FXMLLoader;
@@ -28,9 +29,10 @@ public class Application extends javafx.application.Application {
     public static void main(String[] args) throws SQLException {
         startDatabase();
 
-        //try-with-resources
-        try (PrisonerDAO aDAO = new JpaPrisonerDAO();) {
-            handleData(aDAO);
+
+        try (PrisonerDAO pDAO = new JpaPrisonerDAO(); WardenDAO wDAO = new JpaWardenDAO(); ) {
+            handleData(pDAO);
+            handleData(wDAO);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,21 +42,46 @@ public class Application extends javafx.application.Application {
 
     }
 
-    public static void handleData(PrisonerDAO aDAO){
+
+    public static void handleData(WardenDAO wDAO){
+
+        Warden warden = new Warden();
+        warden.setFname("Will");
+        warden.setLname("Smith");
+        warden.setJoinDate(LocalDate.of(2005,2,3));
+        warden.setRank(Warden.Rank.SILVER_ELIT_MASTER);
+        warden.setFloorInCharge(2);
+
+        wDAO.saveWarden(warden);
+
+    }
+
+    public static void handleData(PrisonerDAO pDAO){
         Prisoner a = new Prisoner();
-        a.setName("Peppuska");
-        a.setAge(4);
-        a.setGender(Prisoner.GenderType.FEMALE);
-        // aDAO.saveAnimal(a);
+        a.setFname("Ben");
+        a.setLname("Dover");
+        a.setBornDate(LocalDate.of(1960,1,12));
+        a.setAge();
+        a.setEntrancedate(LocalDate.of(2010,1,5));
+        a.setReleasedate(LocalDate.of(2015,1,5));
+        a.setSecuritylvl(Prisoner.SecLevel.LOW);
+        a.setCellnumber(102);
+        a.setCrime(Prisoner.Crime.Stalking);
 
         Prisoner a2 = new Prisoner();
-        a2.setName("Geri");
-        a2.setAge(2);
-        a2.setGender(Prisoner.GenderType.MALE);
-        // aDAO.saveAnimal(a2);
+        a2.setFname("Jhon");
+        a2.setLname("Smith");
+        a2.setBornDate(LocalDate.of(1980,5,6));
+        a2.setAge();
+        a2.setEntrancedate(LocalDate.of(2000,5,14));
+        a2.setReleasedate(LocalDate.of(2015,6,14));
+        a2.setSecuritylvl(Prisoner.SecLevel.HIGH);
+        a2.setCellnumber(101);
+        a2.setCrime(Prisoner.Crime.Second_degree_Murder);
 
-       aDAO.saveAnimal(a);
-       aDAO.saveAnimal(a2);
+
+        pDAO.savePrisoner(a);
+        pDAO.savePrisoner(a2);
     }
 
     private static Server s = new Server();

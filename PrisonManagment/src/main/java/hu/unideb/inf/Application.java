@@ -1,6 +1,5 @@
 package hu.unideb.inf;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -16,7 +15,8 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage)  {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginScreen.fxml"));
+           // FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(Application.class.getResource("/fxml/LoginScreen.fxml"));
             Scene scene = new Scene(loader.load());
             stage.setTitle("PrisonManagment");
             stage.setScene(scene);

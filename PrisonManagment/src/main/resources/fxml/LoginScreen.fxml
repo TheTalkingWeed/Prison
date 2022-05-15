@@ -14,10 +14,10 @@
       </Label>
       <TextField fx:id="username" layoutX="76.0" layoutY="116.0" prefHeight="43.0" prefWidth="169.0" promptText="Username" />
       <PasswordField fx:id="password" layoutX="76.0" layoutY="185.0" prefHeight="43.0" prefWidth="169.0" promptText="Password" />
-      <Button layoutX="84.0" layoutY="275.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="43.0" prefWidth="152.0" style="-fx-background-color: #f78364;" text="Login">
+      <Button fx:id="loginAsadmin" layoutX="84.0" layoutY="275.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="43.0" prefWidth="152.0" style="-fx-background-color: #f78364;" text="Login">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></Button>
-      <Button layoutX="84.0" layoutY="356.0" mnemonicParsing="false" onAction="#onLoginGuest" prefHeight="43.0" prefWidth="152.0" style="-fx-background-color: #f78364; -fx-border-radius: 50;" text=" Login as a guest" />
+      <Button fx:id="loginAsguest" layoutX="84.0" layoutY="356.0" mnemonicParsing="false" onAction="#onLoginGuest" prefHeight="43.0" prefWidth="152.0" style="-fx-background-color: #f78364; -fx-border-radius: 50;" text=" Login as a guest" />
    </children>
 </Pane>

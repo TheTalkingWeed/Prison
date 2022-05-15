@@ -45,7 +45,7 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="editWardenDetailsButton" layoutX="335.0" layoutY="455.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="160.0" style="-fx-background-color: #f78364;" text="Edit Warden Details">
+                  <Button fx:id="editWardenDetailsButton" layoutX="335.0" layoutY="455.0" mnemonicParsing="false" onAction="#EditWardenDetailsButton" prefHeight="73.0" prefWidth="160.0" style="-fx-background-color: #f78364;" text="Edit Warden Details">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
@@ -105,15 +105,15 @@
                      </font>
                   </Label>
                   <TextField fx:id="prisonerID_textbox" layoutX="327.0" layoutY="74.0" prefHeight="26.0" prefWidth="291.0" />
-                  <Button fx:id="searchButtonMP" layoutX="70.0" layoutY="501.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
+                  <Button fx:id="searchButtonMP" layoutX="70.0" layoutY="501.0" mnemonicParsing="false" onAction="#SearchButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
-                  <Button fx:id="deleteButtonMP" layoutX="381.0" layoutY="501.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Delete">
+                  <Button fx:id="deleteButtonMP" layoutX="381.0" layoutY="501.0" mnemonicParsing="false" onAction="#DeleteButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Delete">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
-                  <Button fx:id="saveButtonMP" layoutX="693.0" layoutY="501.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Save">
+                  <Button fx:id="saveButtonMP" layoutX="693.0" layoutY="501.0" mnemonicParsing="false" onAction="#SaveButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Save">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>

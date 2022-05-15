@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -14,44 +13,59 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="864.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="864.0" style="-fx-background-color: #4e586e;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
     <Tab text="Warden Details">
          <content>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="863.0">
                <children>
-                  <Text layoutX="294.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editing Warden Details" textAlignment="CENTER">
+                  <Text fill="WHITE" layoutX="269.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editing Warden Details" textAlignment="CENTER">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="30.0" />
                      </font>
                   </Text>
-                  <Line endX="762.0000610351562" endY="-3.814697265625E-6" layoutX="101.0" layoutY="64.0" startX="-100.0" />
-                  <Label layoutX="163.0" layoutY="136.0" text="Unique ID">
+                  <Line endX="762.0000610351562" endY="-3.814697265625E-6" layoutX="101.0" layoutY="64.0" startX="-100.0" stroke="#f78364" />
+                  <Label layoutX="144.0" layoutY="91.0" text="Unique ID" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="163.0" layoutY="193.0" text="Username">
+                  <Label layoutX="138.0" layoutY="141.0" text="First Name" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="163.0" layoutY="242.0" text="Joining Date">
+                  <Label layoutX="138.0" layoutY="241.0" text="Joining Date" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="163.0" layoutY="295.0" text="Ranking">
+                  <Label layoutX="138.0" layoutY="294.0" text="Ranking" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="editWardenDetailsButton" layoutX="335.0" layoutY="425.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="160.0" text="Edit Warden Details" />
-                  <TextField layoutX="347.0" layoutY="138.0" prefHeight="32.0" prefWidth="246.0" />
-                  <TextField layoutX="347.0" layoutY="195.0" prefHeight="32.0" prefWidth="245.0" />
-                  <ChoiceBox layoutX="347.0" layoutY="299.0" prefHeight="26.0" prefWidth="68.0" />
-                  <Line endX="762.0" layoutX="101.0" layoutY="375.0" startX="-100.0" />
-                  <DatePicker layoutX="346.0" layoutY="246.0" prefHeight="26.0" prefWidth="246.0" />
+                  <Button fx:id="editWardenDetailsButton" layoutX="335.0" layoutY="455.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="160.0" style="-fx-background-color: #f78364;" text="Edit Warden Details">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font></Button>
+                  <ChoiceBox layoutX="335.0" layoutY="299.0" prefHeight="26.0" prefWidth="246.0" />
+                  <Line endX="762.0" layoutX="100.0" layoutY="406.0" startX="-100.0" stroke="#f78364" />
+                  <DatePicker layoutX="335.0" layoutY="246.0" prefHeight="26.0" prefWidth="246.0" />
+                  <Label layoutX="138.0" layoutY="193.0" text="First Name" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="335.0" layoutY="93.0" prefHeight="32.0" prefWidth="245.0" />
+                  <TextField layoutX="335.0" layoutY="143.0" prefHeight="32.0" prefWidth="245.0" />
+                  <TextField layoutX="335.0" layoutY="195.0" prefHeight="32.0" prefWidth="245.0" />
+                  <Label layoutX="138.0" layoutY="345.0" text="Floor in Charge" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox layoutX="335.0" layoutY="350.0" prefHeight="26.0" prefWidth="246.0" />
                </children>
             </AnchorPane>
          </content>
@@ -60,53 +74,73 @@
          <content>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="863.0">
                <children>
-                  <Text layoutX="300.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Managing Prisoners" textAlignment="CENTER">
+                  <Text fill="WHITE" layoutX="300.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Managing Prisoners" textAlignment="CENTER">
                      <font>
-                        <Font size="30.0" />
+                        <Font name="System Bold Italic" size="30.0" />
                      </font>
                   </Text>
-                  <Label layoutX="153.0" layoutY="83.0" prefHeight="35.0" prefWidth="123.0" text="Prisoner ID">
+                  <Label layoutX="96.0" layoutY="69.0" prefHeight="35.0" prefWidth="130.0" text="Prisoner ID" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="154.0" layoutY="131.0" text="Prisoner Name">
+                  <Label layoutX="96.0" layoutY="116.0" text="Prisoner First Name" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="154.0" layoutY="187.0" text="Entrance Data">
+                  <Label layoutX="94.0" layoutY="202.0" text="Entrance Data" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="151.0" layoutY="234.0" text="Relase Date">
+                  <Label layoutX="94.0" layoutY="249.0" text="Relase Date" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="151.0" layoutY="282.0" text="Security Level">
+                  <Label layoutX="92.0" layoutY="291.0" text="Security Level" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="147.0" layoutY="331.0" text="Current Date">
+                  <TextField fx:id="prisonerID_textbox" layoutX="327.0" layoutY="74.0" prefHeight="26.0" prefWidth="291.0" />
+                  <Button fx:id="searchButtonMP" layoutX="70.0" layoutY="501.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="deleteButtonMP" layoutX="381.0" layoutY="501.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Delete">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="saveButtonMP" layoutX="693.0" layoutY="501.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Save">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font></Button>
+                  <TextField fx:id="prisonerName_textbox" layoutX="327.0" layoutY="121.0" prefHeight="26.0" prefWidth="291.0" />
+                  <Line endX="849.0" endY="-3.814697265625E-6" layoutX="13.0" layoutY="56.0" startX="-13.99999713897705" startY="-3.814697265625E-6" stroke="#f78364" />
+                  <Line endX="755.0" layoutX="108.0" layoutY="450.0" startX="-108.0" stroke="#f78364" />
+                  <DatePicker layoutX="327.0" layoutY="254.0" prefHeight="26.0" prefWidth="291.0" />
+                  <DatePicker layoutX="327.0" layoutY="207.0" prefHeight="26.0" prefWidth="291.0" />
+                  <ChoiceBox layoutX="327.0" layoutY="296.0" prefWidth="150.0" />
+                  <Label layoutX="96.0" layoutY="162.0" text="Prisoner Last Name" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="prisonerID_textbox" layoutX="327.0" layoutY="88.0" prefHeight="26.0" prefWidth="291.0" />
-                  <Button fx:id="searchButtonMP" layoutX="73.0" layoutY="434.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" text="Search" />
-                  <Button fx:id="deleteButtonMP" layoutX="381.0" layoutY="434.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" text="Delete" />
-                  <Button fx:id="saveButtonMP" layoutX="692.0" layoutY="434.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" text="Save" />
-                  <TextField fx:id="prisonerName_textbox" layoutX="327.0" layoutY="135.0" prefHeight="26.0" prefWidth="291.0" />
-                  <Line endX="849.0" endY="-3.814697265625E-6" layoutX="13.0" layoutY="56.0" startX="-13.99999713897705" startY="-3.814697265625E-6" />
-                  <Line endX="755.0" layoutX="108.0" layoutY="382.0" startX="-108.0" />
-                  <CheckBox layoutX="327.0" layoutY="291.0" mnemonicParsing="false" text="High" />
-                  <CheckBox layoutX="415.0" layoutY="291.0" mnemonicParsing="false" text="Low" />
-                  <DatePicker layoutX="327.0" layoutY="191.0" prefHeight="26.0" prefWidth="291.0" />
-                  <DatePicker layoutX="327.0" layoutY="239.0" prefHeight="26.0" prefWidth="291.0" />
-                  <DatePicker layoutX="327.0" layoutY="335.0" prefHeight="26.0" prefWidth="291.0" />
+                  <TextField fx:id="prisonerName_textbox1" layoutX="327.0" layoutY="167.0" prefHeight="26.0" prefWidth="291.0" />
+                  <Label layoutX="90.0" layoutY="334.0" text="Cell Number" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="92.0" layoutY="376.0" text="Crime" textFill="#fffafa">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="prisonerName_textbox11" layoutX="327.0" layoutY="339.0" prefHeight="26.0" prefWidth="291.0" />
+                  <ChoiceBox layoutX="329.0" layoutY="381.0" prefHeight="26.0" prefWidth="288.0" />
                </children>
             </AnchorPane>
          </content>
@@ -115,37 +149,49 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ListView layoutX="-1.0" layoutY="89.0" prefHeight="498.0" prefWidth="86.0" />
-                  <Label contentDisplay="CENTER" layoutX="29.0" layoutY="32.0" prefHeight="35.0" prefWidth="25.0" text="ID" textAlignment="CENTER" textOverrun="CLIP">
+                  <ListView layoutX="-1.0" layoutY="89.0" prefHeight="498.0" prefWidth="53.0" />
+                  <Label contentDisplay="CENTER" layoutX="13.0" layoutY="28.0" prefHeight="35.0" prefWidth="25.0" text="ID" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="138.0" layoutY="32.0" text="Name of the Prisoner">
+                  <Label layoutX="77.0" layoutY="32.0" text="First Name" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <ListView layoutX="86.0" layoutY="89.0" prefHeight="498.0" prefWidth="329.0" />
-                  <Label layoutX="416.0" layoutY="32.0" text="Entrance Date">
+                  <ListView layoutX="53.0" layoutY="89.0" prefHeight="498.0" prefWidth="134.0" />
+                  <Label layoutX="338.0" layoutY="32.0" text="Entrance Date" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="574.0" layoutY="32.0" text="Relase Date">
+                  <Label layoutX="493.0" layoutY="32.0" text="Relase Date" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <ListView layoutX="709.0" layoutY="89.0" prefHeight="504.0" prefWidth="150.0" />
-                  <Label layoutX="712.0" layoutY="32.0" text="Security Level">
+                  <ListView layoutX="612.0" layoutY="89.0" prefHeight="504.0" prefWidth="128.0" />
+                  <Label layoutX="622.0" layoutY="32.0" text="Security Level" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <Line endX="762.0" layoutX="101.0" layoutY="76.0" startX="-100.0" />
-                  <ListView layoutX="563.0" layoutY="89.0" prefHeight="503.0" prefWidth="146.0" />
-                  <ListView layoutX="417.0" layoutY="89.0" prefHeight="503.0" prefWidth="146.0" />
+                  <Line endX="762.0" layoutX="101.0" layoutY="76.0" startX="-100.0" stroke="#f78364" />
+                  <ListView layoutX="468.0" layoutY="89.0" prefHeight="503.0" prefWidth="144.0" />
+                  <ListView layoutX="321.0" layoutY="89.0" prefHeight="503.0" prefWidth="146.0" />
+                  <ListView layoutX="187.0" layoutY="89.0" prefHeight="498.0" prefWidth="134.0" />
+                  <Label layoutX="212.0" layoutY="32.0" text="Last Name" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView layoutX="740.0" layoutY="89.0" prefHeight="498.0" prefWidth="126.0" />
+                  <Label layoutX="756.0" layoutY="32.0" text="Cell Number" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
         </content>
       </Tab>
@@ -153,32 +199,43 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label contentDisplay="CENTER" layoutX="49.0" layoutY="14.0" prefHeight="35.0" prefWidth="25.0" text="ID" textAlignment="CENTER" textOverrun="CLIP">
+                  <Label contentDisplay="CENTER" layoutX="49.0" layoutY="14.0" prefHeight="35.0" prefWidth="31.0" text="ID" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="201.0" layoutY="14.0" text="Name of Warden">
+                  <Label layoutX="144.0" layoutY="14.0" text="First Name" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="480.0" layoutY="14.0" text="Joining Date">
+                  <Label layoutX="459.0" layoutY="14.0" text="Joining Date" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="690.0" layoutY="14.0" text="Rank">
+                  <Label layoutX="646.0" layoutY="14.0" text="Rank" textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
                   <ListView layoutX="19.0" layoutY="56.0" prefHeight="498.0" prefWidth="86.0" />
-                  <ListView layoutX="127.0" layoutY="56.0" prefHeight="498.0" prefWidth="329.0" />
-                  <ListView layoutX="473.0" layoutY="56.0" prefHeight="503.0" prefWidth="146.0" />
-                  <ListView layoutX="673.0" layoutY="56.0" prefHeight="498.0" prefWidth="86.0" />
-                  <Line endX="762.0000610351562" endY="-3.814697265625E-6" layoutX="101.0" layoutY="49.0" startX="-100.0" />
-                  <Line endX="-100.0" endY="409.0" layoutX="906.0" layoutY="190.0" startX="-100.0" startY="-190.0" />
+                  <ListView layoutX="452.0" layoutY="55.0" prefHeight="503.0" prefWidth="146.0" />
+                  <ListView layoutX="629.0" layoutY="58.0" prefHeight="498.0" prefWidth="86.0" />
+                  <Line endX="762.0000610351562" endY="-3.814697265625E-6" layoutX="101.0" layoutY="49.0" startX="-100.0" stroke="#f78364" />
+                  <ListView layoutX="134.0" layoutY="58.0" prefHeight="498.0" prefWidth="134.0" />
+                  <ListView layoutX="297.0" layoutY="58.0" prefHeight="498.0" prefWidth="134.0" />
+                  <Label layoutX="308.0" layoutY="14.0" text="Last Name" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="760.0" layoutY="14.0" text="Floor" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <ListView layoutX="738.0" layoutY="57.0" prefHeight="498.0" prefWidth="98.0" />
                </children>
             </AnchorPane>
         </content>

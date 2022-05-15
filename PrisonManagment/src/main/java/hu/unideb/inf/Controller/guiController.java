@@ -1,9 +1,13 @@
 package hu.unideb.inf.Controller;
 
+import hu.unideb.inf.model.Admin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class guiController {
 
@@ -43,6 +47,7 @@ public class guiController {
 
     @FXML
     void SaveButtonMP(ActionEvent event) {
+
 
     }
 

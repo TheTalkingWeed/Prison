@@ -4,17 +4,20 @@ import hu.unideb.inf.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 
-public class SceneController {
+public class SceneController implements Initializable {
 
     private boolean isAdmin;
 
@@ -150,14 +153,14 @@ public class SceneController {
     @FXML
     private DatePicker EntranceDate;
     @FXML
-    private ChoiceBox<?> SecLevel;
+    private ChoiceBox<String> SecLevel;
     @FXML
     private DatePicker ReleaseDate;
     @FXML
     private TextField Cell_Number;
 
     @FXML
-    private ChoiceBox<?> Crime;
+    private ChoiceBox<String> Crime;
 
     @FXML
     private Button saveButtonMP;
@@ -185,10 +188,21 @@ public class SceneController {
     void DeleteButtonMP(ActionEvent event) {
 
     }
-
     @FXML
     void DeleteWarden(ActionEvent event) {
         if (isAdmin == true){
+
+            WardenDAO wdao = new JpaWardenDAO();
+            Warden warden = new Warden();
+            Warden_Floor.getItems().addAll();
+
+            warden.setFname(Warden_FN.getText());
+            warden.setLname(Warden_LN.getText());
+            warden.setJoinDate(Warden_JD.getValue());
+            warden.setRank(Warden_Rank.getValue());
+            warden.setFloorInCharge(Warden_Floor.getValue());
+
+            wdao.deleteWarden(warden);
 
         } else {
 
@@ -198,7 +212,6 @@ public class SceneController {
             alertwindow.setContentText("You cannot modify as a Guset");
             alertwindow.showAndWait();
     }
-
 }    @FXML
     void SaveWarden(ActionEvent event) {
         if (isAdmin == true){
@@ -233,10 +246,16 @@ public class SceneController {
 
     }
 
-
-
     @FXML
     void SearchButtonMP(ActionEvent event) {
 
     }
-}
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String[] rangok =   {"Őr","Kisfőnök","Nagyfőnök"};
+        Warden_Rank.getItems().addAll(rangok);
+        String[] floors = {"1","2","3","4","5","6"};
+        Warden_Floor.getItems().addAll(floors);
+    }
+    }

@@ -1,4 +1,4 @@
-package hu.unideb.inf.model;
+package hu.unideb.inf.model.WardenPac;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -6,12 +6,14 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+import static javax.persistence.Persistence.createEntityManagerFactory;
+
 public class JpaWardenDAO implements WardenDAO{
 
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("br.com.fredericci.pu");
+    EntityManagerFactory entityManagerFactory = createEntityManagerFactory("br.com.fredericci.pu");
     EntityManager entityManager = entityManagerFactory.createEntityManager();
     @Override
-    public void saveWarden(Warden a) {
+    public void saveWarden(Warden a)  {
         entityManager.getTransaction().begin();
         entityManager.persist(a);
         entityManager.getTransaction().commit();
@@ -39,6 +41,7 @@ public class JpaWardenDAO implements WardenDAO{
 
     @Override
     public void close() throws Exception {
-
+        entityManager.close();
+        entityManagerFactory.close();
     }
 }

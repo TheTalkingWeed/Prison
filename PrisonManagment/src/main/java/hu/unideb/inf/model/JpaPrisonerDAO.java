@@ -1,4 +1,4 @@
-package hu.unideb.inf.model;
+package hu.unideb.inf.model.PrisonerPac;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

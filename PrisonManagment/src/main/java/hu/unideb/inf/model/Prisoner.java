@@ -1,4 +1,4 @@
-package hu.unideb.inf.model;
+package hu.unideb.inf.model.PrisonerPac;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -118,7 +118,20 @@ public class Prisoner implements Serializable {
         Lname = lname;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Prisoner{" +
+                "id=" + id +
+                ", UniqueID=" + UniqueID +
+                ", Fname='" + Fname + '\'' +
+                ", Lname='" + Lname + '\'' +
+                ", age=" + age +
+                ", BornDate=" + BornDate +
+                ", entrancedate=" + entrancedate +
+                ", releasedate=" + releasedate +
+                ", securitylvl='" + securitylvl + '\'' +
+                ", cellnumber=" + cellnumber +
+                ", crime='" + crime + '\'' +
+                '}';
+    }
 }

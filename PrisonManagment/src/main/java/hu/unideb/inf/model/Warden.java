@@ -1,4 +1,4 @@
-package hu.unideb.inf.model;
+package hu.unideb.inf.model.WardenPac;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -9,9 +9,7 @@ public class Warden {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
     private int Unique_ID;
-
     private String Fname;
     private String Lname;
     private LocalDate JoinDate;
@@ -62,15 +60,15 @@ public class Warden {
         return rank;
     }
 
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
     public int getUnique_ID() {
         return Unique_ID;
     }
 
     public void setUnique_ID(int unique_ID) {
         Unique_ID = unique_ID;
-    }
-
-    public void setRank(String rank) {
-        this.rank = rank;
     }
 }

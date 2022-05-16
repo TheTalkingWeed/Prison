@@ -1,4 +1,4 @@
-package hu.unideb.inf.model;
+package hu.unideb.inf.model.AdminPac;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +9,11 @@ import javax.persistence.MapKeyColumn;
 public class Admin {
     @Id
     @GeneratedValue
-    int id;
-    @MapKeyColumn
-    String username;
-    String password;
+    private int id;
+    private String username;
+    private String password;
+
+
 
     public int getId() {
         return id;

@@ -1,4 +1,4 @@
-package hu.unideb.inf.model;
+package hu.unideb.inf.model.WardenPac;
 
 import java.util.List;
 

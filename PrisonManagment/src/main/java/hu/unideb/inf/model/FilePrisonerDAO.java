@@ -1,4 +1,4 @@
-package hu.unideb.inf.model;
+package hu.unideb.inf.model.PrisonerPac;
 
 import java.io.*;
 import java.util.ArrayList;

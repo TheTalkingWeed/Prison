@@ -1,19 +1,15 @@
 package hu.unideb.inf.Controller;
 
-import hu.unideb.inf.model.Admin;
-import hu.unideb.inf.model.AdminDAO;
-import hu.unideb.inf.model.JpaAdminDAO;
+import hu.unideb.inf.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -161,6 +157,22 @@ public class SceneController {
     private Button searchButtonMP;
 
     @FXML
+    private TextField WardenID;
+
+    @FXML
+    private TextField Warden_FN;
+
+    @FXML
+    private ChoiceBox<String> Warden_Floor;
+
+    @FXML
+    private DatePicker Warden_JD;
+
+    @FXML
+    private TextField Warden_LN;
+    @FXML
+    private ChoiceBox<String> Warden_Rank;
+    @FXML
     void DeleteButtonMP(ActionEvent event) {
 
     }
@@ -178,15 +190,24 @@ public class SceneController {
             alertwindow.showAndWait();
     }
 
-}
-    @FXML
-    void SaveMP(ActionEvent event) {
-
-    }
-
-    @FXML
+}    @FXML
     void SaveWarden(ActionEvent event) {
         if (isAdmin == true){
+           String[] rangok =   {"Őr","Kisfőnök","Nagyfőnök"};
+            Warden_Rank.getItems().addAll(rangok);
+           String[] floors = {"1","2","3","4","5","6"};
+            WardenDAO wdao = new JpaWardenDAO();
+            Warden warden = new Warden();
+            Warden_Floor.getItems().addAll(floors);
+
+        warden.setFname(Warden_FN.getText());
+        warden.setLname(Warden_LN.getText());
+        warden.setJoinDate(Warden_JD.getValue());
+        warden.setRank(Warden_Rank.getValue());
+        warden.setFloorInCharge(Warden_Floor.getValue());
+
+        wdao.saveWarden(warden);
+
 
         } else {
 
@@ -198,10 +219,15 @@ public class SceneController {
         }
 
     }
+    @FXML
+    void SaveMP(ActionEvent event) {
+
+    }
+
+
 
     @FXML
     void SearchButtonMP(ActionEvent event) {
 
     }
-
 }

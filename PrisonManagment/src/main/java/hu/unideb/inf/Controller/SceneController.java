@@ -167,10 +167,18 @@ public class SceneController {
 
     @FXML
     void DeleteWarden(ActionEvent event) {
+        if (isAdmin == true){
 
+        } else {
+
+            Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+
+            alertwindow.setTitle("WARNING!!");
+            alertwindow.setContentText("You cannot modify as a Guset");
+            alertwindow.showAndWait();
     }
 
-
+}
     @FXML
     void SaveMP(ActionEvent event) {
 

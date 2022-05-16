@@ -1,5 +1,6 @@
 package hu.unideb.inf.Controller;
 
+import hu.unideb.inf.Application;
 import hu.unideb.inf.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -185,34 +187,35 @@ public class SceneController implements Initializable {
     @FXML
     private ChoiceBox<String> Warden_Rank;
     @FXML
-    void DeleteButtonMP(ActionEvent event) {
-
-    }
-    @FXML
     void DeleteWarden(ActionEvent event) {
         if (isAdmin == true){
 
-            WardenDAO wdao = new JpaWardenDAO();
-            Warden warden = new Warden();
-            Warden_Floor.getItems().addAll();
 
-            warden.setFname(Warden_FN.getText());
-            warden.setLname(Warden_LN.getText());
-            warden.setJoinDate(Warden_JD.getValue());
-            warden.setRank(Warden_Rank.getValue());
-            warden.setFloorInCharge(Warden_Floor.getValue());
+            TextInputDialog dialog = new TextInputDialog("");
+            dialog.setTitle("Delete");
+            dialog.setHeaderText("Wared delete");
+            dialog.setContentText("Adja meg az ID-ját a Wardennek.");
 
-            wdao.deleteWarden(warden);
+// Traditional way to get the response value.
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                WardenDAO wardenDAO = new JpaWardenDAO();
+                List<Warden> wardens = new ArrayList<>(wardenDAO.getWardens());
+                for (Warden p : wardens) {
+                    if (p.getUnique_ID() == Integer.parseInt(result.get()))
+                        wardenDAO.deleteWarden(p);
 
-        } else {
+                }
+            }else {
 
-            Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+                Alert alertwindow = new Alert(Alert.AlertType.WARNING);
 
-            alertwindow.setTitle("WARNING!!");
-            alertwindow.setContentText("You cannot modify as a Guset");
-            alertwindow.showAndWait();
-    }
-}    @FXML
+                alertwindow.setTitle("WARNING!!");
+                alertwindow.setContentText("You cannot modify as a Guset");
+                alertwindow.showAndWait();
+            }
+}   }
+    @FXML
     void SaveWarden(ActionEvent event) {
         if (isAdmin == true){
            String[] rangok =   {"Őr","Kisfőnök","Nagyfőnök"};
@@ -243,12 +246,91 @@ public class SceneController implements Initializable {
     }
     @FXML
     void SaveMP(ActionEvent event) {
+        if (isAdmin == true){
+            try (PrisonerDAO pdao = new JpaPrisonerDAO())
+            {
+                Prisoner prisoner = new Prisoner();
+                prisoner.setUniqueID(Integer.parseInt(PrisonerID.getText()));
+                prisoner.setFname(Prisoner_FN.getText());
+                prisoner.setLname(Prisoner_LN.getText());
+                prisoner.setEntrancedate(EntranceDate.getValue());
+                prisoner.setReleasedate(ReleaseDate.getValue());
+                prisoner.setSecuritylvl(SecLevel.getValue());
+                prisoner.setCellnumber(Integer.parseInt(Cell_Number.getText()));
+                prisoner.setCrime(Crime.getValue());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+    } else {
 
+        Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+
+        alertwindow.setTitle("WARNING!!");
+        alertwindow.setContentText("You cannot modify as a Guest");
+        alertwindow.showAndWait();
+    }
+    }
+    @FXML
+    void DeleteButtonMP(ActionEvent event) {
+        if (isAdmin == true){
+
+            TextInputDialog dialog = new TextInputDialog("");
+            dialog.setTitle("Delete");
+            dialog.setHeaderText("Prisoner delete");
+            dialog.setContentText("Adja meg az ID-ját a Prisonernek.");
+
+// Traditional way to get the response value.
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()){
+                PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
+                List <Prisoner>  prisoners = new ArrayList<>(prisonerDAO.getPrisoners());
+                for (Prisoner p : prisoners)
+                {
+                 if (p.getUniqueID()== Integer.parseInt(result.get()))
+                 prisonerDAO.deletePrisoner(p);
+                }
+            }
+
+        } else {
+
+            Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+
+            alertwindow.setTitle("WARNING!!");
+            alertwindow.setContentText("You cannot modify as a Guset");
+            alertwindow.showAndWait();
+        }
     }
 
     @FXML
     void SearchButtonMP(ActionEvent event) {
+        TextInputDialog dialog = new TextInputDialog("");
+        dialog.setTitle("Search");
+        dialog.setHeaderText("Prisoner search");
+        dialog.setContentText("Adja meg a nevét a Prisonernek.");
 
+// Traditional way to get the response value.
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
+            List<Prisoner> prisoners = new ArrayList<>(prisonerDAO.getPrisoners());
+            for (Prisoner p : prisoners) {
+                String prisonername = p.getFname() + " " + p.getLname();
+                if (prisonername.equals(result.get())) {
+                    try {
+                        Stage stage = new Stage();
+                        FXMLLoader loader = new FXMLLoader(Application.class.getResource("/fxml/PrisonInfo.fxml"));
+                        Scene scene = new Scene(loader.load());
+                        stage.setTitle("PrisonInfo");
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (Exception e) {
+                        System.out.println("valami nem jó ");
+                    }
+                }
+            }
+
+
+        }
     }
 
     @Override
@@ -257,5 +339,10 @@ public class SceneController implements Initializable {
         Warden_Rank.getItems().addAll(rangok);
         String[] floors = {"1","2","3","4","5","6"};
         Warden_Floor.getItems().addAll(floors);
+        String[] crime = {"Emberőlés","Rablás", "Erőszak"};
+        Crime.getItems().addAll(crime);
+        String[] secLevel = {"Low","Medium", "High"};
+        SecLevel.getItems().addAll(secLevel);
+
     }
     }

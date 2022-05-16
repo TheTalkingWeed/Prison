@@ -13,6 +13,8 @@ public class Prisoner implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    private  int UniqueID;
     private String Fname;
     private String Lname;
     private int age;
@@ -84,8 +86,13 @@ public class Prisoner implements Serializable {
     }
 
 
+    public int getUniqueID() {
+        return UniqueID;
+    }
 
-
+    public void setUniqueID(int uniqueID) {
+        UniqueID = uniqueID;
+    }
 
     public int getId() {
         return id;

@@ -9,6 +9,9 @@ public class Warden {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    private int Unique_ID;
+
     private String Fname;
     private String Lname;
     private LocalDate JoinDate;
@@ -57,6 +60,14 @@ public class Warden {
 
     public String getRank() {
         return rank;
+    }
+
+    public int getUnique_ID() {
+        return Unique_ID;
+    }
+
+    public void setUnique_ID(int unique_ID) {
+        Unique_ID = unique_ID;
     }
 
     public void setRank(String rank) {

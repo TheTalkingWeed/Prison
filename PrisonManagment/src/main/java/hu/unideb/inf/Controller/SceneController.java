@@ -133,4 +133,67 @@ public class SceneController {
 
         return false;
     }
+    @FXML
+    private Button DeleteWarden_Buttons;
+
+    @FXML
+    private Button SaveWarden_Button;
+
+    @FXML
+    private Button deleteButtonMP;
+
+    @FXML
+    private TextField prisonerID_textbox;
+
+    @FXML
+    private TextField prisonerName_textbox;
+
+    @FXML
+    private TextField prisonerName_textbox1;
+
+    @FXML
+    private TextField prisonerName_textbox11;
+
+    @FXML
+    private Button saveButtonMP;
+
+    @FXML
+    private Button searchButtonMP;
+
+    @FXML
+    void DeleteButtonMP(ActionEvent event) {
+
+    }
+
+    @FXML
+    void DeleteWarden(ActionEvent event) {
+
+    }
+
+
+    @FXML
+    void SaveMP(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SaveWarden(ActionEvent event) {
+        if (isAdmin == true){
+
+        } else {
+
+            Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+
+            alertwindow.setTitle("WARNING!!");
+            alertwindow.setContentText("You cannot modify as a Guset");
+            alertwindow.showAndWait();
+        }
+
+    }
+
+    @FXML
+    void SearchButtonMP(ActionEvent event) {
+
+    }
+
 }

@@ -13,13 +13,13 @@ public class Warden {
     private String Lname;
     private LocalDate JoinDate;
     private String rank;
-    private int FloorInCharge;
+    private String FloorInCharge;
 
-    public int getFloorInCharge() {
+    public String getFloorInCharge() {
         return FloorInCharge;
     }
 
-    public void setFloorInCharge(int floorInCharge) {
+    public void setFloorInCharge(String floorInCharge) {
         FloorInCharge = floorInCharge;
     }
 

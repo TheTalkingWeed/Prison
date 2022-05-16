@@ -9,6 +9,7 @@
 
         <class>hu.unideb.inf.model.Prisoner</class>
         <class>hu.unideb.inf.model.Warden</class>
+        <class>hu.unideb.inf.model.Admin</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>

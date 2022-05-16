@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="864.0" style="-fx-background-color: #4e586e;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="864.0" style="-fx-background-color: #4e586e;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
   <tabs>
     <Tab text="Warden Details">
          <content>
@@ -45,14 +45,10 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="editWardenDetailsButton" layoutX="335.0" layoutY="455.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="160.0" style="-fx-background-color: #f78364;" text="Edit Warden Details">
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font></Button>
                   <ChoiceBox layoutX="335.0" layoutY="299.0" prefHeight="26.0" prefWidth="246.0" />
                   <Line endX="762.0" layoutX="100.0" layoutY="406.0" startX="-100.0" stroke="#f78364" />
                   <DatePicker layoutX="335.0" layoutY="246.0" prefHeight="26.0" prefWidth="246.0" />
-                  <Label layoutX="138.0" layoutY="193.0" text="First Name" textFill="WHITE">
+                  <Label layoutX="138.0" layoutY="193.0" text="Last Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
@@ -66,8 +62,14 @@
                      </font>
                   </Label>
                   <ChoiceBox layoutX="335.0" layoutY="350.0" prefHeight="26.0" prefWidth="246.0" />
-                  <Button layoutX="105.0" layoutY="455.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="160.0" style="-fx-background-color: #f78364;" text="Save warden" />
-                  <Button layoutX="580.0" layoutY="455.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="160.0" style="-fx-background-color: #f78364;" text="Delete warden" />
+                  <Button fx:id="SaveWarden_Button" layoutX="105.0" layoutY="455.0" mnemonicParsing="false" onAction="#SaveWarden" prefHeight="73.0" prefWidth="160.0" style="-fx-background-color: #f78364;" text="Save warden">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="DeleteWarden_Buttons" layoutX="580.0" layoutY="455.0" mnemonicParsing="false" onAction="#DeleteWarden" prefHeight="73.0" prefWidth="160.0" style="-fx-background-color: #f78364;" text="Delete warden">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
          </content>
@@ -107,15 +109,15 @@
                      </font>
                   </Label>
                   <TextField fx:id="prisonerID_textbox" layoutX="327.0" layoutY="74.0" prefHeight="26.0" prefWidth="291.0" />
-                  <Button fx:id="searchButtonMP" layoutX="70.0" layoutY="501.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
+                  <Button fx:id="searchButtonMP" layoutX="70.0" layoutY="501.0" mnemonicParsing="false" onAction="#SearchButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
-                  <Button fx:id="deleteButtonMP" layoutX="381.0" layoutY="501.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Delete">
+                  <Button fx:id="deleteButtonMP" layoutX="381.0" layoutY="501.0" mnemonicParsing="false" onAction="#DeleteButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Delete">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
-                  <Button fx:id="saveButtonMP" layoutX="693.0" layoutY="501.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Save">
+                  <Button fx:id="saveButtonMP" layoutX="693.0" layoutY="501.0" mnemonicParsing="false" onAction="#SaveMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Save">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>

@@ -139,16 +139,25 @@ public class SceneController {
     private Button deleteButtonMP;
 
     @FXML
-    private TextField prisonerID_textbox;
+    private TextField PrisonerID;
 
     @FXML
-    private TextField prisonerName_textbox;
+    private TextField Prisoner_FN;
 
     @FXML
-    private TextField prisonerName_textbox1;
+    private TextField Prisoner_LN;
 
     @FXML
-    private TextField prisonerName_textbox11;
+    private DatePicker EntranceDate;
+    @FXML
+    private ChoiceBox<?> SecLevel;
+    @FXML
+    private DatePicker ReleaseDate;
+    @FXML
+    private TextField Cell_Number;
+
+    @FXML
+    private ChoiceBox<?> Crime;
 
     @FXML
     private Button saveButtonMP;

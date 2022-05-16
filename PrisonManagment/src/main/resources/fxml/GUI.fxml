@@ -45,23 +45,23 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <ChoiceBox layoutX="335.0" layoutY="299.0" prefHeight="26.0" prefWidth="246.0" />
+                  <ChoiceBox fx:id="Warden_Rank" layoutX="335.0" layoutY="299.0" prefHeight="26.0" prefWidth="246.0" />
                   <Line endX="762.0" layoutX="100.0" layoutY="406.0" startX="-100.0" stroke="#f78364" />
-                  <DatePicker layoutX="335.0" layoutY="246.0" prefHeight="26.0" prefWidth="246.0" />
+                  <DatePicker fx:id="Warden_JD" layoutX="335.0" layoutY="246.0" prefHeight="26.0" prefWidth="246.0" />
                   <Label layoutX="138.0" layoutY="193.0" text="Last Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="335.0" layoutY="93.0" prefHeight="32.0" prefWidth="245.0" />
-                  <TextField layoutX="335.0" layoutY="143.0" prefHeight="32.0" prefWidth="245.0" />
-                  <TextField layoutX="335.0" layoutY="195.0" prefHeight="32.0" prefWidth="245.0" />
+                  <TextField fx:id="WardenID" layoutX="335.0" layoutY="93.0" prefHeight="32.0" prefWidth="245.0" />
+                  <TextField fx:id="Warden_FN" layoutX="335.0" layoutY="143.0" prefHeight="32.0" prefWidth="245.0" />
+                  <TextField fx:id="Warden_LN" layoutX="335.0" layoutY="195.0" prefHeight="32.0" prefWidth="245.0" />
                   <Label layoutX="138.0" layoutY="345.0" text="Floor in Charge" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <ChoiceBox layoutX="335.0" layoutY="350.0" prefHeight="26.0" prefWidth="246.0" />
+                  <ChoiceBox fx:id="Warden_Floor" layoutX="335.0" layoutY="350.0" prefHeight="26.0" prefWidth="246.0" />
                   <Button fx:id="SaveWarden_Button" layoutX="105.0" layoutY="455.0" mnemonicParsing="false" onAction="#SaveWarden" prefHeight="73.0" prefWidth="160.0" style="-fx-background-color: #f78364;" text="Save warden">
                      <font>
                         <Font name="System Bold" size="12.0" />

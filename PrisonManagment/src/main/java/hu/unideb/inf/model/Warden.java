@@ -12,8 +12,7 @@ public class Warden {
     private String Fname;
     private String Lname;
     private LocalDate JoinDate;
-    @Enumerated(EnumType.STRING)
-    private Rank rank;
+    private String rank;
     private int FloorInCharge;
 
     public int getFloorInCharge() {
@@ -56,21 +55,11 @@ public class Warden {
         JoinDate = joinDate;
     }
 
-    public Rank getRank() {
+    public String getRank() {
         return rank;
     }
 
-    public void setRank(Rank rank) {
+    public void setRank(String rank) {
         this.rank = rank;
-    }
-
-    public enum Rank{
-        SILVER_ELIT,
-        SILVER_ELIT_MASTER,
-        GOLD_NOVA_MASTER,
-        MASTER_GUIARDIAN,
-        DISTINGUISHED_MASTER_GUARDIAN,
-        LEGENDARY_EAGLE_MASTER,
-        GLOBAL_ELITE
     }
 }

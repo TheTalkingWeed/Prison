@@ -19,11 +19,9 @@ public class Prisoner implements Serializable {
     private LocalDate BornDate;
     private LocalDate entrancedate;
     private LocalDate releasedate;
-    @Enumerated(EnumType.STRING)
-    private SecLevel securitylvl;
+    private String securitylvl;
     private int cellnumber;
-    @Enumerated(EnumType.STRING)
-    private Crime crime;
+    private String crime;
 
     public int getAge() {
         return age;
@@ -42,13 +40,7 @@ public class Prisoner implements Serializable {
         BornDate = bornDate;
     }
 
-    public Crime getCrime() {
-        return crime;
-    }
 
-    public void setCrime(Crime crime) {
-        this.crime = crime;
-    }
 
     public int getCellnumber() {
         return cellnumber;
@@ -58,12 +50,20 @@ public class Prisoner implements Serializable {
         this.cellnumber = cellnumber;
     }
 
-    public SecLevel getSecuritylvl() {
+    public String getSecuritylvl() {
         return securitylvl;
     }
 
-    public void setSecuritylvl(SecLevel securitylvl) {
+    public void setSecuritylvl(String securitylvl) {
         this.securitylvl = securitylvl;
+    }
+
+    public String getCrime() {
+        return crime;
+    }
+
+    public void setCrime(String crime) {
+        this.crime = crime;
     }
 
     public LocalDate getEntrancedate() {
@@ -83,29 +83,9 @@ public class Prisoner implements Serializable {
         this.releasedate = releasedate;
     }
 
-    public enum SecLevel{
-        HIGH,LOW,MID
-    }
 
-    public enum Crime{
-        Aggravated_Assault,
-        Child_Pornography,
-        Child_Abuse,
-        Computer_Crime,
-        Drug_Manufacturing,
-        Drug_Possession,
-        Robbery,
-        Rape,
-        Shoplifting,
-        Homicide,
-        Harassment,
-        First_degree_murder,
-        Second_degree_Murder,
-        Prostitution,
-        Stalking,
-        Tax_Evasion,
-        Vandalism,
-    }
+
+
 
     public int getId() {
         return id;

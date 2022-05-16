@@ -98,7 +98,7 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="94.0" layoutY="249.0" text="Relase Date" textFill="WHITE">
+                  <Label layoutX="94.0" layoutY="249.0" text="Release Date" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
@@ -108,7 +108,7 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="prisonerID_textbox" layoutX="327.0" layoutY="74.0" prefHeight="26.0" prefWidth="291.0" />
+                  <TextField fx:id="PrisonerID" layoutX="327.0" layoutY="74.0" prefHeight="26.0" prefWidth="291.0" />
                   <Button fx:id="searchButtonMP" layoutX="70.0" layoutY="501.0" mnemonicParsing="false" onAction="#SearchButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
@@ -121,18 +121,18 @@
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
-                  <TextField fx:id="prisonerName_textbox" layoutX="327.0" layoutY="121.0" prefHeight="26.0" prefWidth="291.0" />
+                  <TextField fx:id="Prisoner_FN" layoutX="327.0" layoutY="121.0" prefHeight="26.0" prefWidth="291.0" />
                   <Line endX="849.0" endY="-3.814697265625E-6" layoutX="13.0" layoutY="56.0" startX="-13.99999713897705" startY="-3.814697265625E-6" stroke="#f78364" />
                   <Line endX="755.0" layoutX="108.0" layoutY="450.0" startX="-108.0" stroke="#f78364" />
-                  <DatePicker layoutX="327.0" layoutY="254.0" prefHeight="26.0" prefWidth="291.0" />
-                  <DatePicker layoutX="327.0" layoutY="207.0" prefHeight="26.0" prefWidth="291.0" />
-                  <ChoiceBox layoutX="327.0" layoutY="296.0" prefWidth="150.0" />
+                  <DatePicker fx:id="ReleaseDate" layoutX="327.0" layoutY="254.0" prefHeight="26.0" prefWidth="291.0" />
+                  <DatePicker fx:id="EntranceDate" layoutX="327.0" layoutY="207.0" prefHeight="26.0" prefWidth="291.0" />
+                  <ChoiceBox fx:id="SecLevel" layoutX="327.0" layoutY="296.0" prefWidth="150.0" />
                   <Label layoutX="96.0" layoutY="162.0" text="Prisoner Last Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="prisonerName_textbox1" layoutX="327.0" layoutY="167.0" prefHeight="26.0" prefWidth="291.0" />
+                  <TextField fx:id="Prisoner_LN" layoutX="327.0" layoutY="167.0" prefHeight="26.0" prefWidth="291.0" />
                   <Label layoutX="90.0" layoutY="334.0" text="Cell Number" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
@@ -143,8 +143,8 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="prisonerName_textbox11" layoutX="327.0" layoutY="339.0" prefHeight="26.0" prefWidth="291.0" />
-                  <ChoiceBox layoutX="329.0" layoutY="381.0" prefHeight="26.0" prefWidth="288.0" />
+                  <TextField fx:id="Cell_Number" layoutX="327.0" layoutY="339.0" prefHeight="26.0" prefWidth="291.0" />
+                  <ChoiceBox fx:id="Crime" layoutX="329.0" layoutY="381.0" prefHeight="26.0" prefWidth="288.0" />
                </children>
             </AnchorPane>
          </content>
@@ -183,7 +183,7 @@
                   </Label>
                   <Line endX="762.0" layoutX="101.0" layoutY="76.0" startX="-100.0" stroke="#f78364" />
                   <ListView layoutX="468.0" layoutY="89.0" prefHeight="503.0" prefWidth="144.0" />
-                  <ListView layoutX="321.0" layoutY="89.0" prefHeight="503.0" prefWidth="146.0" />
+                  <ListView layoutX="325.0" layoutY="89.0" prefHeight="503.0" prefWidth="146.0" />
                   <ListView layoutX="187.0" layoutY="89.0" prefHeight="498.0" prefWidth="134.0" />
                   <Label layoutX="212.0" layoutY="32.0" text="Last Name" textFill="WHITE">
                      <font>

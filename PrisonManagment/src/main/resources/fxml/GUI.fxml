@@ -52,7 +52,7 @@
                   <ChoiceBox layoutX="335.0" layoutY="299.0" prefHeight="26.0" prefWidth="246.0" />
                   <Line endX="762.0" layoutX="100.0" layoutY="406.0" startX="-100.0" stroke="#f78364" />
                   <DatePicker layoutX="335.0" layoutY="246.0" prefHeight="26.0" prefWidth="246.0" />
-                  <Label layoutX="138.0" layoutY="193.0" text="First Name" textFill="WHITE">
+                  <Label layoutX="138.0" layoutY="193.0" text="Last Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
@@ -117,7 +117,7 @@
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
-                  <TextField fx:id="prisonerName_textbox" layoutX="327.0" layoutY="121.0" prefHeight="26.0" prefWidth="291.0" />
+                  <TextField fx:id="prisonerFirstName_textbox" layoutX="327.0" layoutY="121.0" prefHeight="26.0" prefWidth="291.0" />
                   <Line endX="849.0" endY="-3.814697265625E-6" layoutX="13.0" layoutY="56.0" startX="-13.99999713897705" startY="-3.814697265625E-6" stroke="#f78364" />
                   <Line endX="755.0" layoutX="108.0" layoutY="450.0" startX="-108.0" stroke="#f78364" />
                   <DatePicker layoutX="327.0" layoutY="254.0" prefHeight="26.0" prefWidth="291.0" />
@@ -128,7 +128,7 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="prisonerName_textbox1" layoutX="327.0" layoutY="167.0" prefHeight="26.0" prefWidth="291.0" />
+                  <TextField fx:id="prisonerLastName_textbox" layoutX="327.0" layoutY="167.0" prefHeight="26.0" prefWidth="291.0" />
                   <Label layoutX="90.0" layoutY="334.0" text="Cell Number" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
@@ -139,7 +139,7 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="prisonerName_textbox11" layoutX="327.0" layoutY="339.0" prefHeight="26.0" prefWidth="291.0" />
+                  <TextField fx:id="CellNumber_textbox" layoutX="327.0" layoutY="339.0" prefHeight="26.0" prefWidth="291.0" />
                   <ChoiceBox layoutX="329.0" layoutY="381.0" prefHeight="26.0" prefWidth="288.0" />
                </children>
             </AnchorPane>

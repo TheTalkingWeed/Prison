@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="320.0" style="-fx-background-color: #4e586e;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml" fx:controller="hu.unideb.inf.Controller.LoginController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="106.0" layoutY="30.0" prefHeight="61.0" prefWidth="108.0" style="color: white;" text="Login" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="41.0" />
+         </font>
+      </Label>
+      <TextField fx:id="username" layoutX="76.0" layoutY="116.0" prefHeight="43.0" prefWidth="169.0" promptText="Username" />
+      <PasswordField fx:id="password" layoutX="76.0" layoutY="185.0" prefHeight="43.0" prefWidth="169.0" promptText="Password" />
+      <Button fx:id="loginAsAdmin" layoutX="84.0" layoutY="275.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="43.0" prefWidth="152.0" style="-fx-background-color: #f78364;" text="Login">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor></Button>
+      <Button fx:id="loginAsGuest" layoutX="84.0" layoutY="356.0" mnemonicParsing="false" onAction="#onLoginGuest" prefHeight="43.0" prefWidth="152.0" style="-fx-background-color: #f78364; -fx-border-radius: 50;" text=" Login as a guest" />
+   </children>
+</Pane>

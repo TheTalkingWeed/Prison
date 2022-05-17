@@ -33,12 +33,12 @@
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
-      <version>17.0.1</version>
+      <version>17.0.2</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
-      <version>17.0.1</version>
+      <version>17.0.2</version>
     </dependency>
 
 
@@ -53,7 +53,7 @@
           <execution>
             <id>default-cli</id>
             <configuration>
-              <mainClass>hu.unideb.inf.Application</mainClass>
+              <mainClass>hu.unideb.inf.MainApp</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
@@ -76,7 +76,7 @@
           </execution>
         </executions>
         <configuration>
-          <mainClass>hu.unideb.inf.Application</mainClass>
+          <mainClass>hu.unideb.inf.MainApp</mainClass>
         </configuration>
       </plugin>
     </plugins>

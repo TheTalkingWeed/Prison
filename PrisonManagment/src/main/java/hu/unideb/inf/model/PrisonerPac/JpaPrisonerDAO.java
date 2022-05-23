@@ -6,10 +6,12 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+import static javax.persistence.Persistence.createEntityManagerFactory;
+
 public class JpaPrisonerDAO implements PrisonerDAO {
 
-     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("br.com.fredericci.pu");
-     EntityManager entityManager = entityManagerFactory.createEntityManager();
+    private final EntityManagerFactory entityManagerFactory = createEntityManagerFactory("perfile");
+    private final EntityManager entityManager = entityManagerFactory.createEntityManager();
 
     @Override
     public void savePrisoner(Prisoner a) {
@@ -27,9 +29,6 @@ public class JpaPrisonerDAO implements PrisonerDAO {
 
     @Override
     public void updatePrisoner(Prisoner a) {
-        /*entityManager.getTransaction().begin();
-        entityManager.persist(a);
-        entityManager.getTransaction().commit();*/
         savePrisoner(a);
     }
 

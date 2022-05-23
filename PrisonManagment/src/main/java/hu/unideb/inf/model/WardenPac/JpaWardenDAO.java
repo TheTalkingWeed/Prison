@@ -6,12 +6,11 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-import static javax.persistence.Persistence.createEntityManagerFactory;
 
 public class JpaWardenDAO implements WardenDAO{
 
-    EntityManagerFactory entityManagerFactory = createEntityManagerFactory("br.com.fredericci.pu");
-    EntityManager entityManager = entityManagerFactory.createEntityManager();
+    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("perfile");
+    private final EntityManager entityManager = entityManagerFactory.createEntityManager();
     @Override
     public void saveWarden(Warden a)  {
         entityManager.getTransaction().begin();

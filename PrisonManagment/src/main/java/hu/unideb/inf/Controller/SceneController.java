@@ -1,8 +1,13 @@
 package hu.unideb.inf.Controller;
 
+import hu.unideb.inf.MainApp;
+import hu.unideb.inf.model.LoginPac.JpaLoginDAO;
+import hu.unideb.inf.model.LoginPac.Login;
+import hu.unideb.inf.model.LoginPac.LoginDAO;
 import hu.unideb.inf.model.PrisonerPac.JpaPrisonerDAO;
 import hu.unideb.inf.model.PrisonerPac.Prisoner;
 import hu.unideb.inf.model.PrisonerPac.PrisonerDAO;
+import hu.unideb.inf.model.Utils.FileUtils;
 import hu.unideb.inf.model.WardenPac.JpaWardenDAO;
 import hu.unideb.inf.model.WardenPac.Warden;
 import hu.unideb.inf.model.WardenPac.WardenDAO;
@@ -15,13 +20,28 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 
 public class SceneController implements Initializable {
 
 
+
+    @FXML
+    private ListView<String> LogIn_ListView;
+
+    @FXML
+    private ListView<String> LogOut_ListView;
+
+    @FXML
+    private ListView<String> Username_ListView;
+
+    @FXML
+    private Label loginStatusLabel;
 
     @FXML
     private TextField PrisonerID;
@@ -104,11 +124,13 @@ public class SceneController implements Initializable {
     @FXML
     private ListView<Integer> PrisonerCN_list;
 
+
+
     public static Prisoner temp = new Prisoner();
+    public static Warden temp2 = new Warden();
 
 
-
-
+    LoginDAO loginDAO = new JpaLoginDAO();
     PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
     List<Prisoner> prisonersforfill = new ArrayList<>(prisonerDAO.getPrisoners());
 
@@ -131,32 +153,15 @@ public class SceneController implements Initializable {
     List<String> wardenjds = new ArrayList<>();
     List<String> wardenranks = new ArrayList<>();
 
-    private void FillAllListofPrisoner(List<Prisoner> prisoners){
-        clearItemListPrisoner();
-        for (Prisoner p:prisoners) {
-            pids.add(p.getUniqueID());
-            fnlist.add(p.getFname());
-            lnlist.add(p.getLname());
-            rdlist.add(p.getReleasedate().toString());
-            edlist.add(p.getEntrancedate().toString());
-            crimelist.add(p.getCrime());
-            seclevellist.add(p.getSecuritylvl());
-            celnum.add(p.getCellnumber());
-        }
+    public static int idinforSearch;
 
-    }
+    public static int idin;
 
-    private void FillAllListofWarden(List<Warden> wardens){
-        clearItemListWarden();
-        for (Warden w:wardens) {
-             wardenids.add(w.getUnique_ID());
-             wardenfloors.add(w.getFloorInCharge());
-             wardenlns.add(w.getLname());
-             wardenfns.add(w.getFname());
-             wardenjds.add(w.getJoinDate().toString());
-             wardenranks.add(w.getRank());
-        }
-    }
+    public static int wardenIdIn;
+
+    public static int wardenIdforSearch;
+
+
 
 
     private boolean containsWardenID(List<Warden> wardens, int id){
@@ -164,9 +169,32 @@ public class SceneController implements Initializable {
     }
 
     @FXML
+    void AdminRegister(ActionEvent event){
+        if (LoginController.isAdmin){
+            try {
+                Stage stage = new Stage();
+                Parent root = null;
+                root = FXMLLoader.load(getClass().getResource("/fxml/AdminReg.fxml"));
+                Scene scene = new Scene(root);
+                stage.setTitle("Warden Edit");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                System.out.println("valami nem jo ");
+            }
+        }else {
+            Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+
+            alertwindow.setTitle("WARNING!!");
+            alertwindow.setContentText("You cannot modify as a Guest");
+            alertwindow.showAndWait();
+        }
+    }
+
+    @FXML
     void DeleteWarden(ActionEvent event) {
 
-        if (LoginController.isAdmin == true){
+        if (LoginController.isAdmin){
 
 
             TextInputDialog dialog = new TextInputDialog("");
@@ -190,7 +218,7 @@ public class SceneController implements Initializable {
 
 
             if (result.isPresent()) {
-                    if (found==true) {
+                    if (found) {
 
 
 
@@ -206,7 +234,7 @@ public class SceneController implements Initializable {
                         alertwindow.setTitle("Information");
                         alertwindow.setContentText("Delete was successful");
                         alertwindow.showAndWait();
-                    }else if(found==false){
+                    }else if(!found){
                         Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
                         alertwindow.setTitle("Warning");
                         alertwindow.setContentText("Wrong warden ID");
@@ -285,6 +313,108 @@ public class SceneController implements Initializable {
     }
 
     @FXML
+    void WardenEdit(ActionEvent event) {
+        if (LoginController.isAdmin==true){
+            TextInputDialog dialog = new TextInputDialog("");
+            dialog.setTitle("Edit");
+            dialog.setHeaderText("Warden edit");
+            dialog.setContentText("Please type the warden's ID:");
+
+            Optional<String> result = dialog.showAndWait();
+            WardenDAO wardenDAO = new JpaWardenDAO();
+            List <Warden>  wardens = new ArrayList<>(wardenDAO.getWardens());
+            Warden warden = new Warden();
+            boolean found = false;
+
+            if (result.isPresent()){
+                wardenIdIn = Integer.parseInt(result.get());
+                for (Warden w : wardens)
+                {
+                    if (w.getUnique_ID() == wardenIdIn){
+                        found = true;
+                        warden = w;
+                        break;
+                    }
+                }
+
+            }else{}
+
+            if (found == true){
+
+                try {
+                    Stage stage = new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(getClass().getResource("/fxml/WardenEdit.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setTitle("Warden Edit");
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    System.out.println("valami nem jo ");
+                }
+
+            }else {
+                Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+
+                alertwindow.setTitle("WARNING!!");
+                alertwindow.setContentText("Warden is not found");
+                alertwindow.showAndWait();
+            }
+        }else{
+            Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+
+            alertwindow.setTitle("WARNING!!");
+            alertwindow.setContentText("You cannot modify as a Guset");
+            alertwindow.showAndWait();
+        }
+    }
+
+    @FXML
+    void WardenSearch(ActionEvent event) {
+        TextInputDialog dialog = new TextInputDialog("");
+        dialog.setTitle("Search");
+        dialog.setHeaderText("Warden search");
+        dialog.setContentText("Please type the Id of a warden");
+        Optional<String> result;
+        result = dialog.showAndWait();
+        wardenIdforSearch = Integer.parseInt(result.get());
+        boolean bennevan=false;
+        if (result.isPresent()) {
+            WardenDAO wardenDAO = new JpaWardenDAO();
+            List<Warden> wardens = new ArrayList<>(wardenDAO.getWardens());
+
+
+            for (Warden w:wardens) {
+                if (w.getUnique_ID()==Integer.parseInt(result.get())) {
+                    temp2 = w;
+                    bennevan = true;
+                }
+            }
+
+            if (bennevan == true) {
+                try {
+                    Stage stage = new Stage();
+                    Parent root = FXMLLoader.load(getClass().getResource("/fxml/WardenInfo.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setTitle("Warden information");
+                    stage.setScene(scene);
+                    stage.show();
+
+                } catch (Exception e) {
+                    System.out.println("valami nem jó ");
+                }
+
+            }else {
+                Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
+                alertwindow.setTitle("Warning");
+                alertwindow.setContentText("Wrong warden ID");
+                alertwindow.showAndWait();
+
+            }
+        }
+    }
+
+    @FXML
     void SaveMP(ActionEvent event) {
 
         if (LoginController.isAdmin == true){
@@ -305,7 +435,13 @@ public class SceneController implements Initializable {
                     alertwindow.setTitle("Warning!");
                     alertwindow.setContentText("Please fill all fields");
                     alertwindow.showAndWait();
-                }else{
+                }else if (EntranceDate.getValue().compareTo(ReleaseDate.getValue())>0){
+                    Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+                    alertwindow.setTitle("Warning!");
+                    alertwindow.setContentText("Entrance date cannot be after release date!");
+                    alertwindow.showAndWait();
+                    clearPrisonerInput();
+                }else {
                     handlePrisonerData(pdao);
 
                     Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
@@ -329,6 +465,7 @@ public class SceneController implements Initializable {
         alertwindow.showAndWait();
     }
     }
+
     @FXML
     void DeleteButtonMP(ActionEvent event) {
         if (LoginController.isAdmin == true){
@@ -391,16 +528,15 @@ public class SceneController implements Initializable {
         }
     }
 
-    public static Optional<String> result;
-
     @FXML
     void SearchButtonMP(ActionEvent event) {
         TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Search");
         dialog.setHeaderText("Prisoner search");
         dialog.setContentText("Adja meg a nevét a Prisonernek.");
+        Optional<String> result;
         result = dialog.showAndWait();
-
+        idinforSearch = Integer.parseInt(result.get());
         boolean bennevan=false;
         if (result.isPresent()) {
             PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
@@ -434,6 +570,90 @@ public class SceneController implements Initializable {
                     alertwindow.showAndWait();
 
                 }
+        }
+    }
+
+    @FXML
+    void EditButtonPushed(ActionEvent event){
+        if (LoginController.isAdmin==true){
+            TextInputDialog dialog = new TextInputDialog("");
+            dialog.setTitle("Edit");
+            dialog.setHeaderText("Prisoner delete");
+            dialog.setContentText("Please type the prisoner's ID:");
+
+            Optional<String> result = dialog.showAndWait();
+            PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
+            List <Prisoner>  prisoners = new ArrayList<>(prisonerDAO.getPrisoners());
+            Prisoner prisoner = new Prisoner();
+            boolean found = false;
+
+            if (result.isPresent()){
+                idin = Integer.parseInt(result.get());
+                for (Prisoner p : prisoners)
+                {
+                    if (p.getUniqueID() == idin){
+                        found = true;
+                        prisoner = p;
+                        break;
+                    }
+                }
+
+            }else{}
+
+            if (found == true){
+
+                try {
+                    Stage stage = new Stage();
+                    Parent root = null;
+                    root = FXMLLoader.load(getClass().getResource("/fxml/PrisonerEdit.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setTitle("Prisoner information");
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    System.out.println("valami nem jo ");
+                }
+
+            }else{
+                Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+
+                alertwindow.setTitle("WARNING!!");
+                alertwindow.setContentText("Prisoner id not found");
+                alertwindow.showAndWait();
+            }
+        }else{
+            Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+
+            alertwindow.setTitle("WARNING!!");
+            alertwindow.setContentText("You cannot modify as a Guset");
+            alertwindow.showAndWait();
+        }
+    }
+
+    private void FillAllListofPrisoner(List<Prisoner> prisoners){
+        clearItemListPrisoner();
+        for (Prisoner p:prisoners) {
+            pids.add(p.getUniqueID());
+            fnlist.add(p.getFname());
+            lnlist.add(p.getLname());
+            rdlist.add(p.getReleasedate().toString());
+            edlist.add(p.getEntrancedate().toString());
+            crimelist.add(p.getCrime());
+            seclevellist.add(p.getSecuritylvl());
+            celnum.add(p.getCellnumber());
+        }
+
+    }
+
+    private void FillAllListofWarden(List<Warden> wardens){
+        clearItemListWarden();
+        for (Warden w:wardens) {
+            wardenids.add(w.getUnique_ID());
+            wardenfloors.add(w.getFloorInCharge());
+            wardenlns.add(w.getLname());
+            wardenfns.add(w.getFname());
+            wardenjds.add(w.getJoinDate().toString());
+            wardenranks.add(w.getRank());
         }
     }
 
@@ -510,7 +730,7 @@ public class SceneController implements Initializable {
         PrisonerED_list.getItems().clear();
         PrisonerFN_list.getItems().clear();
         PrisonerCN_list.getItems().clear();
-        
+
 
     }
 
@@ -581,22 +801,76 @@ public class SceneController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
+        if (LoginController.isAdmin == true){
+            loginStatusLabel.setText("Admin");
+        }else loginStatusLabel.setText("Guest");
+
         FillAllListofWarden(wardensforfill);
         FillAllListofPrisoner(prisonersforfill);
 
-        String[] rangok =   {"Őr","Kisfőnök","Nagyfőnök"};
+        String[] rangok =   {"Guard","Small chief","Big chief"};
+        List<String> crimes = new ArrayList<>(FileUtils.readCrimes("crimes.txt"));
         Warden_Rank.getItems().addAll(rangok);
         String[] floors = {"1","2","3","4","5","6"};
         Warden_Floor.getItems().addAll(floors);
-        String[] crime = {"Emberőlés","Rablás", "Erőszak"};
-        Crime.getItems().addAll(crime);
+
+        Crime.getItems().addAll(crimes);
         String[] secLevel = {"Low","Medium", "High"};
         SecLevel.getItems().addAll(secLevel);
-
 
         updatePrisonerListView();
         updateWardenListView();
 
+        List<Login> logins = new ArrayList<>(loginDAO.getLogins());
 
+        List<String> usernames = new ArrayList<>();
+        List<String> logInTime = new ArrayList<>();
+        List<String> logOutTime = new ArrayList<>();
+
+        for (Login l:logins) {
+            usernames.add(l.getUsername());
+            logInTime.add(l.getLogin());
+            logOutTime.add(l.getLogout());
         }
+
+        Username_ListView.getItems().addAll(usernames);
+        LogIn_ListView.getItems().addAll(logInTime);
+        LogOut_ListView.getItems().addAll(logOutTime);
+
+
     }
+
+    @FXML
+    void ListsRefresh(ActionEvent event) {
+    }
+
+    @FXML
+    void LogOutButtonPressed(ActionEvent event){
+
+        Login login = new Login();
+
+        login.setUsername(LoginController.loggedinuser);
+        login.setLogin(LoginController.loginttime);
+        login.setLogout(LocalDate.now() + " " + LocalTime.now());
+
+
+        loginDAO.saveLogin(login);
+
+
+        Stage toClose = (Stage) loginStatusLabel.getScene().getWindow();
+        toClose.close();
+
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/LOGIN.fxml"));
+            Scene scene = null;
+            scene = new Scene(loader.load());
+            stage.setTitle("Prison managment");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+}

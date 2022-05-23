@@ -13,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class LoginController {
@@ -20,6 +22,9 @@ public class LoginController {
 
     public static boolean isAdmin;
 
+    public static String loginttime;
+
+    public static String loggedinuser;
 
 
     @FXML
@@ -36,6 +41,8 @@ public class LoginController {
 
     @FXML
     void onLoginGuest(ActionEvent event){
+        loggedinuser="Guest";
+        loginttime=LocalDate.now()+" "+ LocalTime.now();
         try {
             isAdmin = false;
 
@@ -52,7 +59,7 @@ public class LoginController {
             Parent par1 =fxmlLoader.load();
             Stage stage = new Stage();
             stage.setResizable(false);
-            stage.setTitle("Prisoner");
+            stage.setTitle("Prison management");
             stage.setScene(new Scene(par1));
             stage.show();
 
@@ -63,6 +70,8 @@ public class LoginController {
 
     @FXML
     void onLogin(ActionEvent event) {
+        loggedinuser=username.getText();
+        loginttime=LocalDate.now()+" "+ LocalTime.now();
         try {
             String usernameinput = username.getText();
             String passwordinput = password.getText();
@@ -98,7 +107,7 @@ public class LoginController {
                     Parent par1 =fxmlLoader.load();
                     Stage stage = new Stage();
                     stage.setResizable(false);
-                    stage.setTitle("Prisoner");
+                    stage.setTitle("Prison management");
                     stage.setScene(new Scene(par1));
                     stage.show();
 

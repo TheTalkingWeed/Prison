@@ -71,4 +71,15 @@ public class Warden {
     public void setUnique_ID(int unique_ID) {
         Unique_ID = unique_ID;
     }
+
+    @Override
+    public String toString() {
+        return Unique_ID +"\t"+
+                Fname +"\t"+
+                 Lname +"\t"+
+                JoinDate +"\t"+
+              rank +"\t"+
+                 FloorInCharge
+                ;
+    }
 }

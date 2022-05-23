@@ -18,30 +18,11 @@ public class Prisoner implements Serializable {
     private String Fname;
     private String Lname;
     private int age;
-    private LocalDate BornDate;
     private LocalDate entrancedate;
     private LocalDate releasedate;
     private String securitylvl;
     private int cellnumber;
     private String crime;
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge() {
-        LocalDate today = LocalDate.now();
-        this.age = Period.between(getBornDate(),today).getYears();
-    }
-
-    public LocalDate getBornDate() {
-        return BornDate;
-    }
-
-    public void setBornDate(LocalDate bornDate) {
-        BornDate = bornDate;
-    }
-
 
 
     public int getCellnumber() {
@@ -126,7 +107,6 @@ public class Prisoner implements Serializable {
                 ", Fname='" + Fname + '\'' +
                 ", Lname='" + Lname + '\'' +
                 ", age=" + age +
-                ", BornDate=" + BornDate +
                 ", entrancedate=" + entrancedate +
                 ", releasedate=" + releasedate +
                 ", securitylvl='" + securitylvl + '\'' +

@@ -89,9 +89,5 @@
             
 
       </GridPane>
-   <Button layoutX="241.0" layoutY="330.0" mnemonicParsing="false" onAction="#ShowData" prefHeight="50.0" prefWidth="119.0" style="-fx-background-color: #f78364;" text="Show data">
-      <font>
-         <Font name="System Bold Italic" size="15.0" />
-      </font></Button>
 
 </Pane>

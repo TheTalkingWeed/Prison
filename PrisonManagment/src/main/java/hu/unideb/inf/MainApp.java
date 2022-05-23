@@ -3,8 +3,9 @@ package hu.unideb.inf;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import hu.unideb.inf.model.PrisonerPac.PrisonerDAO;
-import hu.unideb.inf.model.WardenPac.WardenDAO;
+import hu.unideb.inf.model.AdminPac.Admin;
+import hu.unideb.inf.model.AdminPac.AdminDAO;
+import hu.unideb.inf.model.AdminPac.JpaAdminDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,7 +19,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/LOGIN.fxml"));
         Scene scene = new Scene(loader.load());
-        stage.setTitle("Prison managment");
+        stage.setTitle("Log in ");
         stage.setScene(scene);
         stage.show();
 

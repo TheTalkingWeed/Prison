@@ -1,13 +1,20 @@
 package hu.unideb.inf.Controller;
 
+import hu.unideb.inf.model.PrisonerPac.FilePrisonerDAO;
+import hu.unideb.inf.model.PrisonerPac.JpaPrisonerDAO;
 import hu.unideb.inf.model.PrisonerPac.Prisoner;
+import hu.unideb.inf.model.PrisonerPac.PrisonerDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 
-public class PrisonerInfoController {
+public class PrisonerInfoController implements Initializable {
     @FXML
     private Label CN_label;
 
@@ -33,9 +40,17 @@ public class PrisonerInfoController {
     private Label SL_label;
 
 
-    @FXML
-    void ShowData(ActionEvent event){
-        prisonerInformationsOut(SceneController.temp);
+
+
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Prisoner prout ;
+        PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
+        prout = getPrisonerById(prisonerDAO.getPrisoners(), SceneController.idinforSearch);
+        prisonerInformationsOut(prout);
     }
 
     private void prisonerInformationsOut(Prisoner p){
@@ -49,5 +64,13 @@ public class PrisonerInfoController {
         C_label.setText(p.getCrime());
     }
 
+    private Prisoner getPrisonerById(List<Prisoner> plist, int id){
+        Prisoner pr = new Prisoner();
 
+        for (Prisoner p:plist) {
+            if (p.getUniqueID()==id) return p;
+        }
+
+        return pr;
+    }
 }

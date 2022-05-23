@@ -225,7 +225,7 @@ public class SceneController implements Initializable {
                         wardenDAO.deleteWarden(warden);
                         clearListViewWarden();
                         wardens.remove(warden);
-                        FillAllListofWarden(wardens);
+                        FillAllListofWarden();
                         updateWardenListView();
 
 
@@ -645,7 +645,8 @@ public class SceneController implements Initializable {
 
     }
 
-    private void FillAllListofWarden(List<Warden> wardens){
+    private void FillAllListofWarden(){
+        List<Warden> wardens = new ArrayList<>(wardenDAO.getWardens());
         clearItemListWarden();
         for (Warden w:wardens) {
             wardenids.add(w.getUnique_ID());
@@ -805,7 +806,7 @@ public class SceneController implements Initializable {
             loginStatusLabel.setText("Admin");
         }else loginStatusLabel.setText("Guest");
 
-        FillAllListofWarden(wardensforfill);
+        FillAllListofWarden();
         FillAllListofPrisoner(prisonersforfill);
 
         String[] rangok =   {"Guard","Small chief","Big chief"};
@@ -842,6 +843,9 @@ public class SceneController implements Initializable {
 
     @FXML
     void ListsRefresh(ActionEvent event) {
+        clearListViewWarden();
+        FillAllListofWarden();
+        updateWardenListView();
     }
 
     @FXML

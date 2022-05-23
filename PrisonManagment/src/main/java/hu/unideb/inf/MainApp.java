@@ -3,9 +3,6 @@ package hu.unideb.inf;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import hu.unideb.inf.model.AdminPac.Admin;
-import hu.unideb.inf.model.AdminPac.AdminDAO;
-import hu.unideb.inf.model.AdminPac.JpaAdminDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

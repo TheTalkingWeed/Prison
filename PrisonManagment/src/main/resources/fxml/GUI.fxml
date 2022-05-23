@@ -18,75 +18,6 @@
 
 <TabPane focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="864.0" style="-fx-background-color: #4e586e;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="200.0" tabMinHeight="40.0" tabMinWidth="60.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
   <tabs>
-    <Tab style="-fx-background-color: #f78364; -fx-border-radius: 6; -fx-border-bottom: none; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Warden management">
-         <content>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="863.0">
-               <children>
-                  <Text fill="WHITE" layoutX="269.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editing Warden Details" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold Italic" size="30.0" />
-                     </font>
-                  </Text>
-                  <Line endX="762.0000610351562" endY="-3.814697265625E-6" layoutX="101.0" layoutY="64.0" startX="-100.0" stroke="#f78364" />
-                  <Label layoutX="144.0" layoutY="91.0" text="Unique ID" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="138.0" layoutY="141.0" text="First Name" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="138.0" layoutY="241.0" text="Joining Date" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="138.0" layoutY="294.0" text="Ranking" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox fx:id="Warden_Rank" layoutX="335.0" layoutY="299.0" prefHeight="26.0" prefWidth="246.0" />
-                  <Line endX="762.0" layoutX="100.0" layoutY="406.0" startX="-100.0" stroke="#f78364" />
-                  <DatePicker fx:id="Warden_JD" layoutX="335.0" layoutY="246.0" prefHeight="26.0" prefWidth="246.0" />
-                  <Label layoutX="138.0" layoutY="193.0" text="Last Name" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="WardenID" layoutX="335.0" layoutY="93.0" prefHeight="32.0" prefWidth="245.0" />
-                  <TextField fx:id="Warden_FN" layoutX="335.0" layoutY="143.0" prefHeight="32.0" prefWidth="245.0" />
-                  <TextField fx:id="Warden_LN" layoutX="335.0" layoutY="195.0" prefHeight="32.0" prefWidth="245.0" />
-                  <Label layoutX="138.0" layoutY="345.0" text="Floor in Charge" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox fx:id="Warden_Floor" layoutX="335.0" layoutY="350.0" prefHeight="26.0" prefWidth="246.0" />
-                  <Button fx:id="SaveWarden_Button" layoutX="726.0" layoutY="455.0" mnemonicParsing="false" onAction="#SaveWarden" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Save">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Button>
-                  <Button fx:id="DeleteWarden_Buttons" layoutX="286.0" layoutY="455.0" mnemonicParsing="false" onAction="#DeleteWarden" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Delete">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Button>
-                  <Button layoutX="66.0" layoutY="455.0" mnemonicParsing="false" onAction="#WardenSearch" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="531.0" layoutY="455.0" mnemonicParsing="false" onAction="#WardenEdit" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Edit">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </content>
-    </Tab>
     <Tab style="-fx-background-color: #f78364; -fx-border-radius: 6; -fx-border-bottom: none; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Prisoner management">
          <content>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="863.0">
@@ -223,6 +154,75 @@
                </children></AnchorPane>
         </content>
       </Tab>
+    <Tab style="-fx-background-color: #f78364; -fx-border-radius: 6; -fx-border-bottom: none; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Warden management">
+         <content>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="863.0">
+               <children>
+                  <Text fill="WHITE" layoutX="269.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editing Warden Details" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold Italic" size="30.0" />
+                     </font>
+                  </Text>
+                  <Line endX="762.0000610351562" endY="-3.814697265625E-6" layoutX="101.0" layoutY="64.0" startX="-100.0" stroke="#f78364" />
+                  <Label layoutX="144.0" layoutY="91.0" text="Unique ID" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="138.0" layoutY="141.0" text="First Name" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="138.0" layoutY="241.0" text="Joining Date" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="138.0" layoutY="294.0" text="Ranking" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="Warden_Rank" layoutX="335.0" layoutY="299.0" prefHeight="26.0" prefWidth="246.0" />
+                  <Line endX="762.0" layoutX="100.0" layoutY="406.0" startX="-100.0" stroke="#f78364" />
+                  <DatePicker fx:id="Warden_JD" layoutX="335.0" layoutY="246.0" prefHeight="26.0" prefWidth="246.0" />
+                  <Label layoutX="138.0" layoutY="193.0" text="Last Name" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="WardenID" layoutX="335.0" layoutY="93.0" prefHeight="32.0" prefWidth="245.0" />
+                  <TextField fx:id="Warden_FN" layoutX="335.0" layoutY="143.0" prefHeight="32.0" prefWidth="245.0" />
+                  <TextField fx:id="Warden_LN" layoutX="335.0" layoutY="195.0" prefHeight="32.0" prefWidth="245.0" />
+                  <Label layoutX="138.0" layoutY="345.0" text="Floor in Charge" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="Warden_Floor" layoutX="335.0" layoutY="350.0" prefHeight="26.0" prefWidth="246.0" />
+                  <Button fx:id="SaveWarden_Button" layoutX="726.0" layoutY="455.0" mnemonicParsing="false" onAction="#SaveWarden" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Save">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="DeleteWarden_Buttons" layoutX="286.0" layoutY="455.0" mnemonicParsing="false" onAction="#DeleteWarden" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Delete">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button layoutX="66.0" layoutY="455.0" mnemonicParsing="false" onAction="#WardenSearch" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="531.0" layoutY="455.0" mnemonicParsing="false" onAction="#WardenEdit" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Edit">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </content>
+    </Tab>
       <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Warden List">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">

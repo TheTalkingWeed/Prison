@@ -8,8 +8,6 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -18,16 +16,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="864.0" style="-fx-background-color: #4e586e;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="60.0" tabMinHeight="40.0" tabMinWidth="60.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
+<TabPane focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="864.0" style="-fx-background-color: #4e586e;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="200.0" tabMinHeight="40.0" tabMinWidth="60.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
   <tabs>
-    <Tab style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 6; -fx-border-bottom: none;">
-    <graphic>
-        <ImageView fitHeight="40.0" fitWidth="42.0">
-            <image>
-                    <Image url="@warden_icon.jpg" />
-            </image>
-        </ImageView>
-    </graphic>
+    <Tab style="-fx-background-color: #f78364; -fx-border-radius: 6; -fx-border-bottom: none; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Warden management">
          <content>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="863.0">
                <children>
@@ -96,7 +87,7 @@
             </AnchorPane>
          </content>
     </Tab>
-    <Tab style="-fx-backgroun-color: white; -fx-border-color: black; -fx-border-radius: 6; -fx-border-bottom: none;">
+    <Tab style="-fx-background-color: #f78364; -fx-border-radius: 6; -fx-border-bottom: none; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Prisoner management">
          <content>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="863.0">
                <children>
@@ -175,15 +166,8 @@
                </children>
             </AnchorPane>
          </content>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@prisoner_icon.png" />
-               </image>
-            </ImageView>
-         </graphic>
     </Tab>
-      <Tab text="Prisoner List">
+      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Prisoner List">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -239,7 +223,7 @@
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab text="Warden List">
+      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Warden List">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -284,7 +268,7 @@
             </AnchorPane>
         </content>
       </Tab>
-      <Tab text="Login history">
+      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Login history">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -323,7 +307,7 @@
             </AnchorPane>
         </content>
       </Tab>
-      <Tab text="Option">
+      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Option">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>

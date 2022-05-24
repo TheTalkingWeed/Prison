@@ -209,17 +209,19 @@ public class SceneController implements Initializable {
             Optional<String> result = dialog.showAndWait();
             Warden warden = new Warden();
             boolean found = false;
-
-            for (Warden w:wardens) {
-                if (w.getUnique_ID() == Integer.parseInt(result.get())){
-                    found = true;
-                    warden = w;
-                    break;
-                }
-            }
-
+            String idin;
 
             if (result.isPresent()) {
+
+                idin = result.get();
+
+                for (Warden w:wardens) {
+                    if (w.getUnique_ID() == Integer.parseInt(idin)){
+                        found = true;
+                        warden = w;
+                        break;
+                    }
+                }
                     if (found) {
 
 
@@ -537,15 +539,17 @@ public class SceneController implements Initializable {
         dialog.setHeaderText("Prisoner search");
         dialog.setContentText("Please type a Prisoner Id:");
         Optional<String> result;
+        PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
         result = dialog.showAndWait();
+        List<Prisoner> prisoners = new ArrayList<>(prisonerDAO.getPrisoners());
         idinforSearch = Integer.parseInt(result.get());
         boolean bennevan=false;
         if (result.isPresent()) {
-            PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
-            List<Prisoner> prisoners = new ArrayList<>(prisonerDAO.getPrisoners());
+
+
 
             for (Prisoner p:prisoners) {
-                if (p.getUniqueID()==Integer.parseInt(result.get())) {
+                if (p.getUniqueID()==idinforSearch) {
                     temp = p;
                     bennevan = true;
                 }

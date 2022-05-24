@@ -500,7 +500,7 @@ public class SceneController implements Initializable {
                      prisonerDAO.deletePrisoner(prisoner);
                      clearListViewPrisoner();
                      prisoners.remove(prisoner);
-                     FillAllListofPrisoner(prisoners);
+                     FillAllListofPrisoner();
                      updatePrisonerListView();
 
                      Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
@@ -629,7 +629,9 @@ public class SceneController implements Initializable {
         }
     }
 
-    private void FillAllListofPrisoner(List<Prisoner> prisoners){
+    private void FillAllListofPrisoner(){
+        PrisonerDAO pDAO = new JpaPrisonerDAO();
+        List<Prisoner> prisoners = new ArrayList<>(pDAO.getPrisoners());
         clearItemListPrisoner();
         for (Prisoner p:prisoners) {
             pids.add(p.getUniqueID());
@@ -645,7 +647,8 @@ public class SceneController implements Initializable {
     }
 
     private void FillAllListofWarden(){
-        List<Warden> wardens = new ArrayList<>(wardenDAO.getWardens());
+        WardenDAO wDAO = new JpaWardenDAO();
+        List<Warden> wardens = new ArrayList<>(wDAO.getWardens());
         clearItemListWarden();
         for (Warden w:wardens) {
             wardenids.add(w.getUnique_ID());
@@ -806,7 +809,7 @@ public class SceneController implements Initializable {
         }else loginStatusLabel.setText("Guest");
 
         FillAllListofWarden();
-        FillAllListofPrisoner(prisonersforfill);
+        FillAllListofPrisoner();
 
         String[] rangok =   {"Guard","Small chief","Big chief"};
         List<String> crimes = new ArrayList<>(FileUtils.readCrimes("crimes.txt"));
@@ -845,6 +848,10 @@ public class SceneController implements Initializable {
         clearListViewWarden();
         FillAllListofWarden();
         updateWardenListView();
+
+        clearListViewPrisoner();
+        FillAllListofPrisoner();
+        updatePrisonerListView();
     }
 
     @FXML

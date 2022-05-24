@@ -527,7 +527,7 @@ public class SceneController implements Initializable {
         TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Search");
         dialog.setHeaderText("Prisoner search");
-        dialog.setContentText("Adja meg a nevét a Prisonernek.");
+        dialog.setContentText("Please type a Prisoner Id:");
         Optional<String> result;
         result = dialog.showAndWait();
         idinforSearch = Integer.parseInt(result.get());

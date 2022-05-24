@@ -15,7 +15,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Image img = new Image("/fxml/login_icon.png");
+        Image img = new Image("/icons/login_icon.png");
 
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/LOGIN.fxml"));
         Scene scene = new Scene(loader.load());

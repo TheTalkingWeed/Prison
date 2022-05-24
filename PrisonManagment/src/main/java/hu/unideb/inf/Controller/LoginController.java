@@ -39,7 +39,7 @@ public class LoginController {
     @FXML
     private TextField password;
 
-    Image icon = new Image("/fxml/prison_icon.png");
+    Image icon = new Image("/icons/prison_icon.png");
 
     @FXML
     void onLoginGuest(ActionEvent event){

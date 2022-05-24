@@ -130,9 +130,9 @@ public class SceneController implements Initializable {
     public static Prisoner temp = new Prisoner();
     public static Warden temp2 = new Warden();
 
-    Image editIcon = new Image("/fxml/edit.png");
-    Image listIcon = new Image("/fxml/list_icon.png");
-    Image adminRegIcon = new Image("/fxml/register_admin.png");
+    Image editIcon = new Image("/icons/edit.png");
+    Image listIcon = new Image("/icons/list_icon.png");
+    Image adminRegIcon = new Image("/icons/register_admin.png");
 
 
     LoginDAO loginDAO = new JpaLoginDAO();

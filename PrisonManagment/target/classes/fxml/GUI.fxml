@@ -111,55 +111,60 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ListView fx:id="PrisonerID_list" layoutX="-1.0" layoutY="89.0" prefHeight="498.0" prefWidth="49.0" />
-                  <Label contentDisplay="CENTER" layoutX="13.0" layoutY="28.0" prefHeight="35.0" prefWidth="25.0" text="ID" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                  <ListView fx:id="PrisonerID_list" layoutX="-1.0" layoutY="114.0" prefHeight="473.0" prefWidth="49.0" />
+                  <Label contentDisplay="CENTER" layoutX="14.0" layoutY="55.0" prefHeight="35.0" prefWidth="25.0" text="ID" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="53.0" layoutY="32.0" text="First Name" textFill="WHITE">
+                  <Label layoutX="54.0" layoutY="59.0" text="First Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="PrisonerFN_list" layoutX="48.0" layoutY="89.0" prefHeight="498.0" prefWidth="107.0" />
-                  <Label layoutX="254.0" layoutY="32.0" text="Entrance Date" textFill="WHITE">
+                  <ListView fx:id="PrisonerFN_list" layoutX="48.0" layoutY="114.0" prefHeight="473.0" prefWidth="107.0" />
+                  <Label layoutX="255.0" layoutY="59.0" text="Entrance Date" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="382.0" layoutY="32.0" text="Relase Date" textFill="WHITE">
+                  <Label layoutX="383.0" layoutY="59.0" text="Relase Date" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="PrisonerSL_list" layoutX="490.0" layoutY="89.0" prefHeight="504.0" prefWidth="134.0" />
-                  <Label layoutX="496.0" layoutY="32.0" text="Security Level" textFill="WHITE">
+                  <ListView fx:id="PrisonerSL_list" layoutX="490.0" layoutY="114.0" prefHeight="504.0" prefWidth="134.0" />
+                  <Label layoutX="497.0" layoutY="59.0" text="Security Level" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <Line endX="762.0" layoutX="101.0" layoutY="76.0" startX="-100.0" stroke="#f78364" />
-                  <ListView fx:id="PrisonerRD_list" layoutX="382.0" layoutY="89.0" prefHeight="498.0" prefWidth="108.0" />
-                  <ListView fx:id="PrisonerED_list" layoutX="246.0" layoutY="89.0" prefHeight="498.0" prefWidth="136.0" />
-                  <ListView fx:id="PrisonerLN_list" layoutX="155.0" layoutY="89.0" prefHeight="498.0" prefWidth="91.0" />
-                  <Label layoutX="155.0" layoutY="32.0" text="Last Name" textFill="WHITE">
+                  <Line endX="762.0" layoutX="100.0" layoutY="99.0" startX="-100.0" stroke="#f78364" />
+                  <ListView fx:id="PrisonerRD_list" layoutX="382.0" layoutY="114.0" prefHeight="498.0" prefWidth="108.0" />
+                  <ListView fx:id="PrisonerED_list" layoutX="246.0" layoutY="114.0" prefHeight="498.0" prefWidth="136.0" />
+                  <ListView fx:id="PrisonerLN_list" layoutX="155.0" layoutY="114.0" prefHeight="498.0" prefWidth="91.0" />
+                  <Label layoutX="156.0" layoutY="59.0" text="Last Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="PrisonerCN_list" layoutX="623.0" layoutY="89.0" prefHeight="498.0" prefWidth="126.0" />
-                  <Label layoutX="623.0" layoutY="32.0" text="Cell Number" textFill="WHITE">
+                  <ListView fx:id="PrisonerCN_list" layoutX="623.0" layoutY="114.0" prefHeight="498.0" prefWidth="126.0" />
+                  <Label layoutX="624.0" layoutY="59.0" text="Cell Number" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="751.0" layoutY="32.0" prefHeight="18.0" prefWidth="70.0" text="Crime" textFill="WHITE">
+                  <Label layoutX="752.0" layoutY="59.0" prefHeight="18.0" prefWidth="70.0" text="Crime" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="PrisonerCrime_list" layoutX="749.0" layoutY="89.0" prefHeight="500.0" prefWidth="200.0" />
+                  <ListView fx:id="PrisonerCrime_list" layoutX="749.0" layoutY="114.0" prefHeight="500.0" prefWidth="200.0" />
+                  <Label layoutX="338.0" layoutY="14.0" prefHeight="47.0" prefWidth="196.0" text="Prisoners list" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="31.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
         </content>
          <graphic>
@@ -250,43 +255,48 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label contentDisplay="CENTER" layoutX="49.0" layoutY="14.0" prefHeight="35.0" prefWidth="31.0" text="ID" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                  <Label contentDisplay="CENTER" layoutX="48.0" layoutY="62.0" prefHeight="35.0" prefWidth="31.0" text="ID" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="144.0" layoutY="14.0" text="First Name" textFill="WHITE">
+                  <Label layoutX="143.0" layoutY="62.0" text="First Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="459.0" layoutY="14.0" text="Joining Date" textFill="WHITE">
+                  <Label layoutX="458.0" layoutY="62.0" text="Joining Date" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="646.0" layoutY="14.0" text="Rank" textFill="WHITE">
+                  <Label layoutX="645.0" layoutY="62.0" text="Rank" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="Wardenid_list" layoutY="56.0" prefHeight="550.0" prefWidth="129.0" />
-                  <ListView fx:id="WardenJD_list" layoutX="452.0" layoutY="56.0" prefHeight="550.0" prefWidth="178.0" />
-                  <ListView fx:id="WardenRank_list" layoutX="629.0" layoutY="56.0" prefHeight="550.0" prefWidth="109.0" />
-                  <Line endX="762.0000610351562" endY="-3.814697265625E-6" layoutX="101.0" layoutY="49.0" startX="-100.0" stroke="#f78364" />
-                  <ListView fx:id="WardenFN_list" layoutX="129.0" layoutY="56.0" prefHeight="550.0" prefWidth="173.0" />
-                  <ListView fx:id="WardenLN_list" layoutX="297.0" layoutY="56.0" prefHeight="550.0" prefWidth="155.0" />
-                  <Label layoutX="308.0" layoutY="14.0" text="Last Name" textFill="WHITE">
+                  <ListView fx:id="Wardenid_list" layoutY="114.0" prefHeight="550.0" prefWidth="129.0" />
+                  <ListView fx:id="WardenJD_list" layoutX="452.0" layoutY="114.0" prefHeight="550.0" prefWidth="178.0" />
+                  <ListView fx:id="WardenRank_list" layoutX="629.0" layoutY="114.0" prefHeight="550.0" prefWidth="109.0" />
+                  <Line endX="762.0000610351562" endY="-3.814697265625E-6" layoutX="100.0" layoutY="97.0" startX="-100.0" stroke="#f78364" />
+                  <ListView fx:id="WardenFN_list" layoutX="129.0" layoutY="114.0" prefHeight="550.0" prefWidth="173.0" />
+                  <ListView fx:id="WardenLN_list" layoutX="297.0" layoutY="114.0" prefHeight="550.0" prefWidth="155.0" />
+                  <Label layoutX="307.0" layoutY="62.0" text="Last Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="760.0" layoutY="14.0" text="Floor" textFill="WHITE">
+                  <Label layoutX="759.0" layoutY="62.0" text="Floor" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="WardenFloor_list" layoutX="738.0" layoutY="56.0" prefHeight="550.0" prefWidth="129.0" />
+                  <ListView fx:id="WardenFloor_list" layoutX="738.0" layoutY="114.0" prefHeight="550.0" prefWidth="129.0" />
+                  <Label layoutX="365.0" layoutY="14.0" prefHeight="47.0" prefWidth="175.0" text="Warden list" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="31.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         </content>
@@ -333,6 +343,11 @@
                         <ListView fx:id="LogOut_ListView" prefHeight="367.0" prefWidth="287.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
+                  <Label layoutX="319.0" layoutY="14.0" prefHeight="58.0" prefWidth="226.0" text="Login history" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="36.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         </content>
@@ -373,6 +388,11 @@
                         <Font name="System Bold Italic" size="15.0" />
                      </font>
                   </Button>
+                  <Label layoutX="363.0" layoutY="14.0" prefHeight="58.0" prefWidth="137.0" text="Options" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="36.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         </content>

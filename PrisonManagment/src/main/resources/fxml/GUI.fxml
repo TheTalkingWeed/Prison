@@ -55,15 +55,15 @@
                      </font>
                   </Label>
                   <TextField fx:id="PrisonerID" layoutX="327.0" layoutY="74.0" prefHeight="26.0" prefWidth="291.0" />
-                  <Button fx:id="searchButtonMP" layoutX="70.0" layoutY="501.0" mnemonicParsing="false" onAction="#SearchButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
+                  <Button fx:id="searchButtonMP" layoutX="69.0" layoutY="481.0" mnemonicParsing="false" onAction="#SearchButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
-                  <Button fx:id="deleteButtonMP" layoutX="280.0" layoutY="501.0" mnemonicParsing="false" onAction="#DeleteButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Delete">
+                  <Button fx:id="deleteButtonMP" layoutX="280.0" layoutY="481.0" mnemonicParsing="false" onAction="#DeleteButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Delete">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
-                  <Button fx:id="saveButtonMP" layoutX="693.0" layoutY="501.0" mnemonicParsing="false" onAction="#SaveMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Save">
+                  <Button fx:id="saveButtonMP" layoutX="693.0" layoutY="481.0" mnemonicParsing="false" onAction="#SaveMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Save">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
@@ -91,7 +91,7 @@
                   </Label>
                   <TextField fx:id="Cell_Number" layoutX="327.0" layoutY="339.0" prefHeight="26.0" prefWidth="291.0" />
                   <ChoiceBox fx:id="Crime" layoutX="329.0" layoutY="381.0" prefHeight="26.0" prefWidth="288.0" />
-                  <Button layoutX="507.0" layoutY="501.0" mnemonicParsing="false" onAction="#EditButtonPushed" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Edit">
+                  <Button layoutX="506.0" layoutY="481.0" mnemonicParsing="false" onAction="#EditButtonPushed" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Edit">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -348,12 +348,12 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="14.0" layoutY="537.0" prefHeight="35.0" prefWidth="120.0" text="Login status:" textFill="WHITE">
+                  <Label layoutX="14.0" layoutY="510.0" prefHeight="35.0" prefWidth="120.0" text="Login status:" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="loginStatusLabel" layoutX="144.0" layoutY="540.0" textFill="WHITE">
+                  <Label fx:id="loginStatusLabel" layoutX="144.0" layoutY="513.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>

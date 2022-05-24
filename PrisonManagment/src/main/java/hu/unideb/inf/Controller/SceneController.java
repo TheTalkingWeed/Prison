@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -129,6 +130,10 @@ public class SceneController implements Initializable {
     public static Prisoner temp = new Prisoner();
     public static Warden temp2 = new Warden();
 
+    Image editIcon = new Image("/fxml/edit.png");
+    Image listIcon = new Image("/fxml/list_icon.png");
+    Image adminRegIcon = new Image("/fxml/register_admin.png");
+
 
     LoginDAO loginDAO = new JpaLoginDAO();
 
@@ -172,7 +177,8 @@ public class SceneController implements Initializable {
                 Parent root;
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/AdminReg.fxml")));
                 Scene scene = new Scene(root);
-                stage.setTitle("Warden Edit");
+                stage.setTitle("Register admin");
+                stage.getIcons().add(adminRegIcon);
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException e) {
@@ -341,6 +347,7 @@ public class SceneController implements Initializable {
                     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/WardenEdit.fxml")));
                     Scene scene = new Scene(root);
                     stage.setTitle("Warden Edit");
+                    stage.getIcons().add(editIcon);
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException e) {
@@ -391,6 +398,7 @@ public class SceneController implements Initializable {
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/WardenInfo.fxml")));
                     Scene scene = new Scene(root);
                     stage.setTitle("Warden information");
+                    stage.getIcons().add(listIcon);
                     stage.setScene(scene);
                     stage.show();
 
@@ -549,6 +557,7 @@ public class SceneController implements Initializable {
                         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Prisonerinfo.fxml")));
                         Scene scene = new Scene(root);
                         stage.setTitle("Prisoner information");
+                        stage.getIcons().add(listIcon);
                         stage.setScene(scene);
                         stage.show();
 
@@ -599,6 +608,7 @@ public class SceneController implements Initializable {
                     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/PrisonerEdit.fxml")));
                     Scene scene = new Scene(root);
                     stage.setTitle("Prisoner information");
+                    stage.getIcons().add(editIcon);
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException e) {

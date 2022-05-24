@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4e586e;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.PrisonerInfoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4e586e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.PrisonerInfoController">
 
       <GridPane layoutX="156.0" layoutY="80.0" prefHeight="240.0" prefWidth="289.0">
         <columnConstraints>
@@ -89,5 +92,10 @@
             
 
       </GridPane>
+   <Label layoutX="190.0" layoutY="14.0" prefHeight="67.0" prefWidth="222.0" text="Prisoner informations" textFill="WHITE">
+      <font>
+         <Font name="System Bold Italic" size="21.0" />
+      </font>
+   </Label>
 
 </Pane>

@@ -91,7 +91,7 @@
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="244.0" layoutY="332.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="112.0" style="-fx-background-color: #f78364;" text="Close">
+      <Button fx:id="Close" layoutX="244.0" layoutY="332.0" mnemonicParsing="false" onAction="#CloseButton" prefHeight="54.0" prefWidth="112.0" style="-fx-background-color: #f78364;" text="Close">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>

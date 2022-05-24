@@ -3,9 +3,12 @@ package hu.unideb.inf.Controller;
 import hu.unideb.inf.model.WardenPac.JpaWardenDAO;
 import hu.unideb.inf.model.WardenPac.Warden;
 import hu.unideb.inf.model.WardenPac.WardenDAO;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.List;
@@ -32,6 +35,8 @@ public class WardenInfoController implements Initializable {
         @FXML
         private Label WardenR;
 
+        @FXML
+        private Button Close;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -60,5 +65,11 @@ public class WardenInfoController implements Initializable {
         }
 
         return wd;
+    }
+
+    @FXML
+    void CloseButton(ActionEvent event) {
+        Stage stage = (Stage) Close.getScene().getWindow();
+        stage.close();
     }
 }

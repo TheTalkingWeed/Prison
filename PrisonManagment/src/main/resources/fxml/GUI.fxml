@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="864.0" side="LEFT" style="-fx-background-color: #4e586e;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="200.0" tabMinHeight="40.0" tabMinWidth="60.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
+<TabPane focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" side="LEFT" style="-fx-background-color: #4e586e;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="200.0" tabMinHeight="40.0" tabMinWidth="60.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
   <tabs>
     <Tab style="-fx-background-color: #f78364; -fx-border-radius: 6; -fx-border-bottom: none; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
          <content>
@@ -107,7 +107,7 @@
             </ImageView>
          </graphic>
     </Tab>
-      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Prisoner List">
+      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -162,6 +162,13 @@
                   <ListView fx:id="PrisonerCrime_list" layoutX="749.0" layoutY="89.0" prefHeight="500.0" prefWidth="200.0" />
                </children></AnchorPane>
         </content>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@prisoner_list_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Tab>
     <Tab style="-fx-background-color: #f78364; -fx-border-radius: 6; -fx-border-bottom: none; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
          <content>
@@ -239,7 +246,7 @@
             </ImageView>
          </graphic>
     </Tab>
-      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Warden List">
+      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -283,8 +290,15 @@
                </children>
             </AnchorPane>
         </content>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@warden_list_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Tab>
-      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Login history">
+      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -322,6 +336,13 @@
                </children>
             </AnchorPane>
         </content>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@login_hitory.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Tab>
       <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
         <content>

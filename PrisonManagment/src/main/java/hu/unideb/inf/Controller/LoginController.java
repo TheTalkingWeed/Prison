@@ -12,7 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import javafx.scene.image.Image;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -39,6 +39,8 @@ public class LoginController {
     @FXML
     private TextField password;
 
+    Image icon = new Image("/fxml/prison_icon.png");
+
     @FXML
     void onLoginGuest(ActionEvent event){
         loggedinuser="Guest";
@@ -60,6 +62,7 @@ public class LoginController {
             Stage stage = new Stage();
             stage.setResizable(false);
             stage.setTitle("Prison management");
+            stage.getIcons().add(icon);
             stage.setScene(new Scene(par1));
             stage.show();
 
@@ -108,6 +111,7 @@ public class LoginController {
                     Stage stage = new Stage();
                     stage.setResizable(false);
                     stage.setTitle("Prison management");
+                    stage.getIcons().add(icon);
                     stage.setScene(new Scene(par1));
                     stage.show();
 

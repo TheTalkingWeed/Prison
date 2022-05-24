@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,9 +19,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" side="LEFT" style="-fx-background-color: #4e586e;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="200.0" tabMinHeight="40.0" tabMinWidth="60.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
+<TabPane focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" side="LEFT" style="-fx-background-color: #4e586e; -fx-border-radius: 0;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="200.0" tabMinHeight="40.0" tabMinWidth="60.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
   <tabs>
-    <Tab style="-fx-background-color: #f78364; -fx-border-radius: 6; -fx-border-bottom: none; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
+    <Tab style="-fx-background-color: #f78364; -fx-border-radius: 0;">
          <content>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="863.0">
                <children>
@@ -54,31 +55,49 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="PrisonerID" layoutX="327.0" layoutY="74.0" prefHeight="26.0" prefWidth="291.0" />
-                  <Button fx:id="searchButtonMP" layoutX="69.0" layoutY="481.0" mnemonicParsing="false" onAction="#SearchButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
+                  <TextField fx:id="PrisonerID" layoutX="327.0" layoutY="74.0" prefHeight="26.0" prefWidth="291.0">
+                     <effect>
+                        <Blend />
+                     </effect></TextField>
+                  <Button fx:id="searchButtonMP" focusTraversable="false" layoutX="69.0" layoutY="481.0" mnemonicParsing="false" onAction="#SearchButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Search">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
-                  <Button fx:id="deleteButtonMP" layoutX="280.0" layoutY="481.0" mnemonicParsing="false" onAction="#DeleteButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Delete">
+                  <Button fx:id="deleteButtonMP" focusTraversable="false" layoutX="280.0" layoutY="481.0" mnemonicParsing="false" onAction="#DeleteButtonMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Delete">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
-                  <Button fx:id="saveButtonMP" layoutX="693.0" layoutY="481.0" mnemonicParsing="false" onAction="#SaveMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Save">
+                  <Button fx:id="saveButtonMP" centerShape="false" layoutX="693.0" layoutY="481.0" mnemonicParsing="false" onAction="#SaveMP" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Save">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Button>
-                  <TextField fx:id="Prisoner_FN" layoutX="327.0" layoutY="121.0" prefHeight="26.0" prefWidth="291.0" />
+                  <TextField fx:id="Prisoner_FN" layoutX="327.0" layoutY="121.0" prefHeight="26.0" prefWidth="291.0">
+                     <effect>
+                        <Blend />
+                     </effect></TextField>
                   <Line endX="849.0" endY="-3.814697265625E-6" layoutX="13.0" layoutY="56.0" startX="-13.99999713897705" startY="-3.814697265625E-6" stroke="#f78364" />
                   <Line endX="755.0" layoutX="108.0" layoutY="450.0" startX="-108.0" stroke="#f78364" />
-                  <DatePicker fx:id="ReleaseDate" layoutX="327.0" layoutY="254.0" prefHeight="26.0" prefWidth="291.0" />
-                  <DatePicker fx:id="EntranceDate" layoutX="327.0" layoutY="207.0" prefHeight="26.0" prefWidth="291.0" />
-                  <ChoiceBox fx:id="SecLevel" layoutX="327.0" layoutY="296.0" prefHeight="25.0" prefWidth="291.0" />
+                  <DatePicker fx:id="ReleaseDate" layoutX="327.0" layoutY="254.0" prefHeight="26.0" prefWidth="291.0">
+                     <effect>
+                        <Blend />
+                     </effect></DatePicker>
+                  <DatePicker fx:id="EntranceDate" layoutX="327.0" layoutY="207.0" prefHeight="26.0" prefWidth="291.0">
+                     <effect>
+                        <Blend />
+                     </effect></DatePicker>
+                  <ChoiceBox fx:id="SecLevel" layoutX="327.0" layoutY="296.0" prefHeight="25.0" prefWidth="291.0">
+                     <effect>
+                        <Blend />
+                     </effect></ChoiceBox>
                   <Label layoutX="96.0" layoutY="162.0" text="Prisoner Last Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="Prisoner_LN" layoutX="327.0" layoutY="167.0" prefHeight="26.0" prefWidth="291.0" />
+                  <TextField fx:id="Prisoner_LN" layoutX="327.0" layoutY="167.0" prefHeight="26.0" prefWidth="291.0">
+                     <effect>
+                        <Blend />
+                     </effect></TextField>
                   <Label layoutX="90.0" layoutY="334.0" text="Cell Number" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
@@ -89,9 +108,15 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="Cell_Number" layoutX="327.0" layoutY="339.0" prefHeight="26.0" prefWidth="291.0" />
-                  <ChoiceBox fx:id="Crime" layoutX="329.0" layoutY="381.0" prefHeight="26.0" prefWidth="288.0" />
-                  <Button layoutX="506.0" layoutY="481.0" mnemonicParsing="false" onAction="#EditButtonPushed" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Edit">
+                  <TextField fx:id="Cell_Number" layoutX="327.0" layoutY="339.0" prefHeight="26.0" prefWidth="291.0">
+                     <effect>
+                        <Blend />
+                     </effect></TextField>
+                  <ChoiceBox fx:id="Crime" layoutX="326.0" layoutY="381.0" prefHeight="26.0" prefWidth="291.0">
+                     <effect>
+                        <Blend />
+                     </effect></ChoiceBox>
+                  <Button cacheShape="false" layoutX="506.0" layoutY="481.0" mnemonicParsing="false" onAction="#EditButtonPushed" prefHeight="55.0" prefWidth="98.0" style="-fx-background-color: #f78364;" text="Edit">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -107,7 +132,7 @@
             </ImageView>
          </graphic>
     </Tab>
-      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
+      <Tab style="-fx-background-color: #f78364;">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -175,7 +200,7 @@
             </ImageView>
          </graphic>
       </Tab>
-    <Tab style="-fx-background-color: #f78364; -fx-border-radius: 6; -fx-border-bottom: none; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
+    <Tab style="-fx-background-color: #f78364;">
          <content>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="863.0">
                <children>
@@ -251,7 +276,7 @@
             </ImageView>
          </graphic>
     </Tab>
-      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
+      <Tab style="-fx-background-color: #f78364;">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -308,7 +333,7 @@
             </ImageView>
          </graphic>
       </Tab>
-      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
+      <Tab style="-fx-background-color: #f78364;">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -359,7 +384,7 @@
             </ImageView>
          </graphic>
       </Tab>
-      <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
+      <Tab style="-fx-background-color: #f78364;">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>

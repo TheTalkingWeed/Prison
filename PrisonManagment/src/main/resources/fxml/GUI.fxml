@@ -20,7 +20,7 @@
 
 <TabPane focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="864.0" style="-fx-background-color: #4e586e;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="200.0" tabMinHeight="40.0" tabMinWidth="60.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
   <tabs>
-    <Tab style="-fx-background-color: #f78364; -fx-border-radius: 6; -fx-border-bottom: none; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Prisoner management">
+    <Tab style="-fx-background-color: #f78364; -fx-border-radius: 6; -fx-border-bottom: none; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;">
          <content>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="863.0">
                <children>
@@ -99,6 +99,13 @@
                </children>
             </AnchorPane>
          </content>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@prisoner_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
     </Tab>
       <Tab style="-fx-background-color: #f78364; -fx-font-style: italic; -fx-font-weight: bold; -fx-font-size: 13;" text="Prisoner List">
         <content>

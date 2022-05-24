@@ -1,10 +1,9 @@
 package hu.unideb.inf.Controller;
 
-import hu.unideb.inf.model.PrisonerPac.FilePrisonerDAO;
+
 import hu.unideb.inf.model.PrisonerPac.JpaPrisonerDAO;
 import hu.unideb.inf.model.PrisonerPac.Prisoner;
 import hu.unideb.inf.model.PrisonerPac.PrisonerDAO;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

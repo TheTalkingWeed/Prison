@@ -11,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.util.List;
 
 public class AdminRegController {
@@ -81,7 +80,7 @@ public class AdminRegController {
     }
 
     private boolean containsUsername(List<Admin> admins, String username){
-        return admins.stream().filter(o -> o.getUsername().equals(username)).findFirst().isPresent();
+        return admins.stream().anyMatch(o -> o.getUsername().equals(username));
     }
 
 

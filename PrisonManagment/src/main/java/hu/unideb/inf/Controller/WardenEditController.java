@@ -2,7 +2,6 @@ package hu.unideb.inf.Controller;
 
 import hu.unideb.inf.model.WardenPac.JpaWardenDAO;
 import hu.unideb.inf.model.WardenPac.Warden;
-import hu.unideb.inf.model.WardenPac.Warden;
 import hu.unideb.inf.model.WardenPac.WardenDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

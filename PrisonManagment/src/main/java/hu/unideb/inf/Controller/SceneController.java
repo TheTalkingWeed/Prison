@@ -131,8 +131,6 @@ public class SceneController implements Initializable {
 
 
     LoginDAO loginDAO = new JpaLoginDAO();
-    PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
-    List<Prisoner> prisonersforfill = new ArrayList<>(prisonerDAO.getPrisoners());
 
     List<Integer> pids = new ArrayList<>();
     List<String> fnlist = new ArrayList<>();
@@ -143,7 +141,6 @@ public class SceneController implements Initializable {
     List<String> seclevellist = new ArrayList<>();
     List<Integer> celnum = new ArrayList<>();
 
-    WardenDAO wardenDAO = new JpaWardenDAO();
 
     List<Integer> wardenids = new ArrayList<>();
     List<String> wardenfloors = new ArrayList<>();
@@ -172,8 +169,8 @@ public class SceneController implements Initializable {
         if (LoginController.isAdmin){
             try {
                 Stage stage = new Stage();
-                Parent root = null;
-                root = FXMLLoader.load(getClass().getResource("/fxml/AdminReg.fxml"));
+                Parent root;
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/AdminReg.fxml")));
                 Scene scene = new Scene(root);
                 stage.setTitle("Warden Edit");
                 stage.setScene(scene);
@@ -198,8 +195,8 @@ public class SceneController implements Initializable {
 
             TextInputDialog dialog = new TextInputDialog("");
             dialog.setTitle("Delete");
-            dialog.setHeaderText("Wared delete");
-            dialog.setContentText("Adja meg az ID-ját a Wardennek.");
+            dialog.setHeaderText("Warden delete");
+            dialog.setContentText("Please type the Warden Id:");
 
             WardenDAO wardenDAO = new JpaWardenDAO();
             List<Warden> wardens = new ArrayList<>(wardenDAO.getWardens());
@@ -233,7 +230,7 @@ public class SceneController implements Initializable {
                         alertwindow.setTitle("Information");
                         alertwindow.setContentText("Delete was successful");
                         alertwindow.showAndWait();
-                    }else if(!found){
+                    }else {
                         Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
                         alertwindow.setTitle("Warning");
                         alertwindow.setContentText("Wrong warden ID");
@@ -242,7 +239,7 @@ public class SceneController implements Initializable {
                     }
 
             }
-        }else if(LoginController.isAdmin==false){
+        }else {
 
             Alert alertwindow = new Alert(Alert.AlertType.WARNING);
 
@@ -255,7 +252,7 @@ public class SceneController implements Initializable {
     @FXML
     void SaveWarden(ActionEvent event) {
 
-        if (LoginController.isAdmin == true){
+        if (LoginController.isAdmin){
 
             try (WardenDAO wdao = new JpaWardenDAO()) {
                 if (       WardenID.getText().equals("")
@@ -313,7 +310,7 @@ public class SceneController implements Initializable {
 
     @FXML
     void WardenEdit(ActionEvent event) {
-        if (LoginController.isAdmin==true){
+        if (LoginController.isAdmin){
             TextInputDialog dialog = new TextInputDialog("");
             dialog.setTitle("Edit");
             dialog.setHeaderText("Warden edit");
@@ -322,7 +319,6 @@ public class SceneController implements Initializable {
             Optional<String> result = dialog.showAndWait();
             WardenDAO wardenDAO = new JpaWardenDAO();
             List <Warden>  wardens = new ArrayList<>(wardenDAO.getWardens());
-            Warden warden = new Warden();
             boolean found = false;
 
             if (result.isPresent()){
@@ -331,19 +327,18 @@ public class SceneController implements Initializable {
                 {
                     if (w.getUnique_ID() == wardenIdIn){
                         found = true;
-                        warden = w;
                         break;
                     }
                 }
 
-            }else{}
+            }
 
-            if (found == true){
+            if (found){
 
                 try {
                     Stage stage = new Stage();
-                    Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/WardenEdit.fxml"));
+                    Parent root;
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/WardenEdit.fxml")));
                     Scene scene = new Scene(root);
                     stage.setTitle("Warden Edit");
                     stage.setScene(scene);
@@ -390,10 +385,10 @@ public class SceneController implements Initializable {
                 }
             }
 
-            if (bennevan == true) {
+            if (bennevan) {
                 try {
                     Stage stage = new Stage();
-                    Parent root = FXMLLoader.load(getClass().getResource("/fxml/WardenInfo.fxml"));
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/WardenInfo.fxml")));
                     Scene scene = new Scene(root);
                     stage.setTitle("Warden information");
                     stage.setScene(scene);
@@ -416,15 +411,15 @@ public class SceneController implements Initializable {
     @FXML
     void SaveMP(ActionEvent event) {
 
-        if (LoginController.isAdmin == true){
+        if (LoginController.isAdmin){
             try (PrisonerDAO pdao = new JpaPrisonerDAO())
             {
                 
 
 
-                if (PrisonerID.getText().equals(null)
-                    || Prisoner_FN.getText().equals(null)
-                    || Prisoner_LN.getText().equals(null)
+                if (PrisonerID.getText() == null
+                    || Prisoner_FN.getText() == null
+                    || Prisoner_LN.getText() == null
                     || EntranceDate.getValue()==null
                     || SecLevel.getValue()==null
                     || ReleaseDate.getValue()==null
@@ -467,7 +462,7 @@ public class SceneController implements Initializable {
 
     @FXML
     void DeleteButtonMP(ActionEvent event) {
-        if (LoginController.isAdmin == true){
+        if (LoginController.isAdmin){
 
             TextInputDialog dialog = new TextInputDialog("");
             dialog.setTitle("Delete");
@@ -494,7 +489,7 @@ public class SceneController implements Initializable {
 
                 }
 
-                 if (found == true ) {
+                 if (found) {
 
 
                      prisonerDAO.deletePrisoner(prisoner);
@@ -515,7 +510,7 @@ public class SceneController implements Initializable {
                      alertwindow.setContentText("Wrong prisoner id");
                      alertwindow.showAndWait();
                  }
-            }else{}
+            }
 
         } else {
 
@@ -541,7 +536,6 @@ public class SceneController implements Initializable {
             PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
             List<Prisoner> prisoners = new ArrayList<>(prisonerDAO.getPrisoners());
 
-            String prisonername ;
             for (Prisoner p:prisoners) {
                 if (p.getUniqueID()==Integer.parseInt(result.get())) {
                     temp = p;
@@ -549,10 +543,10 @@ public class SceneController implements Initializable {
                 }
             }
 
-                if (bennevan == true) {
+                if (bennevan) {
                     try {
                         Stage stage = new Stage();
-                        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Prisonerinfo.fxml"));
+                        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Prisonerinfo.fxml")));
                         Scene scene = new Scene(root);
                         stage.setTitle("Prisoner information");
                         stage.setScene(scene);
@@ -574,7 +568,7 @@ public class SceneController implements Initializable {
 
     @FXML
     void EditButtonPushed(ActionEvent event){
-        if (LoginController.isAdmin==true){
+        if (LoginController.isAdmin){
             TextInputDialog dialog = new TextInputDialog("");
             dialog.setTitle("Edit");
             dialog.setHeaderText("Prisoner delete");
@@ -583,7 +577,6 @@ public class SceneController implements Initializable {
             Optional<String> result = dialog.showAndWait();
             PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
             List <Prisoner>  prisoners = new ArrayList<>(prisonerDAO.getPrisoners());
-            Prisoner prisoner = new Prisoner();
             boolean found = false;
 
             if (result.isPresent()){
@@ -592,19 +585,18 @@ public class SceneController implements Initializable {
                 {
                     if (p.getUniqueID() == idin){
                         found = true;
-                        prisoner = p;
                         break;
                     }
                 }
 
-            }else{}
+            }
 
-            if (found == true){
+            if (found){
 
                 try {
                     Stage stage = new Stage();
-                    Parent root = null;
-                    root = FXMLLoader.load(getClass().getResource("/fxml/PrisonerEdit.fxml"));
+                    Parent root;
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/PrisonerEdit.fxml")));
                     Scene scene = new Scene(root);
                     stage.setTitle("Prisoner information");
                     stage.setScene(scene);
@@ -873,7 +865,7 @@ public class SceneController implements Initializable {
         try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/LOGIN.fxml"));
-            Scene scene = null;
+            Scene scene;
             scene = new Scene(loader.load());
             stage.setTitle("Prison managment");
             stage.setScene(scene);

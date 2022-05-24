@@ -131,7 +131,7 @@ public class LoginController {
     }
 
     private boolean containsUsername(List<Admin> admins, String username){
-        return admins.stream().filter(o -> o.getUsername().equals(username)).findFirst().isPresent();
+        return admins.stream().anyMatch(o -> o.getUsername().equals(username));
     }
 
     private String getPasswordByUserName(List<Admin> admins, String username) {

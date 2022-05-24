@@ -4,9 +4,12 @@ package hu.unideb.inf.Controller;
 import hu.unideb.inf.model.PrisonerPac.JpaPrisonerDAO;
 import hu.unideb.inf.model.PrisonerPac.Prisoner;
 import hu.unideb.inf.model.PrisonerPac.PrisonerDAO;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.List;
@@ -38,7 +41,8 @@ public class PrisonerInfoController implements Initializable {
     @FXML
     private Label SL_label;
 
-
+    @FXML
+    private Button Close;
 
 
 
@@ -71,5 +75,11 @@ public class PrisonerInfoController implements Initializable {
         }
 
         return pr;
+    }
+
+    @FXML
+    void CloseButton(ActionEvent event) {
+        Stage stage = (Stage) Close.getScene().getWindow();
+        stage.close();
     }
 }

@@ -194,7 +194,7 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ListView fx:id="PrisonerID_list" prefHeight="473.0" prefWidth="49.0" GridPane.rowIndex="1" />
+                        <ListView fx:id="PrisonerID_list" prefHeight="473.0" prefWidth="49.0" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <Label contentDisplay="CENTER" prefHeight="35.0" prefWidth="25.0" text="ID" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                            <font>
                               <Font name="System Bold Italic" size="18.0" />
@@ -235,12 +235,12 @@
                               <Font name="System Bold Italic" size="18.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="PrisonerFN_list" prefHeight="473.0" prefWidth="107.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ListView fx:id="PrisonerSL_list" prefHeight="504.0" prefWidth="134.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                        <ListView fx:id="PrisonerRD_list" prefHeight="498.0" prefWidth="108.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <ListView fx:id="PrisonerED_list" prefHeight="498.0" prefWidth="136.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <ListView fx:id="PrisonerLN_list" prefHeight="498.0" prefWidth="91.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <ListView fx:id="PrisonerCN_list" prefHeight="498.0" prefWidth="126.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                        <ListView fx:id="PrisonerFN_list" prefHeight="473.0" prefWidth="107.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="PrisonerSL_list" prefHeight="504.0" prefWidth="134.0" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="PrisonerRD_list" prefHeight="498.0" prefWidth="108.0" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="PrisonerED_list" prefHeight="498.0" prefWidth="136.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="PrisonerLN_list" prefHeight="498.0" prefWidth="91.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="PrisonerCN_list" prefHeight="498.0" prefWidth="126.0" GridPane.columnIndex="6" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <ListView fx:id="PrisonerCrime_list" prefHeight="500.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
@@ -404,11 +404,11 @@
                               <Font name="System Bold Italic" size="24.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="Wardenid_list" prefHeight="550.0" prefWidth="129.0" GridPane.rowIndex="1" />
-                        <ListView fx:id="WardenJD_list" prefHeight="550.0" prefWidth="178.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <ListView fx:id="WardenRank_list" prefHeight="550.0" prefWidth="109.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <ListView fx:id="WardenFN_list" prefHeight="550.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ListView fx:id="WardenLN_list" prefHeight="550.0" prefWidth="155.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ListView fx:id="Wardenid_list" prefHeight="550.0" prefWidth="129.0" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="WardenJD_list" prefHeight="550.0" prefWidth="178.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="WardenRank_list" prefHeight="550.0" prefWidth="109.0" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="WardenFN_list" prefHeight="550.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="WardenLN_list" prefHeight="550.0" prefWidth="155.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <Label text="Last Name" textFill="WHITE" GridPane.columnIndex="2">
                            <font>
                               <Font name="System Bold Italic" size="24.0" />
@@ -468,9 +468,9 @@
                               <Font name="System Bold Italic" size="24.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="Username_ListView" prefHeight="340.0" prefWidth="288.0" GridPane.rowIndex="1" />
-                        <ListView fx:id="LogIn_ListView" prefHeight="315.0" prefWidth="288.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ListView fx:id="LogOut_ListView" prefHeight="367.0" prefWidth="287.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ListView fx:id="Username_ListView" prefHeight="340.0" prefWidth="288.0" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="LogIn_ListView" prefHeight="315.0" prefWidth="288.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="LogOut_ListView" prefHeight="367.0" prefWidth="287.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
                   <Label layoutX="319.0" layoutY="14.0" prefHeight="58.0" prefWidth="226.0" text="Login history" textFill="WHITE">

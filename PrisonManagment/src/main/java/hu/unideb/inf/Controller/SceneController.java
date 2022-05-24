@@ -144,7 +144,6 @@ public class SceneController implements Initializable {
     List<Integer> celnum = new ArrayList<>();
 
     WardenDAO wardenDAO = new JpaWardenDAO();
-    List<Warden> wardensforfill = new ArrayList<>(wardenDAO.getWardens());
 
     List<Integer> wardenids = new ArrayList<>();
     List<String> wardenfloors = new ArrayList<>();
@@ -165,7 +164,7 @@ public class SceneController implements Initializable {
 
 
     private boolean containsWardenID(List<Warden> wardens, int id){
-        return wardens.stream().filter(o -> o.getUnique_ID()== id).findFirst().isPresent();
+        return wardens.stream().anyMatch(o -> o.getUnique_ID()== id);
     }
 
     @FXML
@@ -802,7 +801,7 @@ public class SceneController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-        if (LoginController.isAdmin == true){
+        if (LoginController.isAdmin){
             loginStatusLabel.setText("Admin");
         }else loginStatusLabel.setText("Guest");
 

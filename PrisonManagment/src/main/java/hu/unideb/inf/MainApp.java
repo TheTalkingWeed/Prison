@@ -1,5 +1,6 @@
 package hu.unideb.inf;
 
+import javafx.scene.image.Image;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -14,9 +15,12 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        Image img = new Image("/fxml/login_icon.png");
+
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/LOGIN.fxml"));
         Scene scene = new Scene(loader.load());
-        stage.setTitle("Log in ");
+        stage.setTitle("Log in");
+        stage.getIcons().add(img);
         stage.setScene(scene);
         stage.show();
 

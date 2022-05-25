@@ -1,18 +1,14 @@
 package hu.unideb.inf.model.AdminPac;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MapKeyColumn;
+import javax.persistence.*;
 
 @Entity
 public class Admin {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String username;
     private String password;
-
 
 
     public int getId() {

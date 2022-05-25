@@ -1,5 +1,7 @@
 package hu.unideb.inf.model.AdminPac;
 
+import hu.unideb.inf.model.Prison.Prison;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -39,6 +41,13 @@ public class JpaAdminDAO implements AdminDAO{
                 "SELECT a FROM Admin a", Admin.class);
         List<Admin> admins = query.getResultList();
         return admins;
+    }
+
+    @Override
+    public void savePrison(Prison prison) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(prison);
+        entityManager.getTransaction().commit();
     }
 
     @Override

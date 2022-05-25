@@ -1,5 +1,9 @@
 package hu.unideb.inf;
 
+import hu.unideb.inf.model.AdminPac.Admin;
+import hu.unideb.inf.model.AdminPac.AdminDAO;
+import hu.unideb.inf.model.AdminPac.JpaAdminDAO;
+import hu.unideb.inf.model.Prison.Prison;
 import javafx.scene.image.Image;
 import java.io.IOException;
 import java.sql.SQLException;

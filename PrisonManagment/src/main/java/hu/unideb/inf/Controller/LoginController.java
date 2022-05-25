@@ -3,21 +3,32 @@ package hu.unideb.inf.Controller;
 import hu.unideb.inf.model.AdminPac.Admin;
 import hu.unideb.inf.model.AdminPac.AdminDAO;
 import hu.unideb.inf.model.AdminPac.JpaAdminDAO;
+import hu.unideb.inf.model.Prison.JpaPrisonDAO;
+import hu.unideb.inf.model.Prison.Prison;
+import hu.unideb.inf.model.Prison.PrisonDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
+
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
+
+
 
 
     public static boolean isAdmin;
@@ -26,6 +37,8 @@ public class LoginController {
 
     public static String loggedinuser;
 
+    @FXML
+    private ChoiceBox<Prison> PrisonChoiceBox;
 
     @FXML
     private Button loginAsGuest;
@@ -41,90 +54,110 @@ public class LoginController {
 
     Image icon = new Image("/icons/prison_icon.png");
 
+    PrisonDAO prisonDAO = new JpaPrisonDAO();
+
     @FXML
     void onLoginGuest(ActionEvent event){
         loggedinuser="Guest";
         loginttime=LocalDate.now()+" "+ LocalTime.now();
-        try {
-            isAdmin = false;
-
+        if (PrisonChoiceBox.getValue()==null){
             Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
 
-            alertwindow.setTitle("Logged in successfully");
-            alertwindow.setContentText("You logged in as Guest!");
+            alertwindow.setTitle("Warning");
+            alertwindow.setContentText("Please choose a prison to continue");
             alertwindow.showAndWait();
+        }else{
+            try {
+                isAdmin = false;
 
-            Stage stage2 = (Stage) loginAsGuest.getScene().getWindow();
-            stage2.close();
+                Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/GUI.fxml"));
-            Parent par1 =fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setResizable(false);
-            stage.setTitle("Prison management");
-            stage.getIcons().add(icon);
-            stage.setScene(new Scene(par1));
-            stage.show();
+                alertwindow.setTitle("Logged in successfully");
+                alertwindow.setContentText("You logged in as Guest!");
+                alertwindow.showAndWait();
 
-        }catch (Exception e){
-            e.printStackTrace();
+                Stage stage2 = (Stage) loginAsGuest.getScene().getWindow();
+                stage2.close();
+
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/GUI.fxml"));
+                Parent par1 =fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.setTitle("Prison management");
+                stage.getIcons().add(icon);
+                stage.setScene(new Scene(par1));
+                stage.show();
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
+
     }
 
     @FXML
     void onLogin(ActionEvent event) {
         loggedinuser=username.getText();
         loginttime=LocalDate.now()+" "+ LocalTime.now();
-        try {
-            String usernameinput = username.getText();
-            String passwordinput = password.getText();
-            AdminDAO adminDAO = new JpaAdminDAO();
-            List<Admin> admins ;
+        if (PrisonChoiceBox.getValue()==null){
+            Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
 
-            admins = adminDAO.getAdmins();
+            alertwindow.setTitle("Warning");
+            alertwindow.setContentText("Please choose a prison to continue");
+            alertwindow.showAndWait();
+        }else {
+            try {
+                String usernameinput = username.getText();
+                String passwordinput = password.getText();
+                AdminDAO adminDAO = new JpaAdminDAO();
+                List<Admin> admins ;
 
-            if(!containsUsername(admins,usernameinput))
-            {
-                Alert alertwindow = new Alert(Alert.AlertType.WARNING);
+                admins = adminDAO.getAdmins();
 
-                alertwindow.setTitle("Hibás belépés");
-                alertwindow.setContentText("Felhasználó nem található");
-                alertwindow.show();
+                if(!containsUsername(admins,usernameinput))
+                {
+                    Alert alertwindow = new Alert(Alert.AlertType.WARNING);
 
-
-
-            }else if (isValid(admins,usernameinput,passwordinput)){
-                try {
-                    isAdmin=true;
-
-                    Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
-
-                    alertwindow.setTitle("Logged in successfully");
-                    alertwindow.setContentText("You logged in as Admin!");
-                    alertwindow.showAndWait();
-
-                    Stage stage2 = (Stage) loginAsAdmin.getScene().getWindow();
-                    stage2.close();
-
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/GUI.fxml"));
-                    Parent par1 =fxmlLoader.load();
-                    Stage stage = new Stage();
-                    stage.setResizable(false);
-                    stage.setTitle("Prison management");
-                    stage.getIcons().add(icon);
-                    stage.setScene(new Scene(par1));
-                    stage.show();
+                    alertwindow.setTitle("Hibás belépés");
+                    alertwindow.setContentText("Felhasználó nem található");
+                    alertwindow.show();
 
 
-                }catch (Exception e){
-                    e.printStackTrace();
+
+                }else if (isValid(admins,usernameinput,passwordinput)){
+                    try {
+                        isAdmin=true;
+
+                        Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
+
+                        alertwindow.setTitle("Logged in successfully");
+                        alertwindow.setContentText("You logged in as Admin!");
+                        alertwindow.showAndWait();
+
+                        Stage stage2 = (Stage) loginAsAdmin.getScene().getWindow();
+                        stage2.close();
+
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/GUI.fxml"));
+                        Parent par1 =fxmlLoader.load();
+                        Stage stage = new Stage();
+                        stage.setResizable(false);
+                        stage.setTitle("Prison management");
+                        stage.getIcons().add(icon);
+                        stage.setScene(new Scene(par1));
+                        stage.show();
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                } else{
+                    System.out.println("Hibás felhasználónév vagy jelszó");
                 }
-            } else{
-                System.out.println("Hibás felhasználónév vagy jelszó");
+            } catch (Exception e){
+                e.printStackTrace();
             }
-        } catch (Exception e){
-            e.printStackTrace();
         }
+
 
 
 
@@ -151,5 +184,11 @@ public class LoginController {
         if (getPasswordByUserName(admins,username).equals(password)) return true;
 
         return false;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<Prison> prisons = new ArrayList<>(prisonDAO.getPrisons());
+        PrisonChoiceBox.getItems().addAll(prisons);
     }
 }

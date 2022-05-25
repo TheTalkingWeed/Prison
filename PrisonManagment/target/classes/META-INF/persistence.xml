@@ -10,6 +10,7 @@
         <class>hu.unideb.inf.model.WardenPac.Warden</class>
         <class>hu.unideb.inf.model.AdminPac.Admin</class>
         <class>hu.unideb.inf.model.LoginPac.Login</class>
+        <class>hu.unideb.inf.model.Prison.Prison</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>

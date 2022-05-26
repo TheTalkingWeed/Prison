@@ -15,6 +15,15 @@ public class Warden {
     private LocalDate JoinDate;
     private String rank;
     private String FloorInCharge;
+    private int prison_Id;
+
+    public int getPrisonId() {
+        return prison_Id;
+    }
+
+    public void setPrisonId(int prisonId) {
+        this.prison_Id = prisonId;
+    }
 
     public String getFloorInCharge() {
         return FloorInCharge;

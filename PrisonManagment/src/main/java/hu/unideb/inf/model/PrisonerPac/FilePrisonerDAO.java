@@ -54,6 +54,7 @@ public class FilePrisonerDAO implements PrisonerDAO {
         return prisoners;
     }
 
+
     @Override
     public void close() throws Exception {
         serialize();

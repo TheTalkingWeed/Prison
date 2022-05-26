@@ -23,7 +23,15 @@ public class Prisoner implements Serializable {
     private String securitylvl;
     private int cellnumber;
     private String crime;
+    private int prison_id;
 
+    public int getPrisonid() {
+        return prison_id;
+    }
+
+    public void setPrisonid(int prisonid) {
+        this.prison_id = prisonid;
+    }
 
     public int getCellnumber() {
         return cellnumber;

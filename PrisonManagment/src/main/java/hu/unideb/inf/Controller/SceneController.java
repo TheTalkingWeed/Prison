@@ -125,7 +125,8 @@ public class SceneController implements Initializable {
     @FXML
     private ListView<Integer> PrisonerCN_list;
 
-
+    @FXML
+    private Label selectedPrison;
 
     public static Prisoner temp = new Prisoner();
     public static Warden temp2 = new Warden();
@@ -636,8 +637,7 @@ public class SceneController implements Initializable {
     }
 
     private void FillAllListofPrisoner(){
-        PrisonerDAO pDAO = new JpaPrisonerDAO();
-        List<Prisoner> prisoners = new ArrayList<>(pDAO.getPrisoners());
+        List<Prisoner> prisoners = new ArrayList<>(getPrisonersWhere());
         clearItemListPrisoner();
         for (Prisoner p:prisoners) {
             pids.add(p.getUniqueID());
@@ -653,8 +653,7 @@ public class SceneController implements Initializable {
     }
 
     private void FillAllListofWarden(){
-        WardenDAO wDAO = new JpaWardenDAO();
-        List<Warden> wardens = new ArrayList<>(wDAO.getWardens());
+        List<Warden> wardens = new ArrayList<>(getWardensWhere());
         clearItemListWarden();
         for (Warden w:wardens) {
             wardenids.add(w.getUnique_ID());
@@ -675,7 +674,7 @@ public class SceneController implements Initializable {
         warden.setJoinDate(Warden_JD.getValue());
         warden.setRank(Warden_Rank.getValue());
         warden.setFloorInCharge(Warden_Floor.getValue());
-
+        warden.setPrisonId(LoginController.idOfSelectedPrison);
         wDAO.saveWarden(warden);
 
         WardenFN_list.getItems().add(Warden_FN.getText());
@@ -697,6 +696,7 @@ public class SceneController implements Initializable {
         prisoner.setSecuritylvl(SecLevel.getValue());
         prisoner.setCellnumber(Integer.parseInt(Cell_Number.getText()));
         prisoner.setCrime(Crime.getValue());
+        prisoner.setPrisonid(LoginController.idOfSelectedPrison);
         pDAO.savePrisoner(prisoner);
 
         PrisonerID_list.getItems().add(prisoner.getUniqueID());
@@ -809,6 +809,7 @@ public class SceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        selectedPrison.setText(LoginController.selectedPrison);
 
         if (LoginController.isAdmin){
             loginStatusLabel.setText("Admin");
@@ -888,5 +889,36 @@ public class SceneController implements Initializable {
             e.printStackTrace();
         }
 
+    }
+
+
+    public List<Prisoner> getPrisonersWhere() {
+        PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
+        List<Prisoner> prisoners;
+        prisoners = prisonerDAO.getPrisoners();
+
+        List<Prisoner> out = new ArrayList<>();
+
+        for (Prisoner p:prisoners) {
+            if (p.getPrisonid() == LoginController.idOfSelectedPrison)
+                out.add(p);
+        }
+
+        return out;
+    }
+
+    public List<Warden> getWardensWhere() {
+        WardenDAO wardenDAO = new JpaWardenDAO();
+        List<Warden> wardens;
+        wardens = wardenDAO.getWardens();
+
+        List<Warden> out = new ArrayList<>();
+
+        for (Warden w:wardens) {
+            if (w.getPrisonId() == LoginController.idOfSelectedPrison)
+                out.add(w);
+        }
+
+        return out;
     }
 }

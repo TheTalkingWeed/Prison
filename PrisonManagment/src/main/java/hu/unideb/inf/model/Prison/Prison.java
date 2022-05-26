@@ -16,50 +16,7 @@ public class Prison {
     private int id;
 
     private String prisonName;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "prison_name")
-    private List<Prisoner> prisoners = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "prison_name")
-    private List<Warden> wardens = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "prison_name")
-    private List<Login> logins = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "prison_name")
-    private List<Admin> admins = new ArrayList<>();
 
-    public List<Admin> getAdmins() {
-        return admins;
-    }
-
-    public void setAdmins(List<Admin> admins) {
-        this.admins = admins;
-    }
-
-    public List<Prisoner> getPrisoners() {
-        return prisoners;
-    }
-
-    public void setPrisoners(List<Prisoner> prisoners) {
-        this.prisoners = prisoners;
-    }
-
-    public List<Warden> getWardens() {
-        return wardens;
-    }
-
-    public void setWardens(List<Warden> wardens) {
-        this.wardens = wardens;
-    }
-
-    public List<Login> getLogins() {
-        return logins;
-    }
-
-    public void setLogins(List<Login> logins) {
-        this.logins = logins;
-    }
 
     public int getId() {
         return id;

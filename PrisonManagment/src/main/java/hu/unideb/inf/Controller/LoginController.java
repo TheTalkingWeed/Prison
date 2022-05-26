@@ -52,6 +52,10 @@ public class LoginController implements Initializable {
     @FXML
     private TextField password;
 
+    public static String selectedPrison;
+    public static int idOfSelectedPrison;
+
+
     Image icon = new Image("/icons/prison_icon.png");
 
     PrisonDAO prisonDAO = new JpaPrisonDAO();
@@ -71,7 +75,8 @@ public class LoginController implements Initializable {
                 isAdmin = false;
 
                 Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
-
+                selectedPrison = PrisonChoiceBox.getValue().toString();
+                idOfSelectedPrison = getPrisonId(selectedPrison);
                 alertwindow.setTitle("Logged in successfully");
                 alertwindow.setContentText("You logged in as Guest!");
                 alertwindow.showAndWait();
@@ -111,7 +116,8 @@ public class LoginController implements Initializable {
                 String passwordinput = password.getText();
                 AdminDAO adminDAO = new JpaAdminDAO();
                 List<Admin> admins ;
-
+                selectedPrison = PrisonChoiceBox.getValue().toString();
+                idOfSelectedPrison = getPrisonId(selectedPrison);
                 admins = adminDAO.getAdmins();
 
                 if(!containsUsername(admins,usernameinput))
@@ -190,5 +196,19 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Prison> prisons = new ArrayList<>(prisonDAO.getPrisons());
         PrisonChoiceBox.getItems().addAll(prisons);
+    }
+
+    public static int getPrisonId(String prisonName){
+        int id=0;
+
+        PrisonDAO prisonDAO = new JpaPrisonDAO();
+        List<Prison> prisons = new ArrayList<>(prisonDAO.getPrisons());
+
+        for (Prison p:prisons) {
+            if (p.getPrisonName().equals(prisonName))
+                return p.getId();
+        }
+
+        return id;
     }
 }

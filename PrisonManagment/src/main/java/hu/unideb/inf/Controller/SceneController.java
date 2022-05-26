@@ -4,6 +4,9 @@ import hu.unideb.inf.MainApp;
 import hu.unideb.inf.model.LoginPac.JpaLoginDAO;
 import hu.unideb.inf.model.LoginPac.Login;
 import hu.unideb.inf.model.LoginPac.LoginDAO;
+import hu.unideb.inf.model.Prison.JpaPrisonDAO;
+import hu.unideb.inf.model.Prison.Prison;
+import hu.unideb.inf.model.Prison.PrisonDAO;
 import hu.unideb.inf.model.PrisonerPac.JpaPrisonerDAO;
 import hu.unideb.inf.model.PrisonerPac.Prisoner;
 import hu.unideb.inf.model.PrisonerPac.PrisonerDAO;
@@ -26,11 +29,33 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 
 public class SceneController implements Initializable {
 
 
+    @FXML
+    private TextField CellNumFS;
+
+    @FXML
+    private ChoiceBox<String> CrimeFS;
+
+    @FXML
+    private DatePicker EDFieldFS;
+
+    @FXML
+    private TextField FirstNameTextFieldFS;
+
+    @FXML
+    private TextField LastNameTextFieldFS;
+
+    @FXML
+    private DatePicker RDFieldFS;
+
+    @FXML
+    private ChoiceBox<String> SecLvlFS;
 
     @FXML
     private ListView<String> LogIn_ListView;
@@ -821,13 +846,17 @@ public class SceneController implements Initializable {
         String[] rangok =   {"Guard","Small chief","Big chief"};
         List<String> crimes = new ArrayList<>(FileUtils.readCrimes("crimes.txt"));
         Warden_Rank.getItems().addAll(rangok);
-        String[] floors = {"1","2","3","4","5","6"};
+        List<String> floors = new ArrayList<>();
+        for (int i = 1; i <= getFloorByPrisonId(LoginController.selectedPrison) ; i++) {
+            floors.add(Integer.toString(i));
+        }
         Warden_Floor.getItems().addAll(floors);
 
         Crime.getItems().addAll(crimes);
+        CrimeFS.getItems().addAll(crimes);
         String[] secLevel = {"Low","Medium", "High"};
         SecLevel.getItems().addAll(secLevel);
-
+        SecLvlFS.getItems().addAll(secLevel);
         updatePrisonerListView();
         updateWardenListView();
 
@@ -891,6 +920,76 @@ public class SceneController implements Initializable {
 
     }
 
+    @FXML
+    void SearchByGivenInfo(ActionEvent event) {
+        List<Prisoner> forListView = new ArrayList<>();
+        List<Prisoner> prisoners = new ArrayList<>(getPrisonersWhere());
+
+        String FNSearch = FirstNameTextFieldFS.getText();
+        String LNSearch = LastNameTextFieldFS.getText();
+        String sname=null;
+        String pname=null;
+        if (!FNSearch.equals("") && !LNSearch.equals("")){
+            for (Prisoner p:prisoners) {
+                sname = (FNSearch+LNSearch).toLowerCase();
+                pname = (FNSearch+LNSearch).toLowerCase();
+                if (pname.equals(sname)) forListView.add(p);
+                sname = null;
+                pname = null;
+            }
+
+        }
+        if(!FNSearch.equals("") && LNSearch.equals("")){
+
+            forListView =  prisoners.stream().filter(new Predicate<Prisoner>() {
+                @Override
+                public boolean test(Prisoner prisoner) {
+                    return prisoner.getFname().equals(FNSearch);
+                }
+            }).collect(Collectors.toList());
+
+        }
+        if (!LNSearch.equals("") && FNSearch.equals("")){
+            forListView =  prisoners.stream().filter(new Predicate<Prisoner>() {
+                @Override
+                public boolean test(Prisoner prisoner) {
+                    return prisoner.getLname().equals(LNSearch);
+                }
+            }).collect(Collectors.toList());
+
+        }
+
+
+
+
+        clearListViewPrisoner();
+        clearItemListPrisoner();
+        for (Prisoner p:forListView) {
+            pids.add(p.getUniqueID());
+            fnlist.add(p.getFname());
+            lnlist.add(p.getLname());
+            rdlist.add(p.getReleasedate().toString());
+            edlist.add(p.getEntrancedate().toString());
+            crimelist.add(p.getCrime());
+            seclevellist.add(p.getSecuritylvl());
+            celnum.add(p.getCellnumber());
+        }
+        updatePrisonerListView();
+
+    }
+
+    private int getFloorByPrisonId(String prisonname){
+        int floor=0;
+
+        PrisonDAO prisonDAO = new JpaPrisonDAO();
+        List<Prison> prisons = new ArrayList<>(prisonDAO.getPrisons());
+        for (Prison p:prisons) {
+            if (p.getPrisonName().equals(prisonname)) return p.getFloorNumber();
+        }
+
+
+        return floor;
+    }
 
     public List<Prisoner> getPrisonersWhere() {
         PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
@@ -921,4 +1020,6 @@ public class SceneController implements Initializable {
 
         return out;
     }
+
+
 }

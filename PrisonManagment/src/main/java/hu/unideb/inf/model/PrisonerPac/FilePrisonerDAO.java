@@ -44,7 +44,7 @@ public class FilePrisonerDAO implements PrisonerDAO {
 
     @Override
     public void updatePrisoner(Prisoner a) {
-        prisoners.remove(a); //change the equals method of the Animal to have a proper working
+        prisoners.remove(a);
         prisoners.add(a);
         serialize();
     }

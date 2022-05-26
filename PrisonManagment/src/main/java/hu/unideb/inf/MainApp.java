@@ -1,10 +1,9 @@
 package hu.unideb.inf;
 
-import hu.unideb.inf.model.AdminPac.Admin;
-import hu.unideb.inf.model.AdminPac.AdminDAO;
-import hu.unideb.inf.model.AdminPac.JpaAdminDAO;
-import hu.unideb.inf.model.Prison.Prison;
+
 import javafx.scene.image.Image;
+
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -13,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.h2.tools.Server;
+
 
 public class MainApp extends Application {
 
@@ -32,6 +32,21 @@ public class MainApp extends Application {
 
     public static void main(String[] args) throws SQLException {
         startDatabase();
+
+      //  DataUpload.uploadPrisons();
+//        try (PrisonDAO prisonDAO = new JpaPrisonDAO();){
+//            Random rand = new Random();
+//
+//            List<Prison> temp = new ArrayList<>();
+//
+//            for (Prison p:temp) {
+//                p.setFloorNumber(rand.nextInt(10));
+//                prisonDAO.updatePrison(p);
+//            }
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+
         launch(args);
         stopDatabase();
     }

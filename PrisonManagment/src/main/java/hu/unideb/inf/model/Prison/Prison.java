@@ -14,9 +14,17 @@ public class Prison {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
     private String prisonName;
+    private int floorNumber;
 
+
+    public int getFloorNumber() {
+        return floorNumber;
+    }
+
+    public void setFloorNumber(int floorNumber) {
+        this.floorNumber = floorNumber;
+    }
 
     public int getId() {
         return id;

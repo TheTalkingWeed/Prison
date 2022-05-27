@@ -23,7 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
+import javafx.scene.control.TitledPane;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -35,27 +35,35 @@ import java.util.stream.Collectors;
 
 public class SceneController implements Initializable {
 
+    @FXML
+    private TitledPane TitledPaneFIlter;
 
     @FXML
-    private TextField CellNumFS;
+    private TextField CellNumberFilter;
 
     @FXML
-    private ChoiceBox<String> CrimeFS;
+    private ChoiceBox<String> CrimeFilter;
 
     @FXML
-    private DatePicker EDFieldFS;
+    private DatePicker EdToFilter;
 
     @FXML
-    private TextField FirstNameTextFieldFS;
+    private DatePicker EdateFromFilter;
 
     @FXML
-    private TextField LastNameTextFieldFS;
+    private TextField FirstNameFilter;
 
     @FXML
-    private DatePicker RDFieldFS;
+    private TextField LastNameFilter;
 
     @FXML
-    private ChoiceBox<String> SecLvlFS;
+    private DatePicker RdateFromFilter;
+
+    @FXML
+    private DatePicker RdateToFilter;
+
+    @FXML
+    private ChoiceBox<String> SecLvlFilter;
 
     @FXML
     private ListView<String> LogIn_ListView;
@@ -853,10 +861,12 @@ public class SceneController implements Initializable {
         Warden_Floor.getItems().addAll(floors);
 
         Crime.getItems().addAll(crimes);
-        CrimeFS.getItems().addAll(crimes);
+        CrimeFilter.getItems().addAll(crimes);
+
         String[] secLevel = {"Low","Medium", "High"};
         SecLevel.getItems().addAll(secLevel);
-        SecLvlFS.getItems().addAll(secLevel);
+        SecLvlFilter.getItems().addAll(secLevel);
+
         updatePrisonerListView();
         updateWardenListView();
 
@@ -925,20 +935,11 @@ public class SceneController implements Initializable {
         List<Prisoner> forListView = new ArrayList<>();
         List<Prisoner> prisoners = new ArrayList<>(getPrisonersWhere());
 
-        String FNSearch = FirstNameTextFieldFS.getText();
-        String LNSearch = LastNameTextFieldFS.getText();
+        String FNSearch = FirstNameFilter.getText();
+        String LNSearch = LastNameFilter.getText();
         String sname=null;
         String pname=null;
-        if (!FNSearch.equals("") && !LNSearch.equals("")){
-            for (Prisoner p:prisoners) {
-                sname = (FNSearch+LNSearch).toLowerCase();
-                pname = (FNSearch+LNSearch).toLowerCase();
-                if (pname.equals(sname)) forListView.add(p);
-                sname = null;
-                pname = null;
-            }
 
-        }
         if(!FNSearch.equals("") && LNSearch.equals("")){
 
             forListView =  prisoners.stream().filter(new Predicate<Prisoner>() {
@@ -958,10 +959,20 @@ public class SceneController implements Initializable {
             }).collect(Collectors.toList());
 
         }
+        // Entrance date filterin
+
+        // Release date filtering
+
+        //Sec lvl filtering
+
+        //Cell num filtering
+
+        //Crime filtering
 
 
 
 
+        TitledPaneFIlter.setExpanded(false);
         clearListViewPrisoner();
         clearItemListPrisoner();
         for (Prisoner p:forListView) {

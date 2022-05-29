@@ -37,55 +37,38 @@ public class SceneController implements Initializable {
 
     @FXML
     private TitledPane TitledPaneFIlter;
-
     @FXML
     private TextField CellNumberFilter;
-
     @FXML
     private ChoiceBox<String> CrimeFilter;
-
     @FXML
     private DatePicker EdToFilter;
-
     @FXML
     private DatePicker EdateFromFilter;
-
     @FXML
     private TextField FirstNameFilter;
-
     @FXML
     private TextField LastNameFilter;
-
     @FXML
     private DatePicker RdateFromFilter;
-
     @FXML
     private DatePicker RdateToFilter;
-
     @FXML
     private ChoiceBox<String> SecLvlFilter;
-
     @FXML
     private ListView<String> LogIn_ListView;
-
     @FXML
     private ListView<String> LogOut_ListView;
-
     @FXML
     private ListView<String> Username_ListView;
-
     @FXML
     private Label loginStatusLabel;
-
     @FXML
     private TextField PrisonerID;
-
     @FXML
     private TextField Prisoner_FN;
-
     @FXML
     private TextField Prisoner_LN;
-
     @FXML
     private DatePicker EntranceDate;
     @FXML
@@ -94,70 +77,48 @@ public class SceneController implements Initializable {
     private DatePicker ReleaseDate;
     @FXML
     private TextField Cell_Number;
-
     @FXML
     private ChoiceBox<String> Crime;
-
     @FXML
     private TextField WardenID;
-
     @FXML
     private TextField Warden_FN;
-
     @FXML
     private ChoiceBox<String> Warden_Floor;
-
     @FXML
     private DatePicker Warden_JD;
-
     @FXML
     private TextField Warden_LN;
     @FXML
     private ChoiceBox<String> Warden_Rank;
-
     @FXML
     private ListView<String> WardenFN_list;
-
     @FXML
     private ListView<String> WardenFloor_list;
-
     @FXML
     private ListView<Integer> Wardenid_list;
-
     @FXML
     private ListView<String> WardenJD_list;
-
     @FXML
     private ListView<String> WardenLN_list;
-
     @FXML
     private ListView<String> WardenRank_list;
-
     @FXML
     private ListView<Integer> PrisonerID_list;
-
-
     @FXML
     private ListView<String> PrisonerLN_list;
-
     @FXML
     private ListView<String> PrisonerRD_list;
-
     @FXML
     private ListView<String> PrisonerSL_list;
-
     @FXML
     private ListView<String> PrisonerCrime_list;
-
     @FXML
     private ListView<String> PrisonerED_list;
-
     @FXML
     private ListView<String> PrisonerFN_list;
-
     @FXML
     private ListView<Integer> PrisonerCN_list;
-
     @FXML
     private Label selectedPrison;
 
@@ -932,42 +893,115 @@ public class SceneController implements Initializable {
 
     @FXML
     void SearchByGivenInfo(ActionEvent event) {
-        List<Prisoner> forListView = new ArrayList<>();
+
         List<Prisoner> prisoners = new ArrayList<>(getPrisonersWhere());
 
-        String FNSearch = FirstNameFilter.getText();
-        String LNSearch = LastNameFilter.getText();
-        String sname=null;
-        String pname=null;
+        //First name filtering
+        if(!"".equals(FirstNameFilter.getText())){
 
-        if(!FNSearch.equals("") && LNSearch.equals("")){
 
-            forListView =  prisoners.stream().filter(new Predicate<Prisoner>() {
+            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
-                    return prisoner.getFname().equals(FNSearch);
+                    return prisoner.getFname().equals(FirstNameFilter.getText());
                 }
             }).collect(Collectors.toList());
-
+            System.out.println("first");
         }
-        if (!LNSearch.equals("") && FNSearch.equals("")){
-            forListView =  prisoners.stream().filter(new Predicate<Prisoner>() {
+        //First name filtering
+        if (!"".equals(LastNameFilter.getText())){
+
+            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
-                    return prisoner.getLname().equals(LNSearch);
+                    return prisoner.getLname().equals(LastNameFilter.getText());
                 }
             }).collect(Collectors.toList());
-
+            System.out.println("last");
         }
-        // Entrance date filterin
+        // Entrance date filtering
+        if (EdateFromFilter.getValue() != null){
 
+            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+                @Override
+                public boolean test(Prisoner prisoner) {
+                    return prisoner.getEntrancedate().isAfter(EdateFromFilter.getValue());
+                }
+            }).collect(Collectors.toList());
+            System.out.println("edfrom");
+        }
+
+        if (EdToFilter.getValue() != null){
+
+            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+                @Override
+                public boolean test(Prisoner prisoner) {
+                    return prisoner.getEntrancedate().isBefore(EdToFilter.getValue());
+                }
+            }).collect(Collectors.toList());
+            System.out.println("edto");
+        }
         // Release date filtering
+        if (RdateFromFilter.getValue() != null){
 
+            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+                @Override
+                public boolean test(Prisoner prisoner) {
+                    return prisoner.getReleasedate().isAfter(RdateFromFilter.getValue());
+                }
+            }).collect(Collectors.toList());
+            System.out.println("rdfrom");
+        }
+
+        if (RdateToFilter.getValue() != null){
+
+            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+                @Override
+                public boolean test(Prisoner prisoner) {
+                    return prisoner.getReleasedate().isBefore(RdateToFilter.getValue());
+                }
+            }).collect(Collectors.toList());
+            System.out.println("rdto");
+        }
         //Sec lvl filtering
 
+        if (SecLvlFilter.getValue() != null){
+
+            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+                @Override
+                public boolean test(Prisoner prisoner) {
+                    return prisoner.getSecuritylvl().equals(SecLvlFilter.getValue());
+                }
+            }).collect(Collectors.toList());
+            System.out.println("seclvl");
+        }
         //Cell num filtering
 
+        if (!"".equals(CellNumberFilter.getText())){
+            List<Prisoner> prefiltered = prisoners.stream().filter(new Predicate<Prisoner>() {
+                @Override
+                public boolean test(Prisoner prisoner) {
+                    return prisoner.getCellnumber() == Integer.parseInt(CellNumberFilter.getText());
+                }
+            }).collect(Collectors.toList());
+            System.out.println("cellnum");
+
+            prisoners = prefiltered;
+        }
+
+
+
         //Crime filtering
+        if (CrimeFilter.getValue() != null){
+
+            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+                @Override
+                public boolean test(Prisoner prisoner) {
+                    return prisoner.getCrime().equals(CrimeFilter.getValue());
+                }
+            }).collect(Collectors.toList());
+            System.out.println("crime");
+        }
 
 
 
@@ -975,7 +1009,7 @@ public class SceneController implements Initializable {
         TitledPaneFIlter.setExpanded(false);
         clearListViewPrisoner();
         clearItemListPrisoner();
-        for (Prisoner p:forListView) {
+        for (Prisoner p: prisoners) {
             pids.add(p.getUniqueID());
             fnlist.add(p.getFname());
             lnlist.add(p.getLname());
@@ -1033,4 +1067,28 @@ public class SceneController implements Initializable {
     }
 
 
+
+    @FXML
+    void ListReset(ActionEvent event) {
+        TitledPaneFIlter.setExpanded(false);
+        clearListViewPrisoner();
+        clearItemListPrisoner();
+        FillAllListofPrisoner();
+        updatePrisonerListView();
+
+    }
+    
+    @FXML
+    public void ClearFilterSearch(ActionEvent event) {
+         CellNumberFilter.setText("");
+         CrimeFilter.setValue(null);
+         EdToFilter.setValue(null);
+         EdateFromFilter.setValue(null);
+         FirstNameFilter.setText("");
+         LastNameFilter.setText("");
+         RdateFromFilter.setValue(null);
+         RdateToFilter.setValue(null);
+         SecLvlFilter.setValue(null);
+
+    }
 }

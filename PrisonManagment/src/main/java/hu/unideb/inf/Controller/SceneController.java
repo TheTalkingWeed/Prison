@@ -180,12 +180,6 @@ public class SceneController implements Initializable {
     public static int wardenIdforSearch;
 
 
-
-
-    private boolean containsWardenID(List<Warden> wardens, int id){
-        return wardens.stream().anyMatch(o -> o.getUnique_ID()== id);
-    }
-
     @FXML
     void AdminRegister(ActionEvent event){
         if (LoginController.isAdmin){
@@ -652,232 +646,6 @@ public class SceneController implements Initializable {
         }
     }
 
-    private void FillAllListofPrisoner(){
-        List<Prisoner> prisoners = new ArrayList<>(getPrisonersWhere());
-        clearItemListPrisoner();
-        for (Prisoner p:prisoners) {
-            pids.add(p.getUniqueID());
-            fnlist.add(p.getFname());
-            lnlist.add(p.getLname());
-            rdlist.add(p.getReleasedate().toString());
-            edlist.add(p.getEntrancedate().toString());
-            crimelist.add(p.getCrime());
-            seclevellist.add(p.getSecuritylvl());
-            celnum.add(p.getCellnumber());
-        }
-
-    }
-
-    private void FillAllListofWarden(){
-        List<Warden> wardens = new ArrayList<>(getWardensWhere());
-        clearItemListWarden();
-        for (Warden w:wardens) {
-            wardenids.add(w.getUnique_ID());
-            wardenfloors.add(w.getFloorInCharge());
-            wardenlns.add(w.getLname());
-            wardenfns.add(w.getFname());
-            wardenjds.add(w.getJoinDate().toString());
-            wardenranks.add(w.getRank());
-        }
-    }
-
-    private void handleWardeData(WardenDAO wDAO){
-        Warden warden = new Warden();
-
-        warden.setUnique_ID(Integer.parseInt(WardenID.getText()));
-        warden.setFname(Warden_FN.getText());
-        warden.setLname(Warden_LN.getText());
-        warden.setJoinDate(Warden_JD.getValue());
-        warden.setRank(Warden_Rank.getValue());
-        warden.setFloorInCharge(Warden_Floor.getValue());
-        warden.setPrisonId(LoginController.idOfSelectedPrison);
-        wDAO.saveWarden(warden);
-
-        WardenFN_list.getItems().add(Warden_FN.getText());
-        WardenFloor_list.getItems().add(Warden_Floor.getValue());
-        Wardenid_list.getItems().add(Integer.parseInt(WardenID.getText()));
-        WardenJD_list.getItems().add(Warden_JD.getValue().toString());
-        WardenLN_list.getItems().add(Warden_LN.getText());
-        WardenRank_list.getItems().add(Warden_Rank.getValue());
-
-    }
-
-    private void handlePrisonerData(PrisonerDAO pDAO){
-        Prisoner prisoner = new Prisoner();
-        prisoner.setUniqueID(Integer.parseInt(PrisonerID.getText()));
-        prisoner.setFname(Prisoner_FN.getText());
-        prisoner.setLname(Prisoner_LN.getText());
-        prisoner.setEntrancedate(EntranceDate.getValue());
-        prisoner.setReleasedate(ReleaseDate.getValue());
-        prisoner.setSecuritylvl(SecLevel.getValue());
-        prisoner.setCellnumber(Integer.parseInt(Cell_Number.getText()));
-        prisoner.setCrime(Crime.getValue());
-        prisoner.setPrisonid(LoginController.idOfSelectedPrison);
-        pDAO.savePrisoner(prisoner);
-
-        PrisonerID_list.getItems().add(prisoner.getUniqueID());
-        PrisonerRD_list.getItems().add(prisoner.getReleasedate().toString());
-        PrisonerSL_list.getItems().add(prisoner.getSecuritylvl());
-        PrisonerLN_list.getItems().add(prisoner.getLname());
-        PrisonerCrime_list.getItems().add(prisoner.getCrime());
-        PrisonerED_list.getItems().add(prisoner.getEntrancedate().toString());
-        PrisonerFN_list.getItems().add(prisoner.getFname());
-        PrisonerCN_list.getItems().add(prisoner.getCellnumber());
-    }
-
-    private void clearWardenInputs(){
-        WardenID.clear();
-        Warden_FN.clear();
-        Warden_LN.clear();
-        Warden_JD.setValue(null);
-        Warden_Floor.setValue(null);
-        Warden_Rank.setValue(null);
-    }
-
-    private void clearPrisonerInput(){
-        PrisonerID.clear();
-        Prisoner_FN.clear();
-        Prisoner_LN.clear();
-        EntranceDate.setValue(null);
-        ReleaseDate.setValue(null);
-        SecLevel.setValue(null);
-        Crime.setValue(null);
-        Cell_Number.clear();
-    }
-
-    private void clearListViewPrisoner(){
-
-        PrisonerID_list.getItems().clear();
-        PrisonerRD_list.getItems().clear();
-        PrisonerSL_list.getItems().clear();
-        PrisonerLN_list.getItems().clear();
-        PrisonerCrime_list.getItems().clear();
-        PrisonerED_list.getItems().clear();
-        PrisonerFN_list.getItems().clear();
-        PrisonerCN_list.getItems().clear();
-
-
-    }
-
-    private void clearItemListPrisoner(){
-        pids.clear();
-        fnlist.clear();
-        lnlist.clear();
-        rdlist.clear();
-        edlist.clear();
-        crimelist.clear();
-        seclevellist.clear();
-        celnum.clear();
-    }
-
-    private void updatePrisonerListView(){
-        PrisonerID_list.getItems().addAll(pids);
-        PrisonerRD_list.getItems().addAll(rdlist);
-        PrisonerSL_list.getItems().addAll(seclevellist);
-        PrisonerLN_list.getItems().addAll(lnlist);
-        PrisonerCrime_list.getItems().addAll(crimelist);
-        PrisonerED_list.getItems().addAll(edlist);
-        PrisonerFN_list.getItems().addAll(fnlist);
-        PrisonerCN_list.getItems().addAll(celnum);
-    }
-
-    private void clearListViewWarden(){
-
-        WardenFN_list.getItems().clear();
-        WardenFloor_list.getItems().clear();
-        Wardenid_list.getItems().clear();
-        WardenJD_list.getItems().clear();
-        WardenLN_list.getItems().clear();
-        WardenRank_list.getItems().clear();
-
-
-    }
-
-    private void clearItemListWarden(){
-        wardenids.clear();
-        wardenfloors.clear();
-        wardenlns.clear();
-        wardenfns.clear();
-        wardenjds.clear();
-        wardenranks.clear();
-    }
-
-    private void updateWardenListView(){
-        WardenFN_list.getItems().addAll(wardenfns);
-        WardenFloor_list.getItems().addAll(wardenfloors);
-        Wardenid_list.getItems().addAll(wardenids);
-        WardenJD_list.getItems().addAll(wardenjds);
-        WardenLN_list.getItems().addAll(wardenlns);
-        WardenRank_list.getItems().addAll(wardenranks);
-    }
-
-    private boolean isString(String str){
-        String abc = "qwertzuiopőúóüöűáélkjhgfdsaíyxcvbnm";
-        for (int i = 0; i < str.length(); i++) {
-            if (abc.contains(Character.toString(str.charAt(i)))){
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-
-        fc.setInitialDirectory(new File("C:\\"));
-
-        selectedPrison.setText(LoginController.selectedPrison);
-
-        if (LoginController.isAdmin){
-            loginStatusLabel.setText("Admin");
-        }else loginStatusLabel.setText("Guest");
-
-        FillAllListofWarden();
-        FillAllListofPrisoner();
-
-        String[] rangok =   {"Guard","Small chief","Big chief"};
-        List<String> crimes = new ArrayList<>(FileUtils.readCrimes("crimes.txt"));
-        Warden_Rank.getItems().addAll(rangok);
-        RankFilter.getItems().addAll(rangok);
-        List<String> floors = new ArrayList<>();
-        for (int i = 1; i <= getFloorByPrisonId(LoginController.selectedPrison) ; i++) {
-            floors.add(Integer.toString(i));
-        }
-        Warden_Floor.getItems().addAll(floors);
-        FloorFilter.getItems().addAll(floors);
-
-        Crime.getItems().addAll(crimes);
-        CrimeFilter.getItems().addAll(crimes);
-
-        String[] secLevel = {"Low","Medium", "High"};
-        SecLevel.getItems().addAll(secLevel);
-        SecLvlFilter.getItems().addAll(secLevel);
-
-        updatePrisonerListView();
-        updateWardenListView();
-
-        List<Login> logins = new ArrayList<>(loginDAO.getLogins());
-
-        List<String> usernames = new ArrayList<>();
-        List<String> logInTime = new ArrayList<>();
-        List<String> logOutTime = new ArrayList<>();
-
-        for (Login l:logins) {
-            usernames.add(l.getUsername());
-            logInTime.add(l.getLogin());
-            logOutTime.add(l.getLogout());
-        }
-
-        Username_ListView.getItems().addAll(usernames);
-        LogIn_ListView.getItems().addAll(logInTime);
-        LogOut_ListView.getItems().addAll(logOutTime);
-
-
-    }
-
     @FXML
     void ListsRefresh(ActionEvent event) {
         clearListViewWarden();
@@ -1070,54 +838,6 @@ public class SceneController implements Initializable {
 
     }
 
-    private void saveFile(String filename){
-        if (forExceloutput.isEmpty()) forExceloutput = getPrisonersWhere();
-        FileUtils.creatPrisonerExcelFile(forExceloutput,filename);
-    }
-
-    private int getFloorByPrisonId(String prisonname){
-        int floor=0;
-
-        PrisonDAO prisonDAO = new JpaPrisonDAO();
-        List<Prison> prisons = new ArrayList<>(prisonDAO.getPrisons());
-        for (Prison p:prisons) {
-            if (p.getPrisonName().equals(prisonname)) return p.getFloorNumber();
-        }
-
-
-        return floor;
-    }
-
-    public List<Prisoner> getPrisonersWhere() {
-        PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
-        List<Prisoner> prisoners;
-        prisoners = prisonerDAO.getPrisoners();
-
-        List<Prisoner> out = new ArrayList<>();
-
-        for (Prisoner p:prisoners) {
-            if (p.getPrisonid() == LoginController.idOfSelectedPrison)
-                out.add(p);
-        }
-
-        return out;
-    }
-
-    public List<Warden> getWardensWhere() {
-        WardenDAO wardenDAO = new JpaWardenDAO();
-        List<Warden> wardens;
-        wardens = wardenDAO.getWardens();
-
-        List<Warden> out = new ArrayList<>();
-
-        for (Warden w:wardens) {
-            if (w.getPrisonId() == LoginController.idOfSelectedPrison)
-                out.add(w);
-        }
-
-        return out;
-    }
-
     @FXML
     void ListReset(ActionEvent event) {
         TitledPaneFIlter.setExpanded(false);
@@ -1229,6 +949,17 @@ public class SceneController implements Initializable {
 
     @FXML
     public void WardenMakeExcelFile(ActionEvent event) {
+        File file = fc.showSaveDialog(new Stage());
+
+        if (file != null){
+            saveWardenFile(file.getAbsolutePath());
+        }
+
+        Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
+
+        alertwindow.setTitle("Information");
+        alertwindow.setContentText("The file was succesfully saved");
+        alertwindow.showAndWait();
     }
 
     @FXML
@@ -1239,5 +970,287 @@ public class SceneController implements Initializable {
           JoinBeforeDate.setValue(null);
           RankFilter.setValue(null);
           FloorFilter.setValue(null);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+
+        fc.setInitialDirectory(new File("C:\\"));
+
+        selectedPrison.setText(LoginController.selectedPrison);
+
+        if (LoginController.isAdmin){
+            loginStatusLabel.setText("Admin");
+        }else loginStatusLabel.setText("Guest");
+
+        FillAllListofWarden();
+        FillAllListofPrisoner();
+
+        String[] rangok =   {"Guard","Small chief","Big chief"};
+        List<String> crimes = new ArrayList<>(FileUtils.readCrimes("crimes.txt"));
+        Warden_Rank.getItems().addAll(rangok);
+        RankFilter.getItems().addAll(rangok);
+        List<String> floors = new ArrayList<>();
+        for (int i = 1; i <= getFloorByPrisonId(LoginController.selectedPrison) ; i++) {
+            floors.add(Integer.toString(i));
+        }
+        Warden_Floor.getItems().addAll(floors);
+        FloorFilter.getItems().addAll(floors);
+
+        Crime.getItems().addAll(crimes);
+        CrimeFilter.getItems().addAll(crimes);
+
+        String[] secLevel = {"Low","Medium", "High"};
+        SecLevel.getItems().addAll(secLevel);
+        SecLvlFilter.getItems().addAll(secLevel);
+
+        updatePrisonerListView();
+        updateWardenListView();
+
+        List<Login> logins = new ArrayList<>(loginDAO.getLogins());
+
+        List<String> usernames = new ArrayList<>();
+        List<String> logInTime = new ArrayList<>();
+        List<String> logOutTime = new ArrayList<>();
+
+        for (Login l:logins) {
+            usernames.add(l.getUsername());
+            logInTime.add(l.getLogin());
+            logOutTime.add(l.getLogout());
+        }
+
+        Username_ListView.getItems().addAll(usernames);
+        LogIn_ListView.getItems().addAll(logInTime);
+        LogOut_ListView.getItems().addAll(logOutTime);
+
+
+    }
+
+    private void saveFile(String filename){
+        if (forExceloutput.isEmpty()) forExceloutput = getPrisonersWhere();
+        FileUtils.creatPrisonerExcelFile(forExceloutput,filename);
+    }
+
+    private void saveWardenFile(String filename){
+        if (WardensforExcelOutput.isEmpty()) WardensforExcelOutput = getWardensWhere();
+        FileUtils.creatWardenExcelFile(WardensforExcelOutput,filename);
+    }
+
+    private int getFloorByPrisonId(String prisonname){
+        int floor=0;
+
+        PrisonDAO prisonDAO = new JpaPrisonDAO();
+        List<Prison> prisons = new ArrayList<>(prisonDAO.getPrisons());
+        for (Prison p:prisons) {
+            if (p.getPrisonName().equals(prisonname)) return p.getFloorNumber();
+        }
+
+
+        return floor;
+    }
+
+    public List<Prisoner> getPrisonersWhere() {
+        PrisonerDAO prisonerDAO = new JpaPrisonerDAO();
+        List<Prisoner> prisoners;
+        prisoners = prisonerDAO.getPrisoners();
+
+        List<Prisoner> out = new ArrayList<>();
+
+        for (Prisoner p:prisoners) {
+            if (p.getPrisonid() == LoginController.idOfSelectedPrison)
+                out.add(p);
+        }
+
+        return out;
+    }
+
+    public List<Warden> getWardensWhere() {
+        WardenDAO wardenDAO = new JpaWardenDAO();
+        List<Warden> wardens;
+        wardens = wardenDAO.getWardens();
+
+        List<Warden> out = new ArrayList<>();
+
+        for (Warden w:wardens) {
+            if (w.getPrisonId() == LoginController.idOfSelectedPrison)
+                out.add(w);
+        }
+
+        return out;
+    }
+
+    private void FillAllListofPrisoner(){
+        List<Prisoner> prisoners = new ArrayList<>(getPrisonersWhere());
+        clearItemListPrisoner();
+        for (Prisoner p:prisoners) {
+            pids.add(p.getUniqueID());
+            fnlist.add(p.getFname());
+            lnlist.add(p.getLname());
+            rdlist.add(p.getReleasedate().toString());
+            edlist.add(p.getEntrancedate().toString());
+            crimelist.add(p.getCrime());
+            seclevellist.add(p.getSecuritylvl());
+            celnum.add(p.getCellnumber());
+        }
+
+    }
+
+    private void FillAllListofWarden(){
+        List<Warden> wardens = new ArrayList<>(getWardensWhere());
+        clearItemListWarden();
+        for (Warden w:wardens) {
+            wardenids.add(w.getUnique_ID());
+            wardenfloors.add(w.getFloorInCharge());
+            wardenlns.add(w.getLname());
+            wardenfns.add(w.getFname());
+            wardenjds.add(w.getJoinDate().toString());
+            wardenranks.add(w.getRank());
+        }
+    }
+
+    private void handleWardeData(WardenDAO wDAO){
+        Warden warden = new Warden();
+
+        warden.setUnique_ID(Integer.parseInt(WardenID.getText()));
+        warden.setFname(Warden_FN.getText());
+        warden.setLname(Warden_LN.getText());
+        warden.setJoinDate(Warden_JD.getValue());
+        warden.setRank(Warden_Rank.getValue());
+        warden.setFloorInCharge(Warden_Floor.getValue());
+        warden.setPrisonId(LoginController.idOfSelectedPrison);
+        wDAO.saveWarden(warden);
+
+        WardenFN_list.getItems().add(Warden_FN.getText());
+        WardenFloor_list.getItems().add(Warden_Floor.getValue());
+        Wardenid_list.getItems().add(Integer.parseInt(WardenID.getText()));
+        WardenJD_list.getItems().add(Warden_JD.getValue().toString());
+        WardenLN_list.getItems().add(Warden_LN.getText());
+        WardenRank_list.getItems().add(Warden_Rank.getValue());
+
+    }
+
+    private void handlePrisonerData(PrisonerDAO pDAO){
+        Prisoner prisoner = new Prisoner();
+        prisoner.setUniqueID(Integer.parseInt(PrisonerID.getText()));
+        prisoner.setFname(Prisoner_FN.getText());
+        prisoner.setLname(Prisoner_LN.getText());
+        prisoner.setEntrancedate(EntranceDate.getValue());
+        prisoner.setReleasedate(ReleaseDate.getValue());
+        prisoner.setSecuritylvl(SecLevel.getValue());
+        prisoner.setCellnumber(Integer.parseInt(Cell_Number.getText()));
+        prisoner.setCrime(Crime.getValue());
+        prisoner.setPrisonid(LoginController.idOfSelectedPrison);
+        pDAO.savePrisoner(prisoner);
+
+        PrisonerID_list.getItems().add(prisoner.getUniqueID());
+        PrisonerRD_list.getItems().add(prisoner.getReleasedate().toString());
+        PrisonerSL_list.getItems().add(prisoner.getSecuritylvl());
+        PrisonerLN_list.getItems().add(prisoner.getLname());
+        PrisonerCrime_list.getItems().add(prisoner.getCrime());
+        PrisonerED_list.getItems().add(prisoner.getEntrancedate().toString());
+        PrisonerFN_list.getItems().add(prisoner.getFname());
+        PrisonerCN_list.getItems().add(prisoner.getCellnumber());
+    }
+
+    private void clearWardenInputs(){
+        WardenID.clear();
+        Warden_FN.clear();
+        Warden_LN.clear();
+        Warden_JD.setValue(null);
+        Warden_Floor.setValue(null);
+        Warden_Rank.setValue(null);
+    }
+
+    private void clearPrisonerInput(){
+        PrisonerID.clear();
+        Prisoner_FN.clear();
+        Prisoner_LN.clear();
+        EntranceDate.setValue(null);
+        ReleaseDate.setValue(null);
+        SecLevel.setValue(null);
+        Crime.setValue(null);
+        Cell_Number.clear();
+    }
+
+    private void clearListViewPrisoner(){
+
+        PrisonerID_list.getItems().clear();
+        PrisonerRD_list.getItems().clear();
+        PrisonerSL_list.getItems().clear();
+        PrisonerLN_list.getItems().clear();
+        PrisonerCrime_list.getItems().clear();
+        PrisonerED_list.getItems().clear();
+        PrisonerFN_list.getItems().clear();
+        PrisonerCN_list.getItems().clear();
+
+
+    }
+
+    private void clearItemListPrisoner(){
+        pids.clear();
+        fnlist.clear();
+        lnlist.clear();
+        rdlist.clear();
+        edlist.clear();
+        crimelist.clear();
+        seclevellist.clear();
+        celnum.clear();
+    }
+
+    private void updatePrisonerListView(){
+        PrisonerID_list.getItems().addAll(pids);
+        PrisonerRD_list.getItems().addAll(rdlist);
+        PrisonerSL_list.getItems().addAll(seclevellist);
+        PrisonerLN_list.getItems().addAll(lnlist);
+        PrisonerCrime_list.getItems().addAll(crimelist);
+        PrisonerED_list.getItems().addAll(edlist);
+        PrisonerFN_list.getItems().addAll(fnlist);
+        PrisonerCN_list.getItems().addAll(celnum);
+    }
+
+    private void clearListViewWarden(){
+
+        WardenFN_list.getItems().clear();
+        WardenFloor_list.getItems().clear();
+        Wardenid_list.getItems().clear();
+        WardenJD_list.getItems().clear();
+        WardenLN_list.getItems().clear();
+        WardenRank_list.getItems().clear();
+
+
+    }
+
+    private void clearItemListWarden(){
+        wardenids.clear();
+        wardenfloors.clear();
+        wardenlns.clear();
+        wardenfns.clear();
+        wardenjds.clear();
+        wardenranks.clear();
+    }
+
+    private void updateWardenListView(){
+        WardenFN_list.getItems().addAll(wardenfns);
+        WardenFloor_list.getItems().addAll(wardenfloors);
+        Wardenid_list.getItems().addAll(wardenids);
+        WardenJD_list.getItems().addAll(wardenjds);
+        WardenLN_list.getItems().addAll(wardenlns);
+        WardenRank_list.getItems().addAll(wardenranks);
+    }
+
+    private boolean isString(String str){
+        String abc = "qwertzuiopőúóüöűáélkjhgfdsaíyxcvbnm";
+        for (int i = 0; i < str.length(); i++) {
+            if (abc.contains(Character.toString(str.charAt(i)))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean containsWardenID(List<Warden> wardens, int id){
+        return wardens.stream().anyMatch(o -> o.getUnique_ID()== id);
     }
 }

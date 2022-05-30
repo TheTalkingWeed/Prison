@@ -1,6 +1,7 @@
 package hu.unideb.inf.model.Utils;
 
 import hu.unideb.inf.model.PrisonerPac.Prisoner;
+import hu.unideb.inf.model.WardenPac.Warden;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -87,7 +88,7 @@ public class FileUtils {
                 sh.autoSizeColumn(i);
             }
 
-            FileOutputStream fout = new FileOutputStream(filename);
+            FileOutputStream fout = new FileOutputStream(filename+".xlsx");
             wb.write(fout);
             fout.close();
             wb.close();
@@ -96,4 +97,64 @@ public class FileUtils {
             e.printStackTrace();
         }
     }
+
+    public static void creatWardenExcelFile(List<Warden> wardens,String filename){
+        try{
+            Workbook wb = new XSSFWorkbook();
+            Sheet sh = wb.createSheet("Queried wardens");
+
+
+            String[] columnNames = {"UniqueID","First name","Last name",
+                    "Join date","Rank","Floor in charge"};
+
+            Font hfont = wb.createFont();
+            hfont.setBold(true);
+            hfont.setFontHeightInPoints((short)12);
+            hfont.setColor(IndexedColors.BLACK.index);
+
+            CellStyle hStyle = wb.createCellStyle();
+            hStyle.setFont(hfont);
+            hStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+            hStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.index);
+
+            Row hRow = sh.createRow(0);
+
+            for (int i = 0; i < columnNames.length; i++) {
+                Cell cell = hRow.createCell(i);
+                cell.setCellValue(columnNames[i]);
+                cell.setCellStyle(hStyle);
+            }
+
+            CreationHelper  ch = wb.getCreationHelper();
+            CellStyle dataStyle = wb.createCellStyle();
+            dataStyle.setDataFormat(ch.createDataFormat().getFormat("yyyy/MM/dd"));
+
+            int rowindex = 1;
+            for (Warden w:wardens) {
+                Row row = sh.createRow(rowindex++);
+                row.createCell(0).setCellValue(w.getUnique_ID());
+                row.createCell(1).setCellValue(w.getFname());
+                row.createCell(2).setCellValue(w.getLname());
+                Cell edate = row.createCell(3);
+                edate.setCellValue(w.getJoinDate());
+                edate.setCellStyle(dataStyle);
+                row.createCell(4).setCellValue(w.getRank());
+                row.createCell(5).setCellValue(w.getFloorInCharge());
+
+            }
+
+            for (int i = 0; i < columnNames.length; i++) {
+                sh.autoSizeColumn(i);
+            }
+
+            FileOutputStream fout = new FileOutputStream(filename+".xlsx");
+            wb.write(fout);
+            fout.close();
+            wb.close();
+
+        }catch (Exception e){
+
+        }
+    }
+
 }

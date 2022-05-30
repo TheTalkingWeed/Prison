@@ -124,6 +124,19 @@ public class SceneController implements Initializable {
     private ListView<Integer> PrisonerCN_list;
     @FXML
     private Label selectedPrison;
+    @FXML
+    private TextField FNWardenfilter;
+    @FXML
+    private TextField LNWardenfilter;
+    @FXML
+    private DatePicker JoinAfterDate;
+    @FXML
+    private DatePicker JoinBeforeDate;
+    @FXML
+    private ChoiceBox<String> RankFilter;
+    @FXML
+    private ChoiceBox<String> FloorFilter;
+
 
     public static Prisoner temp = new Prisoner();
     public static Warden temp2 = new Warden();
@@ -810,6 +823,8 @@ public class SceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
+
         fc.setInitialDirectory(new File("C:\\"));
 
         selectedPrison.setText(LoginController.selectedPrison);
@@ -824,11 +839,13 @@ public class SceneController implements Initializable {
         String[] rangok =   {"Guard","Small chief","Big chief"};
         List<String> crimes = new ArrayList<>(FileUtils.readCrimes("crimes.txt"));
         Warden_Rank.getItems().addAll(rangok);
+        RankFilter.getItems().addAll(rangok);
         List<String> floors = new ArrayList<>();
         for (int i = 1; i <= getFloorByPrisonId(LoginController.selectedPrison) ; i++) {
             floors.add(Integer.toString(i));
         }
         Warden_Floor.getItems().addAll(floors);
+        FloorFilter.getItems().addAll(floors);
 
         Crime.getItems().addAll(crimes);
         CrimeFilter.getItems().addAll(crimes);
@@ -1123,4 +1140,19 @@ public class SceneController implements Initializable {
 
     }
 
+    @FXML
+    public void WardenSearchFromFilter(ActionEvent event) {
+    }
+
+    @FXML
+    public void WardenResetList(ActionEvent event) {
+    }
+
+    @FXML
+    public void WardenMakeExcelFile(ActionEvent event) {
+    }
+
+    @FXML
+    public void ClearWardenFilters(ActionEvent event) {
+    }
 }

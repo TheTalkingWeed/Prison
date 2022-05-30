@@ -548,7 +548,7 @@
                         <Font name="System Bold Italic" size="31.0" />
                      </font>
                   </Label>
-                  <GridPane layoutX="489.0" layoutY="15.0" prefHeight="45.0" prefWidth="337.0">
+                  <GridPane layoutX="521.0" layoutY="18.0" prefHeight="45.0" prefWidth="337.0">
                      <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
@@ -575,9 +575,9 @@
                         </Button>
                      </children>
                   </GridPane>
-                  <TitledPane alignment="CENTER" contentDisplay="CENTER" expanded="false" layoutX="263.0" layoutY="25.0" prefWidth="202.0" style="-fx-border-color: #4e586e; -fx-border-radius: 5; -fx-border-width: 3;" text="Filter">
+                  <TitledPane alignment="CENTER" contentDisplay="CENTER" expanded="false" layoutX="263.0" layoutY="16.0" prefWidth="255.0" style="-fx-border-color: #4e586e; -fx-border-radius: 5; -fx-border-width: 3;" text="Filter">
                      <font>
-                        <Font name="System Bold Italic" size="12.0" />
+                        <Font name="System Bold Italic" size="18.0" />
                      </font>
                      <content>
                         <GridPane style="-fx-background-color: #f78364;">
@@ -594,6 +594,8 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <Label text="Name:">
@@ -601,22 +603,40 @@
                                     <Font name="System Bold Italic" size="12.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="FNWardenfilter" promptText="First name" GridPane.rowIndex="1" />
+                              <TextField fx:id="FNWardenfilter" promptText="First name" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="7.0" />
+                                 </GridPane.margin>
+                              </TextField>
                               <TextField fx:id="LNWardenfilter" promptText="Last name" GridPane.rowIndex="2" />
                               <Label text="Join date:" GridPane.rowIndex="3">
                                  <font>
                                     <Font name="System Bold Italic" size="12.0" />
                                  </font>
                               </Label>
-                              <DatePicker fx:id="JoinAfterDate" GridPane.rowIndex="4" />
-                              <DatePicker fx:id="JoinBeforeDate" GridPane.rowIndex="5" />
+                              <DatePicker fx:id="JoinAfterDate" prefHeight="29.0" prefWidth="220.0" GridPane.rowIndex="4">
+                                 <GridPane.margin>
+                                    <Insets bottom="7.0" />
+                                 </GridPane.margin>
+                              </DatePicker>
+                              <DatePicker fx:id="JoinBeforeDate" prefHeight="29.0" prefWidth="223.0" GridPane.rowIndex="5" />
                               <Label text="Rank:" GridPane.rowIndex="6">
                                  <font>
                                     <Font name="System Bold Italic" size="12.0" />
                                  </font>
                               </Label>
-                              <ChoiceBox fx:id="RankFilter" prefWidth="150.0" GridPane.rowIndex="7" />
-                              <TextField fx:id="FloorInChargeFilter" promptText="Floor in charge" GridPane.rowIndex="8" />
+                              <ChoiceBox fx:id="RankFilter" prefHeight="29.0" prefWidth="221.0" GridPane.rowIndex="7" />
+                              <Label text="Floor in charge:" GridPane.rowIndex="8">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="FloorFilter" prefHeight="29.0" prefWidth="222.0" GridPane.rowIndex="9" />
+                              <Button mnemonicParsing="false" onAction="#ClearWardenFilters" text="Clear" GridPane.rowIndex="10">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </GridPane>
                      </content>

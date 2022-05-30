@@ -1,5 +1,5 @@
 package hu.unideb.inf.Controller;
-
+//3913
 import hu.unideb.inf.MainApp;
 import hu.unideb.inf.model.LoginPac.JpaLoginDAO;
 import hu.unideb.inf.model.LoginPac.Login;
@@ -1099,8 +1099,6 @@ public class SceneController implements Initializable {
         return out;
     }
 
-
-
     @FXML
     void ListReset(ActionEvent event) {
         TitledPaneFIlter.setExpanded(false);
@@ -1124,7 +1122,5 @@ public class SceneController implements Initializable {
          SecLvlFilter.setValue(null);
 
     }
-
-
 
 }

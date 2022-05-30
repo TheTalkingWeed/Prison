@@ -22,8 +22,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.TitledPane;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -149,6 +152,10 @@ public class SceneController implements Initializable {
     List<String> wardenjds = new ArrayList<>();
     List<String> wardenranks = new ArrayList<>();
 
+    List<Prisoner> forExceloutput = new ArrayList<>();
+
+    public FileChooser fc = new FileChooser();
+
     public static int idinforSearch;
 
     public static int idin;
@@ -177,7 +184,7 @@ public class SceneController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException e) {
-                System.out.println("valami nem jo ");
+                System.out.println("cant find the fxml ");
             }
         }else {
             Alert alertwindow = new Alert(Alert.AlertType.WARNING);
@@ -348,7 +355,7 @@ public class SceneController implements Initializable {
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException e) {
-                    System.out.println("valami nem jo ");
+                    System.out.println("cant find the fxml");
                 }
 
             }else {
@@ -400,7 +407,7 @@ public class SceneController implements Initializable {
                     stage.show();
 
                 } catch (Exception e) {
-                    System.out.println("valami nem jó ");
+                    System.out.println("Cant find the fxml ");
                 }
 
             }else {
@@ -561,7 +568,7 @@ public class SceneController implements Initializable {
                         stage.show();
 
                     } catch (Exception e) {
-                        System.out.println("valami nem jó ");
+                        System.out.println("cant find the fxml ");
                     }
 
                 }else {
@@ -611,7 +618,7 @@ public class SceneController implements Initializable {
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException e) {
-                    System.out.println("valami nem jo ");
+                    System.out.println("valai nem jo ");
                 }
 
             }else{
@@ -803,6 +810,8 @@ public class SceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        fc.setInitialDirectory(new File("C:\\"));
+
         selectedPrison.setText(LoginController.selectedPrison);
 
         if (LoginController.isAdmin){
@@ -892,7 +901,7 @@ public class SceneController implements Initializable {
     }
 
     @FXML
-    void SearchByGivenInfo(ActionEvent event) {
+     void SearchByGivenInfo(ActionEvent event) {
 
         List<Prisoner> prisoners = new ArrayList<>(getPrisonersWhere());
 
@@ -1021,6 +1030,30 @@ public class SceneController implements Initializable {
         }
         updatePrisonerListView();
 
+        forExceloutput = prisoners;
+
+    }
+
+    @FXML
+    public void MakeExcelPrisonerFile(ActionEvent event) {
+
+        File file = fc.showSaveDialog(new Stage());
+
+        if (file != null){
+            saveFile(file.getAbsolutePath());
+        }
+
+        Alert alertwindow = new Alert(Alert.AlertType.INFORMATION);
+
+        alertwindow.setTitle("Information");
+        alertwindow.setContentText("The file was succesfully saved");
+        alertwindow.showAndWait();
+
+    }
+
+    private void saveFile(String filename){
+        if (forExceloutput.isEmpty()) forExceloutput = getPrisonersWhere();
+        FileUtils.creatPrisonerExcelFile(forExceloutput,filename);
     }
 
     private int getFloorByPrisonId(String prisonname){
@@ -1091,4 +1124,7 @@ public class SceneController implements Initializable {
          SecLvlFilter.setValue(null);
 
     }
+
+
+
 }

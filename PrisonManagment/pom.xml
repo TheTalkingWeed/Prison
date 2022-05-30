@@ -16,14 +16,25 @@
 
   <dependencies>
 
-    <!-- JPA/Hibernate -->
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>5.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>5.2.2</version>
+    </dependency>
+
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
       <version>5.4.4.Final</version>
     </dependency>
 
-    <!-- Database -->
+
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>

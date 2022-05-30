@@ -17,7 +17,6 @@ public class Prisoner implements Serializable {
     private  int UniqueID;
     private String Fname;
     private String Lname;
-    private int age;
     private LocalDate entrancedate;
     private LocalDate releasedate;
     private String securitylvl;
@@ -114,7 +113,6 @@ public class Prisoner implements Serializable {
                 ", UniqueID=" + UniqueID +
                 ", Fname='" + Fname + '\'' +
                 ", Lname='" + Lname + '\'' +
-                ", age=" + age +
                 ", entrancedate=" + entrancedate +
                 ", releasedate=" + releasedate +
                 ", securitylvl='" + securitylvl + '\'' +

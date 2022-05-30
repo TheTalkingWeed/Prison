@@ -575,7 +575,7 @@
                         </Button>
                      </children>
                   </GridPane>
-                  <TitledPane alignment="CENTER" contentDisplay="CENTER" expanded="false" layoutX="263.0" layoutY="16.0" prefWidth="255.0" style="-fx-border-color: #4e586e; -fx-border-radius: 5; -fx-border-width: 3;" text="Filter">
+                  <TitledPane fx:id="WardenTitledFilter" alignment="CENTER" contentDisplay="CENTER" expanded="false" layoutX="263.0" layoutY="16.0" prefWidth="255.0" style="-fx-border-color: #4e586e; -fx-border-radius: 5; -fx-border-width: 3;" text="Filter">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>

@@ -136,7 +136,8 @@ public class SceneController implements Initializable {
     private ChoiceBox<String> RankFilter;
     @FXML
     private ChoiceBox<String> FloorFilter;
-
+    @FXML
+    private TitledPane WardenTitledFilter;
 
     public static Prisoner temp = new Prisoner();
     public static Warden temp2 = new Warden();
@@ -166,6 +167,7 @@ public class SceneController implements Initializable {
     List<String> wardenranks = new ArrayList<>();
 
     List<Prisoner> forExceloutput = new ArrayList<>();
+    List<Warden> WardensforExcelOutput = new ArrayList<>();
 
     public FileChooser fc = new FileChooser();
 
@@ -1142,10 +1144,87 @@ public class SceneController implements Initializable {
 
     @FXML
     public void WardenSearchFromFilter(ActionEvent event) {
+        List<Warden> wardens = new ArrayList<>(getWardensWhere());
+
+        if (!"".equals(FNWardenfilter.getText())){
+            wardens = wardens.stream().filter(new Predicate<Warden>() {
+                @Override
+                public boolean test(Warden warden) {
+                    return warden.getFname().equals(FNWardenfilter.getText());
+                }
+            }).collect(Collectors.toList());
+        }
+
+        if (!"".equals(LNWardenfilter.getText())){
+            wardens = wardens.stream().filter(new Predicate<Warden>() {
+                @Override
+                public boolean test(Warden warden) {
+                    return warden.getLname().equals(LNWardenfilter.getText());
+                }
+            }).collect(Collectors.toList());
+        }
+
+        if (JoinAfterDate.getValue() != null){
+            wardens = wardens.stream().filter(new Predicate<Warden>() {
+                @Override
+                public boolean test(Warden warden) {
+                    return warden.getJoinDate().isAfter(JoinAfterDate.getValue());
+                }
+            }).collect(Collectors.toList());
+        }
+
+        if (JoinBeforeDate.getValue() != null){
+            wardens = wardens.stream().filter(new Predicate<Warden>() {
+                @Override
+                public boolean test(Warden warden) {
+                    return warden.getJoinDate().isBefore(JoinBeforeDate.getValue());
+                }
+            }).collect(Collectors.toList());
+        }
+
+        if (RankFilter.getValue() != null){
+            wardens = wardens.stream().filter(new Predicate<Warden>() {
+                @Override
+                public boolean test(Warden warden) {
+                    return warden.getRank().equals(RankFilter.getValue());
+                }
+            }).collect(Collectors.toList());
+        }
+
+        if (FloorFilter.getValue() != null){
+            wardens = wardens.stream().filter(new Predicate<Warden>() {
+                @Override
+                public boolean test(Warden warden) {
+                    return warden.getFloorInCharge().equals(FloorFilter.getValue());
+                }
+            }).collect(Collectors.toList());
+        }
+
+
+        WardenTitledFilter.setExpanded(false);
+        clearListViewWarden();
+        clearItemListWarden();
+        for (Warden w:wardens) {
+            wardenids.add(w.getUnique_ID());
+            wardenfloors.add(w.getFloorInCharge());
+            wardenlns.add(w.getLname());
+            wardenfns.add(w.getFname());
+            wardenjds.add(w.getJoinDate().toString());
+            wardenranks.add(w.getRank());
+        }
+        updateWardenListView();
+
+        WardensforExcelOutput = wardens;
+
     }
 
     @FXML
     public void WardenResetList(ActionEvent event) {
+        WardenTitledFilter.setExpanded(false);
+        clearListViewWarden();
+        clearItemListWarden();
+        FillAllListofWarden();
+        updateWardenListView();
     }
 
     @FXML
@@ -1154,5 +1233,11 @@ public class SceneController implements Initializable {
 
     @FXML
     public void ClearWardenFilters(ActionEvent event) {
+          FNWardenfilter.setText("");
+          LNWardenfilter.setText("");
+          JoinAfterDate.setValue(null);
+          JoinBeforeDate.setValue(null);
+          RankFilter.setValue(null);
+          FloorFilter.setValue(null);
     }
 }

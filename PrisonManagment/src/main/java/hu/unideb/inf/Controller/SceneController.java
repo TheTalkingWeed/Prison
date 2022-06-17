@@ -158,6 +158,8 @@ public class SceneController implements Initializable {
     List<String> seclevellist = new ArrayList<>();
     List<Integer> celnum = new ArrayList<>();
 
+    List<Prisoner> prisoners = new ArrayList<>(getPrisonersWhere());
+    List<Warden> wardens = new ArrayList<>(getWardensWhere());
 
     List<Integer> wardenids = new ArrayList<>();
     List<String> wardenfloors = new ArrayList<>();
@@ -690,13 +692,13 @@ public class SceneController implements Initializable {
     @FXML
      void SearchByGivenInfo(ActionEvent event) {
 
-        List<Prisoner> prisoners = new ArrayList<>(getPrisonersWhere());
+        List<Prisoner> temp = new ArrayList<>(prisoners);
 
         //First name filtering
         if(!"".equals(FirstNameFilter.getText())){
 
 
-            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+            temp = temp.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getFname().equals(FirstNameFilter.getText());
@@ -707,7 +709,7 @@ public class SceneController implements Initializable {
         //First name filtering
         if (!"".equals(LastNameFilter.getText())){
 
-            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+            temp = temp.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getLname().equals(LastNameFilter.getText());
@@ -718,7 +720,7 @@ public class SceneController implements Initializable {
         // Entrance date filtering
         if (EdateFromFilter.getValue() != null){
 
-            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+            temp = temp.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getEntrancedate().isAfter(EdateFromFilter.getValue());
@@ -729,7 +731,7 @@ public class SceneController implements Initializable {
 
         if (EdToFilter.getValue() != null){
 
-            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+            temp = temp.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getEntrancedate().isBefore(EdToFilter.getValue());
@@ -740,7 +742,7 @@ public class SceneController implements Initializable {
         // Release date filtering
         if (RdateFromFilter.getValue() != null){
 
-            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+            temp = temp.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getReleasedate().isAfter(RdateFromFilter.getValue());
@@ -751,7 +753,7 @@ public class SceneController implements Initializable {
 
         if (RdateToFilter.getValue() != null){
 
-            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+            temp = temp.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getReleasedate().isBefore(RdateToFilter.getValue());
@@ -763,7 +765,7 @@ public class SceneController implements Initializable {
 
         if (SecLvlFilter.getValue() != null){
 
-            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+            temp = temp.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getSecuritylvl().equals(SecLvlFilter.getValue());
@@ -774,7 +776,7 @@ public class SceneController implements Initializable {
         //Cell num filtering
 
         if (!"".equals(CellNumberFilter.getText())){
-            List<Prisoner> prefiltered = prisoners.stream().filter(new Predicate<Prisoner>() {
+             temp = temp.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getCellnumber() == Integer.parseInt(CellNumberFilter.getText());
@@ -782,7 +784,7 @@ public class SceneController implements Initializable {
             }).collect(Collectors.toList());
             System.out.println("cellnum");
 
-            prisoners = prefiltered;
+
         }
 
 
@@ -790,7 +792,7 @@ public class SceneController implements Initializable {
         //Crime filtering
         if (CrimeFilter.getValue() != null){
 
-            prisoners = prisoners.stream().filter(new Predicate<Prisoner>() {
+            temp = temp.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getCrime().equals(CrimeFilter.getValue());
@@ -805,7 +807,7 @@ public class SceneController implements Initializable {
         TitledPaneFIlter.setExpanded(false);
         clearListViewPrisoner();
         clearItemListPrisoner();
-        for (Prisoner p: prisoners) {
+        for (Prisoner p: temp) {
             pids.add(p.getUniqueID());
             fnlist.add(p.getFname());
             lnlist.add(p.getLname());
@@ -864,10 +866,11 @@ public class SceneController implements Initializable {
 
     @FXML
     public void WardenSearchFromFilter(ActionEvent event) {
-        List<Warden> wardens = new ArrayList<>(getWardensWhere());
+
+        List<Warden> forwardenfilter = new ArrayList<>(wardens);
 
         if (!"".equals(FNWardenfilter.getText())){
-            wardens = wardens.stream().filter(new Predicate<Warden>() {
+            forwardenfilter = forwardenfilter.stream().filter(new Predicate<Warden>() {
                 @Override
                 public boolean test(Warden warden) {
                     return warden.getFname().equals(FNWardenfilter.getText());
@@ -876,7 +879,7 @@ public class SceneController implements Initializable {
         }
 
         if (!"".equals(LNWardenfilter.getText())){
-            wardens = wardens.stream().filter(new Predicate<Warden>() {
+            forwardenfilter = forwardenfilter.stream().filter(new Predicate<Warden>() {
                 @Override
                 public boolean test(Warden warden) {
                     return warden.getLname().equals(LNWardenfilter.getText());
@@ -885,7 +888,7 @@ public class SceneController implements Initializable {
         }
 
         if (JoinAfterDate.getValue() != null){
-            wardens = wardens.stream().filter(new Predicate<Warden>() {
+            forwardenfilter = forwardenfilter.stream().filter(new Predicate<Warden>() {
                 @Override
                 public boolean test(Warden warden) {
                     return warden.getJoinDate().isAfter(JoinAfterDate.getValue());
@@ -894,7 +897,7 @@ public class SceneController implements Initializable {
         }
 
         if (JoinBeforeDate.getValue() != null){
-            wardens = wardens.stream().filter(new Predicate<Warden>() {
+            forwardenfilter = forwardenfilter.stream().filter(new Predicate<Warden>() {
                 @Override
                 public boolean test(Warden warden) {
                     return warden.getJoinDate().isBefore(JoinBeforeDate.getValue());
@@ -903,7 +906,7 @@ public class SceneController implements Initializable {
         }
 
         if (RankFilter.getValue() != null){
-            wardens = wardens.stream().filter(new Predicate<Warden>() {
+            forwardenfilter = forwardenfilter.stream().filter(new Predicate<Warden>() {
                 @Override
                 public boolean test(Warden warden) {
                     return warden.getRank().equals(RankFilter.getValue());
@@ -912,7 +915,7 @@ public class SceneController implements Initializable {
         }
 
         if (FloorFilter.getValue() != null){
-            wardens = wardens.stream().filter(new Predicate<Warden>() {
+            forwardenfilter = forwardenfilter.stream().filter(new Predicate<Warden>() {
                 @Override
                 public boolean test(Warden warden) {
                     return warden.getFloorInCharge().equals(FloorFilter.getValue());

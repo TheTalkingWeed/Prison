@@ -692,13 +692,13 @@ public class SceneController implements Initializable {
     @FXML
      void SearchByGivenInfo(ActionEvent event) {
 
-        List<Prisoner> temp = new ArrayList<>(prisoners);
+        List<Prisoner> forprisonerfilter = new ArrayList<>(prisoners);
 
         //First name filtering
         if(!"".equals(FirstNameFilter.getText())){
 
 
-            temp = temp.stream().filter(new Predicate<Prisoner>() {
+            forprisonerfilter = forprisonerfilter.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getFname().equals(FirstNameFilter.getText());
@@ -709,7 +709,7 @@ public class SceneController implements Initializable {
         //First name filtering
         if (!"".equals(LastNameFilter.getText())){
 
-            temp = temp.stream().filter(new Predicate<Prisoner>() {
+            forprisonerfilter = forprisonerfilter.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getLname().equals(LastNameFilter.getText());
@@ -720,7 +720,7 @@ public class SceneController implements Initializable {
         // Entrance date filtering
         if (EdateFromFilter.getValue() != null){
 
-            temp = temp.stream().filter(new Predicate<Prisoner>() {
+            forprisonerfilter = forprisonerfilter.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getEntrancedate().isAfter(EdateFromFilter.getValue());
@@ -731,7 +731,7 @@ public class SceneController implements Initializable {
 
         if (EdToFilter.getValue() != null){
 
-            temp = temp.stream().filter(new Predicate<Prisoner>() {
+            forprisonerfilter = forprisonerfilter.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getEntrancedate().isBefore(EdToFilter.getValue());
@@ -742,7 +742,7 @@ public class SceneController implements Initializable {
         // Release date filtering
         if (RdateFromFilter.getValue() != null){
 
-            temp = temp.stream().filter(new Predicate<Prisoner>() {
+            forprisonerfilter = forprisonerfilter.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getReleasedate().isAfter(RdateFromFilter.getValue());
@@ -753,7 +753,7 @@ public class SceneController implements Initializable {
 
         if (RdateToFilter.getValue() != null){
 
-            temp = temp.stream().filter(new Predicate<Prisoner>() {
+            forprisonerfilter = forprisonerfilter.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getReleasedate().isBefore(RdateToFilter.getValue());
@@ -765,7 +765,7 @@ public class SceneController implements Initializable {
 
         if (SecLvlFilter.getValue() != null){
 
-            temp = temp.stream().filter(new Predicate<Prisoner>() {
+            forprisonerfilter = forprisonerfilter.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getSecuritylvl().equals(SecLvlFilter.getValue());
@@ -776,7 +776,7 @@ public class SceneController implements Initializable {
         //Cell num filtering
 
         if (!"".equals(CellNumberFilter.getText())){
-             temp = temp.stream().filter(new Predicate<Prisoner>() {
+             forprisonerfilter = forprisonerfilter.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getCellnumber() == Integer.parseInt(CellNumberFilter.getText());
@@ -792,7 +792,7 @@ public class SceneController implements Initializable {
         //Crime filtering
         if (CrimeFilter.getValue() != null){
 
-            temp = temp.stream().filter(new Predicate<Prisoner>() {
+            forprisonerfilter = forprisonerfilter.stream().filter(new Predicate<Prisoner>() {
                 @Override
                 public boolean test(Prisoner prisoner) {
                     return prisoner.getCrime().equals(CrimeFilter.getValue());
@@ -807,7 +807,7 @@ public class SceneController implements Initializable {
         TitledPaneFIlter.setExpanded(false);
         clearListViewPrisoner();
         clearItemListPrisoner();
-        for (Prisoner p: temp) {
+        for (Prisoner p: forprisonerfilter) {
             pids.add(p.getUniqueID());
             fnlist.add(p.getFname());
             lnlist.add(p.getLname());
@@ -819,7 +819,7 @@ public class SceneController implements Initializable {
         }
         updatePrisonerListView();
 
-        forExceloutput = prisoners;
+        forExceloutput = forprisonerfilter;
 
     }
 
@@ -927,7 +927,7 @@ public class SceneController implements Initializable {
         WardenTitledFilter.setExpanded(false);
         clearListViewWarden();
         clearItemListWarden();
-        for (Warden w:wardens) {
+        for (Warden w:forwardenfilter) {
             wardenids.add(w.getUnique_ID());
             wardenfloors.add(w.getFloorInCharge());
             wardenlns.add(w.getLname());
@@ -937,7 +937,7 @@ public class SceneController implements Initializable {
         }
         updateWardenListView();
 
-        WardensforExcelOutput = wardens;
+        WardensforExcelOutput = forwardenfilter;
 
     }
 

@@ -22,6 +22,7 @@ public class Prisoner implements Serializable {
     private String securitylvl;
     private int cellnumber;
     private String crime;
+    private int age;
     private int prison_id;
 
     public int getPrisonid() {

@@ -87,7 +87,7 @@ public class LoginController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/GUI.fxml"));
                 Parent par1 =fxmlLoader.load();
                 Stage stage = new Stage();
-                stage.setResizable(false);
+                stage.setResizable(true);
                 stage.setTitle("Prison management");
                 stage.getIcons().add(icon);
                 stage.setScene(new Scene(par1));
@@ -146,7 +146,7 @@ public class LoginController implements Initializable {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/GUI.fxml"));
                         Parent par1 =fxmlLoader.load();
                         Stage stage = new Stage();
-                        stage.setResizable(false);
+                        stage.setResizable(true);
                         stage.setTitle("Prison management");
                         stage.getIcons().add(icon);
                         stage.setScene(new Scene(par1));

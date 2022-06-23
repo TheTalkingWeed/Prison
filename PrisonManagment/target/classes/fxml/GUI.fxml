@@ -21,20 +21,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" side="LEFT" style="-fx-background-color: #4e586e; -fx-border-radius: 0;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="200.0" tabMinHeight="40.0" tabMinWidth="60.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
+<TabPane focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" side="LEFT" style="-fx-background-color: #4e586e; -fx-border-radius: 0;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="40.0" tabMaxWidth="200.0" tabMinHeight="40.0" tabMinWidth="60.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.Controller.SceneController">
   <tabs>
     <Tab style="-fx-background-color: #f78364;">
          <content>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="863.0">
                <children>
-                  <Text fill="WHITE" layoutX="300.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Managing Prisoners" textAlignment="CENTER">
+                  <Text fill="WHITE" layoutX="291.0" layoutY="53.373046875" strokeType="OUTSIDE" strokeWidth="0.0" text="Managing Prisoners" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold Italic" size="30.0" />
                      </font>
                   </Text>
-                  <Line endX="849.0" endY="-3.814697265625E-6" layoutX="13.0" layoutY="56.0" startX="-13.99999713897705" startY="-3.814697265625E-6" stroke="#f78364" />
-                  <Line endX="755.0" layoutX="108.0" layoutY="450.0" startX="-108.0" stroke="#f78364" />
-                  <GridPane layoutX="145.0" layoutY="73.0" prefHeight="314.0" prefWidth="466.0">
+                  <Line endX="849.0" endY="-3.814697265625E-6" layoutX="13.49999713897705" layoutY="87.5" startX="-13.99999713897705" startY="-3.814697265625E-6" stroke="#f78364" />
+                  <Line endX="755.0" layoutX="107.5" layoutY="453.5" startX="-108.0" stroke="#f78364" />
+                  <GridPane layoutX="198.0" layoutY="101.0" prefHeight="314.0" prefWidth="466.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -132,7 +132,7 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="100.0" layoutY="465.0" prefHeight="80.0" prefWidth="680.0">
+                  <GridPane layoutX="130.0" layoutY="466.0" prefHeight="80.0" prefWidth="603.0">
                     <columnConstraints>
                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -180,7 +180,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <GridPane layoutX="-1.0" layoutY="81.0" prefHeight="513.0" prefWidth="865.0">
+                  <GridPane layoutX="-1.0" layoutY="81.0" prefHeight="513.0" prefWidth="865.0" AnchorPane.bottomAnchor="-31.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
                      <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
@@ -192,8 +192,8 @@
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="326.0" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="133.99999237060547" minHeight="10.0" prefHeight="43.666664123535156" valignment="CENTER" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="499.33333587646484" minHeight="10.0" prefHeight="471.33333587646484" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="471.33333587646484" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
                         <ListView fx:id="PrisonerID_list" focusTraversable="false" prefHeight="473.0" prefWidth="49.0" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
@@ -246,12 +246,22 @@
                         <ListView fx:id="PrisonerCrime_list" focusTraversable="false" prefHeight="500.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <TitledPane fx:id="TitledPaneFIlter" alignment="CENTER" contentDisplay="CENTER" expanded="false" layoutX="263.0" layoutY="28.0" prefWidth="239.0" style="-fx-border-color: #4e586e; -fx-border-width: 3; -fx-border-radius: 5;" text="Filters">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="633.0" layoutY="27.0" mnemonicParsing="false" onAction="#ListReset" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #f78364;" text="Reset list">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="730.0" layoutY="27.0" mnemonicParsing="false" onAction="#MakeExcelPrisonerFile" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: #f78364;" text="Make excel file" AnchorPane.rightAnchor="27.0">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Button>
+                  <TitledPane fx:id="TitledPaneFIlter" alignment="CENTER" contentDisplay="CENTER" expanded="false" layoutX="338.0" layoutY="24.0" prefWidth="274.0" style="-fx-border-color: #4e586e; -fx-border-width: 3; -fx-border-radius: 5;" text="Filters">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                      <content>
-                        <GridPane prefWidth="237.0" style="-fx-background-color: #f78364;">
+                        <GridPane prefWidth="231.0" style="-fx-background-color: #f78364;">
                           <columnConstraints>
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
@@ -270,6 +280,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
@@ -326,7 +337,12 @@
                                  </font>
                               </Label>
                               <ChoiceBox fx:id="CrimeFilter" prefWidth="206.0" GridPane.rowIndex="13" />
-                              <Button mnemonicParsing="false" onAction="#ClearFilterSearch" text="Clear list" GridPane.rowIndex="14">
+                              <Button mnemonicParsing="false" onAction="#SearchByGivenInfo" text="Search" GridPane.rowIndex="14">
+                                 <font>
+                                    <Font name="System Bold Italic" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#ClearFilterSearch" text="Clear list" GridPane.rowIndex="15">
                                  <font>
                                     <Font name="System Bold Italic" size="12.0" />
                                  </font>
@@ -338,34 +354,7 @@
                         </GridPane>
                      </content>
                   </TitledPane>
-                  <GridPane layoutX="526.0" layoutY="26.0" prefHeight="45.0" prefWidth="337.0">
-                     <columnConstraints>
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#SearchByGivenInfo" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #f78364;" text="Search">
-                           <font>
-                              <Font name="System Bold Italic" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#ListReset" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #f78364;" text="Reset list" GridPane.columnIndex="1">
-                           <font>
-                              <Font name="System Bold Italic" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#MakeExcelPrisonerFile" prefHeight="40.0" prefWidth="103.0" style="-fx-background-color: #f78364;" text="Make excel file" GridPane.columnIndex="2">
-                           <font>
-                              <Font name="System Bold Italic" size="12.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </GridPane>
-                  <Label layoutX="31.0" layoutY="27.0" prefHeight="47.0" prefWidth="196.0" text="Prisoners list" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="27.0" layoutY="24.0" prefHeight="46.0" prefWidth="304.0" text="Prisoners list" textFill="WHITE" AnchorPane.leftAnchor="27.0">
                      <font>
                         <Font name="System Bold Italic" size="31.0" />
                      </font>
@@ -491,7 +480,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <GridPane layoutY="73.0" prefHeight="574.0" prefWidth="865.0">
+                  <GridPane layoutY="68.0" prefHeight="495.0" prefWidth="863.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="68.0">
                      <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
@@ -501,7 +490,7 @@
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="45.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
@@ -543,14 +532,10 @@
                         <ListView fx:id="WardenFloor_list" prefHeight="550.0" prefWidth="129.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <Label layoutX="33.0" layoutY="14.0" prefHeight="47.0" prefWidth="175.0" text="Warden list" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold Italic" size="31.0" />
-                     </font>
-                  </Label>
-                  <GridPane layoutX="521.0" layoutY="18.0" prefHeight="45.0" prefWidth="337.0">
+                  <GridPane layoutX="4.0" layoutY="18.0" prefHeight="45.0" prefWidth="854.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="5.0">
                      <columnConstraints>
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
                      </columnConstraints>
@@ -558,89 +543,95 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#WardenResetList" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #f78364;" text="Reset list" GridPane.columnIndex="1">
+                        <Button mnemonicParsing="false" onAction="#WardenResetList" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #f78364;" text="Reset list" GridPane.columnIndex="2">
                            <font>
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#WardenMakeExcelFile" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #f78364;" text="Make excel file" GridPane.columnIndex="2">
+                        <Button mnemonicParsing="false" onAction="#WardenMakeExcelFile" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #f78364;" text="Make excel file" GridPane.columnIndex="3">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#WardenSearchFromFilter" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #f78364;" text="Search">
+                        <TitledPane fx:id="WardenTitledFilter" alignment="CENTER" contentDisplay="CENTER" expanded="false" prefWidth="255.0" style="-fx-border-color: #4e586e; -fx-border-radius: 5; -fx-border-width: 3;" text="Filter" GridPane.columnIndex="1">
                            <font>
-                              <Font name="System Bold Italic" size="17.0" />
+                              <Font name="System Bold Italic" size="18.0" />
                            </font>
-                        </Button>
+                           <content>
+                              <GridPane style="-fx-background-color: #f78364;">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Name:">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="FNWardenfilter" promptText="First name" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="7.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="LNWardenfilter" promptText="Last name" GridPane.rowIndex="2" />
+                                    <Label text="Join date:" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker fx:id="JoinAfterDate" prefHeight="29.0" prefWidth="220.0" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets bottom="7.0" />
+                                       </GridPane.margin>
+                                    </DatePicker>
+                                    <DatePicker fx:id="JoinBeforeDate" prefHeight="29.0" prefWidth="223.0" GridPane.rowIndex="5" />
+                                    <Label text="Rank:" GridPane.rowIndex="6">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox fx:id="RankFilter" prefHeight="29.0" prefWidth="221.0" GridPane.rowIndex="7" />
+                                    <Label text="Floor in charge:" GridPane.rowIndex="8">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox fx:id="FloorFilter" prefHeight="29.0" prefWidth="222.0" GridPane.rowIndex="9" />
+                                    <Button mnemonicParsing="false" onAction="#ClearWardenFilters" text="Clear" GridPane.rowIndex="10">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#WardenSearchFromFilter" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #f78364;" text="Search" GridPane.rowIndex="11">
+                                       <font>
+                                          <Font name="System Bold Italic" size="17.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </GridPane>
+                           </content>
+                        </TitledPane>
+                        <Label prefHeight="46.0" prefWidth="174.0" text="Warden list" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="31.0" />
+                           </font>
+                        </Label>
                      </children>
                   </GridPane>
-                  <TitledPane fx:id="WardenTitledFilter" alignment="CENTER" contentDisplay="CENTER" expanded="false" layoutX="263.0" layoutY="16.0" prefWidth="255.0" style="-fx-border-color: #4e586e; -fx-border-radius: 5; -fx-border-width: 3;" text="Filter">
-                     <font>
-                        <Font name="System Bold Italic" size="18.0" />
-                     </font>
-                     <content>
-                        <GridPane style="-fx-background-color: #f78364;">
-                          <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Label text="Name:">
-                                 <font>
-                                    <Font name="System Bold Italic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="FNWardenfilter" promptText="First name" GridPane.rowIndex="1">
-                                 <GridPane.margin>
-                                    <Insets bottom="7.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                              <TextField fx:id="LNWardenfilter" promptText="Last name" GridPane.rowIndex="2" />
-                              <Label text="Join date:" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font name="System Bold Italic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="JoinAfterDate" prefHeight="29.0" prefWidth="220.0" GridPane.rowIndex="4">
-                                 <GridPane.margin>
-                                    <Insets bottom="7.0" />
-                                 </GridPane.margin>
-                              </DatePicker>
-                              <DatePicker fx:id="JoinBeforeDate" prefHeight="29.0" prefWidth="223.0" GridPane.rowIndex="5" />
-                              <Label text="Rank:" GridPane.rowIndex="6">
-                                 <font>
-                                    <Font name="System Bold Italic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <ChoiceBox fx:id="RankFilter" prefHeight="29.0" prefWidth="221.0" GridPane.rowIndex="7" />
-                              <Label text="Floor in charge:" GridPane.rowIndex="8">
-                                 <font>
-                                    <Font name="System Bold Italic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <ChoiceBox fx:id="FloorFilter" prefHeight="29.0" prefWidth="222.0" GridPane.rowIndex="9" />
-                              <Button mnemonicParsing="false" onAction="#ClearWardenFilters" text="Clear" GridPane.rowIndex="10">
-                                 <font>
-                                    <Font name="System Bold Italic" size="12.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </GridPane>
-                     </content>
-                  </TitledPane>
                </children>
             </AnchorPane>
         </content>
@@ -656,7 +647,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <GridPane layoutY="68.0" prefHeight="400.0" prefWidth="863.0">
+                  <GridPane layoutY="68.0" prefHeight="494.0" prefWidth="863.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="68.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -664,7 +655,7 @@
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints maxHeight="99.33332824707031" minHeight="10.0" prefHeight="58.33332824707031" vgrow="SOMETIMES" />
-                      <RowConstraints fillHeight="false" maxHeight="300.0" minHeight="10.0" prefHeight="206.6666717529297" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="206.6666717529297" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="287.0" text="Username" textFill="WHITE">
@@ -682,12 +673,12 @@
                               <Font name="System Bold Italic" size="24.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="Username_ListView" prefHeight="340.0" prefWidth="288.0" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                        <ListView fx:id="LogIn_ListView" prefHeight="315.0" prefWidth="288.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                        <ListView fx:id="LogOut_ListView" prefHeight="367.0" prefWidth="287.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="Username_ListView" prefWidth="288.0" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="LogIn_ListView" prefWidth="288.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <ListView fx:id="LogOut_ListView" prefWidth="287.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
-                  <Label layoutX="319.0" layoutY="14.0" prefHeight="58.0" prefWidth="226.0" text="Login history" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="319.0" layoutY="14.0" prefHeight="58.0" prefWidth="226.0" text="Login history" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <font>
                         <Font name="System Bold Italic" size="36.0" />
                      </font>

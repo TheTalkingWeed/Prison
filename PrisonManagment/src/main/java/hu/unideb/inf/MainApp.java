@@ -32,21 +32,6 @@ public class MainApp extends Application {
 
     public static void main(String[] args) throws SQLException {
         startDatabase();
-
-      //  DataUpload.uploadPrisons();
-//        try (PrisonDAO prisonDAO = new JpaPrisonDAO();){
-//            Random rand = new Random();
-//
-//            List<Prison> temp = new ArrayList<>();
-//
-//            for (Prison p:temp) {
-//                p.setFloorNumber(rand.nextInt(10));
-//                prisonDAO.updatePrison(p);
-//            }
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-
         launch(args);
         stopDatabase();
     }

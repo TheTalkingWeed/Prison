@@ -704,7 +704,7 @@ public class SceneController implements Initializable {
                     return prisoner.getFname().equals(FirstNameFilter.getText());
                 }
             }).collect(Collectors.toList());
-            System.out.println("first");
+
         }
         //First name filtering
         if (!"".equals(LastNameFilter.getText())){
@@ -715,7 +715,7 @@ public class SceneController implements Initializable {
                     return prisoner.getLname().equals(LastNameFilter.getText());
                 }
             }).collect(Collectors.toList());
-            System.out.println("last");
+
         }
         // Entrance date filtering
         if (EdateFromFilter.getValue() != null){
@@ -726,7 +726,7 @@ public class SceneController implements Initializable {
                     return prisoner.getEntrancedate().isAfter(EdateFromFilter.getValue());
                 }
             }).collect(Collectors.toList());
-            System.out.println("edfrom");
+
         }
 
         if (EdToFilter.getValue() != null){
@@ -737,7 +737,7 @@ public class SceneController implements Initializable {
                     return prisoner.getEntrancedate().isBefore(EdToFilter.getValue());
                 }
             }).collect(Collectors.toList());
-            System.out.println("edto");
+
         }
         // Release date filtering
         if (RdateFromFilter.getValue() != null){
@@ -748,7 +748,7 @@ public class SceneController implements Initializable {
                     return prisoner.getReleasedate().isAfter(RdateFromFilter.getValue());
                 }
             }).collect(Collectors.toList());
-            System.out.println("rdfrom");
+
         }
 
         if (RdateToFilter.getValue() != null){
@@ -759,7 +759,7 @@ public class SceneController implements Initializable {
                     return prisoner.getReleasedate().isBefore(RdateToFilter.getValue());
                 }
             }).collect(Collectors.toList());
-            System.out.println("rdto");
+
         }
         //Sec lvl filtering
 
@@ -771,7 +771,7 @@ public class SceneController implements Initializable {
                     return prisoner.getSecuritylvl().equals(SecLvlFilter.getValue());
                 }
             }).collect(Collectors.toList());
-            System.out.println("seclvl");
+
         }
         //Cell num filtering
 
@@ -782,7 +782,7 @@ public class SceneController implements Initializable {
                     return prisoner.getCellnumber() == Integer.parseInt(CellNumberFilter.getText());
                 }
             }).collect(Collectors.toList());
-            System.out.println("cellnum");
+
 
 
         }
@@ -798,7 +798,7 @@ public class SceneController implements Initializable {
                     return prisoner.getCrime().equals(CrimeFilter.getValue());
                 }
             }).collect(Collectors.toList());
-            System.out.println("crime");
+
         }
 
 
